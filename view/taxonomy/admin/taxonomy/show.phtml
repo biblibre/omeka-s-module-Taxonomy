@@ -1,0 +1,90 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'taxonomies show');
+$viewTermsLink = $this->url(
+    'admin/taxonomy-term',
+    [
+        'action' => 'browse',
+        'taxonomy-id' => $taxonomy->id(),
+    ]
+);
+if ($owner = $taxonomy->owner()) {
+    $ownerText = $escape($taxonomy->owner()->name());
+} else {
+    $ownerText = $translate('[no owner]');
+}
+
+$sectionNavs = [
+    'taxonomy-metadata' => $translate('Metadata'),
+    'taxonomy-linked' => $translate('Linked resources'),
+];
+?>
+
+<?php echo $this->pageTitle($taxonomy->displayTitle(), 1, $translate('Taxonomies')); ?>
+
+<div id="page-actions">
+    <?php if ($taxonomy->userIsAllowed('update')): ?>
+    <?php echo $taxonomy->link($translate('Edit taxonomy'), 'edit', ['class' => 'button']); ?>
+    <?php endif; ?>
+    <a href="<?php echo $viewTermsLink; ?>" class="button"><?php echo $translate('View terms'); ?></a>
+</div>
+
+<?php echo $this->sectionNav($sectionNavs, 'view.show.section_nav', $taxonomy); ?>
+
+<div id="taxonomy-metadata" class="active section">
+    <?php if ( $taxonomy->resourceClass()): ?>
+        <div class="meta-group">
+            <h4><?php echo $translate('Class'); ?></h4>
+            <div class="value"><?php echo $escape($taxonomy->resourceClass()->label()); ?></div>
+        </div>
+    <?php endif; ?>
+    <?php echo $taxonomy->displayValues(); ?>
+</div>
+
+<div id="taxonomy-linked" class="section">
+    <?php
+    $page = $this->params()->fromQuery('page', 1);
+    $property = $this->params()->fromQuery('property');
+    $subjectValues = $taxonomy->displaySubjectValues($page, 25);
+    ?>
+    <?php if ($subjectValues): ?>
+        <p><?php echo $translate('The following resources link to this taxonomy:'); ?></p>
+        <?php echo $subjectValues; ?>
+    <?php else: ?>
+        <div class="no-resources">
+            <p><?php echo $translate('No resources link to this taxonomy.'); ?></p>
+        </div>
+    <?php endif; ?>
+</div>
+
+
+<div class="active sidebar">
+    <div class="meta-group">
+        <h4><?php echo $translate('ID'); ?></h4>
+        <div class="value"><?php echo $escape($taxonomy->id()); ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Code'); ?></h4>
+        <div class="value"><?php echo $escape($resource->code()); ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Created'); ?></h4>
+        <div class="value"><?php echo $escape($this->i18n()->dateFormat($taxonomy->created())); ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Owner'); ?></h4>
+        <div class="value"><?php echo $ownerText; ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Visibility'); ?></h4>
+        <div class="value"><?php echo ($taxonomy->isPublic()) ? $escape($translate('Public')) : $escape($translate('Private')); ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Terms'); ?></h4>
+        <div class="value"><?php echo $this->hyperlink($taxonomy->termCount(), $this->url('admin/taxonomy-term', ['action' => 'browse', 'taxonomy-id' => $taxonomy->id()])); ?></div>
+    </div>
+    <?php $this->trigger('view.show.sidebar'); ?>
+</div>
+
+<?php $this->trigger('view.show.after'); ?>

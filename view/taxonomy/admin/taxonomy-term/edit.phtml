@@ -1,0 +1,30 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'edit taxonomy-terms');
+$deleteButton = $taxonomy->userIsAllowed('delete')
+    ? '<a href="#" class="delete button">' . $translate('Delete') . '</a>'
+    : null;
+?>
+
+<script type='text/javascript'>
+var valuesJson = <?php echo json_encode($taxonomyTerm->values()); ?>;
+</script>
+
+<?php echo $this->pageTitle($taxonomyTerm->displayTitle(), 1, $taxonomy->displayTitle(), $translate('Edit')); ?>
+<?php $this->trigger('view.edit.before'); ?>
+<?php
+echo $this->partial('taxonomy/admin/taxonomy-term/form.phtml', [
+    'form' => $form,
+    'taxonomyTerm' => $taxonomyTerm,
+    'taxonomy' => $taxonomy,
+    'submitLabel' => $translate('Save'),
+    'deleteButton' => $deleteButton,
+    'sectionNavEvent' => 'view.edit.section_nav',
+    'action' => 'edit',
+]);
+?>
+
+<?php echo $this->deleteConfirm($taxonomyTerm, 'taxonomyTerm'); ?>
+
+<?php $this->trigger('view.edit.after'); ?>

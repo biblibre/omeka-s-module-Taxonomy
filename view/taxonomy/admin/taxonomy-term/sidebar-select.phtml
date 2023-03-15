@@ -1,0 +1,43 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$hyperlink = $this->plugin('hyperlink');
+$taxonomyTermsFound = count($taxonomyTerms) > 0;
+?>
+
+<h3><?php echo $translate('Select taxonomy term'); ?></h3>
+<div class="search-nav">
+    <div id="sidebar-resource-search" class="resource-search" data-search-url="<?php echo $escape($this->url(null, [], [], true)); ?>">
+        <input type="text" name="search" value="<?php echo $escape($searchValue); ?>" id="resource-list-search">
+        <button type="button" class="o-icon-search"><?php echo $translate('Search'); ?></button>
+    </div>
+    <?php if ($taxonomyTermsFound): ?>
+        <?php echo $this->pagination('common/sidebar-pagination.phtml'); ?>
+    <?php endif; ?>
+</div>
+
+<div class="taxonomy-terms resource-list">
+    <?php if ($taxonomyTermsFound): ?>
+        <?php
+        foreach ($taxonomyTerms as $taxonomyTerm): ?>
+        <div class="resource taxonomy-term">
+            <?php
+            $content = sprintf(
+                '%s<span class="resource-name">%s</span>',
+                $this->thumbnail($taxonomyTerm, 'square'),
+                $escape($taxonomyTerm->displayTitle())
+            );
+            echo $hyperlink->raw($content, '#', [
+                'class' => 'sidebar-content select-resource resource-link',
+                'data-sidebar-content-url' => $taxonomyTerm->url('show-details'),
+                'data-sidebar-selector' => '#resource-details',
+            ]);
+            ?>
+        </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <span class="no-resources"><?php echo $translate('No taxonomy terms found.'); ?></span>
+    <?php endif; ?>
+</div>
+
+

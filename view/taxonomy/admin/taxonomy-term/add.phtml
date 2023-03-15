@@ -1,0 +1,18 @@
+<?php
+$translate = $this->plugin('translate');
+$this->htmlElement('body')->appendAttribute('class', 'add taxonomy-terms');
+?>
+
+<?php echo $this->pageTitle($translate('New taxonomy term'), 1, $taxonomy->displayTitle()); ?>
+<?php $this->trigger('view.add.before'); ?>
+<?php
+echo $this->partial('taxonomy/admin/taxonomy-term/form.phtml', [
+    'form' => $form,
+    'taxonomyTerm' => null,
+    'taxonomy' => $taxonomy,
+    'sectionNavEvent' => 'view.add.section_nav',
+    'action' => 'add',
+]);
+?>
+
+<?php $this->trigger('view.add.after'); ?>

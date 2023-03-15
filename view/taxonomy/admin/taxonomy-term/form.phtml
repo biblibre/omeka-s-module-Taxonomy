@@ -1,0 +1,68 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$formElement = $this->plugin('formElement');
+$this->headScript()->appendFile($this->assetUrl('vendor/sortablejs/Sortable.min.js', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('js/resource-form.js', 'Omeka'));
+$form->prepare();
+?>
+
+<?php echo $this->form()->openTag($form); ?>
+
+<input type="hidden" name="o:taxonomy[o:id]" value="<?php echo $this->params()->fromRoute('taxonomy-id'); ?>">
+
+<?php echo $this->sectionNav([
+    'resource-values' => $translate('Values'),
+    'taxonomy-term' => $translate('Taxonomy term'),
+    'advanced-settings' => $translate('Advanced'),
+], $sectionNavEvent); ?>
+
+<?php $this->trigger("view.$action.form.before", ['form' => $form]); ?>
+
+<?php
+$codeInput = $form->get('o:code');
+if (isset($taxonomyTerm)) {
+    $codeInput->setValue($taxonomyTerm->code());
+    $codeInput->setAttribute('disabled', true);
+    $codeHidden = new \Zend\Form\Element\Hidden('o:code');
+    $codeHidden->setValue($taxonomy->code());
+    echo $this->formHidden($codeHidden);
+}
+?>
+<fieldset id="taxonomy-term" class="section" aria-labelledby="taxonomy-term-label">
+    <?php echo $this->formRow($form->get('o:code')); ?>
+</fieldset>
+
+<?php echo $this->partial('common/resource-fields.phtml', [
+    'form' => $form,
+    'resource' => $taxonomyTerm,
+    'action' => $action,
+]); ?>
+
+<div id="page-actions">
+    <?php if ($taxonomyTerm && $taxonomyTerm->isPublic() || (!isset($taxonomyTerm) && !$this->setting('default_to_private')) ): ?>
+    <?php echo $this->hyperlink('', '#', [
+        'class' => 'o-icon-public button',
+        'title' => $translate('Make private'),
+    ]); ?>
+    <input type="hidden" name="o:is_public" value="1">
+    <?php else: ?>
+    <?php echo $this->hyperlink('', '#', [
+        'class' => 'o-icon-private button',
+        'title' => $translate('Make public'),
+    ]); ?>
+    <input type="hidden" name="o:is_public" value="0">
+    <?php endif; ?>
+
+    <?php echo (isset($deleteButton)) ? $deleteButton : ''; ?>
+    <?php echo $this->cancelButton(); ?>
+    <input type="submit" name="add-taxonomy-term-submit" value="<?php echo $translate('Save'); ?>">
+</div>
+
+<?php $this->trigger("view.$action.form.after", ['form' => $form]); ?>
+
+<?php echo $formElement($form->get('csrf')); ?>
+
+<?php echo $this->form()->closeTag(); ?>
+
+<?php echo $this->partial('common/resource-form-templates.phtml'); ?>

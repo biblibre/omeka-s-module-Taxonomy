@@ -1,0 +1,36 @@
+:root {
+    --taxonomy-taxonomy-icon-content: "\f02c";
+    --taxonomy-taxonomy-term-icon-content: "\f02b";
+}
+
+header nav .taxonomies::before, .taxonomies .subhead::before {
+    content: var(--taxonomy-taxonomy-icon-content);
+}
+
+.o-icon-taxonomies::before {
+    content: var(--taxonomy-taxonomy-icon-content);
+}
+
+.selected-resource .taxonomies a::after {
+    content: var(--taxonomy-taxonomy-icon-content);
+}
+
+.property .value.taxonomies .resource-name::after {
+    content: var(--taxonomy-taxonomy-icon-content);
+}
+
+header nav .taxonomy-terms::before, .taxonomy-terms .subhead::before {
+    content: var(--taxonomy-taxonomy-icon-content);
+}
+
+.o-icon-taxonomy-terms::before {
+    content: var(--taxonomy-taxonomy-term-icon-content);
+}
+
+.selected-resource .taxonomy_terms a::after {
+    content: var(--taxonomy-taxonomy-term-icon-content);
+}
+
+.property .value.taxonomy_terms .resource-name::after {
+    content: var(--taxonomy-taxonomy-term-icon-content);
+}

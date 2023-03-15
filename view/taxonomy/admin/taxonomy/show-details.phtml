@@ -1,0 +1,29 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+?>
+<div class="resource-details" data-resource-values="<?php echo $escape($values); ?>">
+    <?php if ($linkTitle): ?>
+    <h3 class="o-title"><?php echo $resource->link($resource->displayTitle()); ?></h3>
+    <?php else: ?>
+    <h3 class="o-title"><?php echo $escape($resource->displayTitle()); ?></h3>
+    <?php endif; ?>
+    <div class="o-description"><?php echo $escape($resource->displayDescription()); ?></div>
+    <div class="meta-group">
+        <h4><?php echo $translate('ID'); ?></h4>
+        <div class="value"><?php echo $escape($resource->id()); ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Code'); ?></h4>
+        <div class="value"><?php echo $escape($resource->code()); ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $escape($translate('Visibility')); ?></h4>
+        <div class="value"><?php echo ($resource->isPublic()) ? $translate('Public') : $translate('Private'); ?></div>
+    </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Terms'); ?></h4>
+        <div class="value"><?php echo $this->hyperlink($resource->termCount(), $this->url('admin/taxonomy-term', ['action' => 'browse', 'taxonomy-id' => $resource->id()])); ?></div>
+    </div>
+    <?php $this->trigger('view.details', array('entity' => $resource)); ?>
+</div>
