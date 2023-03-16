@@ -3,10 +3,6 @@ namespace Taxonomy\Controller\Site;
 
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use Omeka\Form\ConfirmForm;
-use Omeka\Form\ResourceBatchUpdateForm;
-use Omeka\Stdlib\Message;
-use Taxonomy\Form\TaxonomyTermForm;
 
 class TaxonomyTermController extends AbstractActionController
 {
