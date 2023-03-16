@@ -1,0 +1,115 @@
+---
+kind: pipeline
+name: omeka:3.1.2 php:8.0 mariadb:10.6
+services:
+- environment:
+    MYSQL_DATABASE: omeka_test
+    MYSQL_ROOT_PASSWORD: root
+  image: mariadb:10.6
+  name: db
+steps:
+- commands:
+  - cp -rT /usr/src/omeka-s ../..
+  - echo 'host = "db"\nuser = "root"\npassword = "root"\ndbname = "omeka_test"\n'
+    > ../../application/test/config/database.ini
+  - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
+  - ../../vendor/bin/phpunit
+  - ../../node_modules/.bin/gulp test:module:cs
+  image: ghcr.io/biblibre/omeka-s-ci:3.1.2-php8.0
+  name: test
+type: docker
+workspace:
+  path: omeka-s/modules/Taxonomy
+---
+kind: pipeline
+name: omeka:3.2.3 php:8.0 mariadb:10.6
+services:
+- environment:
+    MYSQL_DATABASE: omeka_test
+    MYSQL_ROOT_PASSWORD: root
+  image: mariadb:10.6
+  name: db
+steps:
+- commands:
+  - cp -rT /usr/src/omeka-s ../..
+  - echo 'host = "db"\nuser = "root"\npassword = "root"\ndbname = "omeka_test"\n'
+    > ../../application/test/config/database.ini
+  - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
+  - ../../vendor/bin/phpunit
+  - ../../node_modules/.bin/gulp test:module:cs
+  image: ghcr.io/biblibre/omeka-s-ci:3.2.3-php8.0
+  name: test
+type: docker
+workspace:
+  path: omeka-s/modules/Taxonomy
+---
+kind: pipeline
+name: omeka:4.0.1 php:8.0 mariadb:10.6
+services:
+- environment:
+    MYSQL_DATABASE: omeka_test
+    MYSQL_ROOT_PASSWORD: root
+  image: mariadb:10.6
+  name: db
+steps:
+- commands:
+  - cp -rT /usr/src/omeka-s ../..
+  - echo 'host = "db"\nuser = "root"\npassword = "root"\ndbname = "omeka_test"\n'
+    > ../../application/test/config/database.ini
+  - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
+  - ../../vendor/bin/phpunit
+  - ../../node_modules/.bin/gulp test:module:cs
+  image: ghcr.io/biblibre/omeka-s-ci:4.0.1-php8.0
+  name: test
+type: docker
+workspace:
+  path: omeka-s/modules/Taxonomy
+---
+kind: pipeline
+name: omeka:4.0.1 php:8.1 mariadb:10.6
+services:
+- environment:
+    MYSQL_DATABASE: omeka_test
+    MYSQL_ROOT_PASSWORD: root
+  image: mariadb:10.6
+  name: db
+steps:
+- commands:
+  - cp -rT /usr/src/omeka-s ../..
+  - echo 'host = "db"\nuser = "root"\npassword = "root"\ndbname = "omeka_test"\n'
+    > ../../application/test/config/database.ini
+  - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
+  - ../../vendor/bin/phpunit
+  - ../../node_modules/.bin/gulp test:module:cs
+  image: ghcr.io/biblibre/omeka-s-ci:4.0.1-php8.1
+  name: test
+type: docker
+workspace:
+  path: omeka-s/modules/Taxonomy
+---
+kind: pipeline
+name: omeka:4.0.1 php:8.2 mariadb:10.6
+services:
+- environment:
+    MYSQL_DATABASE: omeka_test
+    MYSQL_ROOT_PASSWORD: root
+  image: mariadb:10.6
+  name: db
+steps:
+- commands:
+  - cp -rT /usr/src/omeka-s ../..
+  - echo 'host = "db"\nuser = "root"\npassword = "root"\ndbname = "omeka_test"\n'
+    > ../../application/test/config/database.ini
+  - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
+  - ../../vendor/bin/phpunit
+  - ../../node_modules/.bin/gulp test:module:cs
+  image: ghcr.io/biblibre/omeka-s-ci:4.0.1-php8.2
+  name: test
+type: docker
+workspace:
+  path: omeka-s/modules/Taxonomy
+---
+kind: signature
+hmac: dfa69240403b483807503f76bdcb443c6e3f9e66fa708f97e5f20d0382ecae96
+
+...
