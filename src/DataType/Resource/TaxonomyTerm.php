@@ -1,13 +1,11 @@
 <?php
 namespace Taxonomy\DataType\Resource;
 
-use Omeka\DataType\ValueAnnotatingInterface;
-use Omeka\DataType\Resource\AbstractResource;
 use Taxonomy\Entity;
 use Taxonomy\Api\Representation\TaxonomyRepresentation;
 use Laminas\View\Renderer\PhpRenderer;
 
-class TaxonomyTerm extends AbstractResource implements ValueAnnotatingInterface
+class TaxonomyTerm extends AbstractResource
 {
     protected $taxonomy;
 

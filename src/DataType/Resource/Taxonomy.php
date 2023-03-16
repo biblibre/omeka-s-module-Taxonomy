@@ -1,12 +1,10 @@
 <?php
 namespace Taxonomy\DataType\Resource;
 
-use Omeka\DataType\ValueAnnotatingInterface;
-use Omeka\DataType\Resource\AbstractResource;
 use Taxonomy\Entity;
 use Laminas\View\Renderer\PhpRenderer;
 
-class Taxonomy extends AbstractResource implements ValueAnnotatingInterface
+class Taxonomy extends AbstractResource
 {
     public function getOptgrouplabel()
     {
