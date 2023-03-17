@@ -281,7 +281,7 @@ class TaxonomyTermController extends AbstractActionController
                     $this->api($form)->batchUpdate('taxonomy_terms', $resourceIds, $properties, [
                         'continueOnError' => true,
                         'collectionAction' => $collectionAction,
-                        'detachEntites' => false,
+                        'detachEntities' => false,
                     ]);
                 }
 

@@ -41,6 +41,7 @@ return [
         'factories' => [
             'Taxonomy\Form\TaxonomyForm' => Service\Form\TaxonomyFormFactory::class,
             'Taxonomy\Form\TaxonomyTermForm' => Service\Form\TaxonomyTermFormFactory::class,
+            'Taxonomy\Form\Element\TaxonomySelect' => Service\Form\Element\TaxonomySelectFactory::class,
         ],
     ],
     'navigation' => [

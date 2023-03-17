@@ -95,6 +95,10 @@ class Module extends AbstractModule
         $sharedEventManager->attach('Omeka\Controller\Admin\Module', 'view.details', [$this, 'onAdminModuleViewDetails']);
         $sharedEventManager->attach('*', 'data_types.value_annotating', [$this, 'onDataTypesValueAnnotating']);
         $sharedEventManager->attach('*', 'csv_import.config', [$this, 'onCsvImportConfig']);
+        $sharedEventManager->attach('Omeka\Form\ResourceBatchUpdateForm', 'form.add_elements', [$this, 'onResourceBatchUpdateFormAddElements']);
+        $sharedEventManager->attach('Omeka\Form\ResourceBatchUpdateForm', 'form.add_input_filters', [$this, 'onResourceBatchUpdateFormAddInputFilters']);
+        $sharedEventManager->attach('*', 'api.hydrate.post', [$this, 'onApiHydratePost']);
+        $sharedEventManager->attach('*', 'api.preprocess_batch_update', [$this, 'onApiPreprocessBatchUpdate']);
     }
 
     public function getConfig()
@@ -160,5 +164,93 @@ class Module extends AbstractModule
 
         echo '<strong>' . $view->translate('Warning:') . "</strong>\n";
         echo $view->translate('Uninstalling this module will permanently delete all taxonomies, taxonomy terms, and all values linked to taxonomies or taxonomy terms');
+    }
+
+    public function onResourceBatchUpdateFormAddElements(Event $event)
+    {
+        $form = $event->getTarget();
+
+        $form->add([
+            'type' => Form\ResourceBatchUpdateTaxonomyFieldset::class,
+            'name' => 'taxonomy',
+        ]);
+    }
+
+    public function onResourceBatchUpdateFormAddInputFilters(Event $event)
+    {
+        $inputFilter = $event->getParam('inputFilter');
+
+        $taxonomyInputFilter = $inputFilter->get('taxonomy');
+        $taxonomyInputFilter->add([
+            'name' => 'replace_property_ids',
+            'required' => false,
+        ]);
+        $taxonomyInputFilter->add([
+            'name' => 'replace_taxonomy_id',
+            'required' => false,
+        ]);
+    }
+
+    public function onApiHydratePost(Event $event)
+    {
+        $entity = $event->getParam('entity');
+        if (!$entity instanceof \Omeka\Entity\Resource) {
+            return;
+        }
+
+        $request = $event->getParam('request');
+        $data = $request->getContent();
+        if (!isset($data['taxonomy'])) {
+            return;
+        }
+
+        $propertyIds = $data['taxonomy']['replace_property_ids'] ?? [];
+        $taxonomyId = $data['taxonomy']['replace_taxonomy_id'] ?? null;
+        if ($propertyIds && $taxonomyId) {
+            $em = $this->getServiceLocator()->get('Omeka\EntityManager');
+            $logger = $this->getServiceLocator()->get('Omeka\Logger');
+
+            $taxonomy = $em->find(Entity\Taxonomy::class, $taxonomyId);
+
+            foreach ($entity->getValues() as $value) {
+                if ('literal' !== $value->getType()) {
+                    continue;
+                }
+                if (!in_array($value->getProperty()->getId(), $propertyIds)) {
+                    continue;
+                }
+
+                $terms = $em->getRepository(Entity\TaxonomyTerm::class)->findBy([
+                    'title' => $value->getValue(),
+                    'taxonomy' => $taxonomy,
+                ]);
+
+                if (count($terms) == 1) {
+                    $term = reset($terms);
+                    $value->setType('resource:taxonomy-term:' . $taxonomy->getCode());
+                    $value->setValue(null);
+                    $value->setValueResource($term);
+                } elseif (count($terms) > 1) {
+                    $logger->warn(sprintf(
+                        'Taxonomy: Found more than one term titled "%s" in taxonomy %s',
+                        $value->getValue(),
+                        $taxonomy->getCode()
+                    ));
+                }
+            }
+        }
+    }
+
+    public function onApiPreprocessBatchUpdate(Event $event)
+    {
+        $request = $event->getParam('request');
+        $rawData = $request->getContent();
+        $data = $event->getParam('data');
+
+        if (isset($rawData['taxonomy'])) {
+            $data['taxonomy'] = $rawData['taxonomy'];
+        }
+
+        $event->setParam('data', $data);
     }
 }

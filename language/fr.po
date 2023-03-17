@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 11:44+0100\n"
-"PO-Revision-Date: 2023-03-16 12:02+0100\n"
+"POT-Creation-Date: 2023-03-17 18:02+0100\n"
+"PO-Revision-Date: 2023-03-17 18:05+0100\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -237,9 +237,41 @@ msgstr "Aucune taxonomie trouvée."
 msgid "Taxonomy terms: %s"
 msgstr "Termes de taxonomie: %s"
 
-#: Module.php:133
+#: Module.php:137
 msgid "Taxonomy (by ID)"
 msgstr "Taxonomie (par ID)"
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:17
+msgid "Replace literal values by taxonomy terms (properties)"
+msgstr ""
+"Remplacer les valeurs littérales par des termes de taxonomie (propriétés)"
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:18
+msgid ""
+"Search taxonomy terms by title, and if one match, replace the literal value "
+"by a corresponding taxonomy term value. If more than one term match, no "
+"modification is made. Only the properties selected here will be modified."
+msgstr ""
+"Recherche des termes de taxonomie par titre, et si un correspond, remplace "
+"la valeur littérale par une valeur terme de taxonomie correspondante. Si "
+"plus d'un terme correspond, aucune modification n'est faite. Seules les "
+"propriétés sélectionnées ici seront modifiées."
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:32
+msgid "Replace literal values by taxonomy terms (taxonomy)"
+msgstr ""
+"Remplacer les valeurs littérales par des termes de taxonomie (taxonomie)"
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:33
+msgid ""
+"Search taxonomy terms by title, and if one match, replace the literal value "
+"by a corresponding taxonomy term value. The search is limited to the "
+"selected taxonomy."
+msgstr ""
+"Recherche des termes de taxonomie par titre, et si un correspond, remplace "
+"la valeur littérale par une valeur terme de taxonomie correspondante. Si "
+"plus d'un terme correspond, aucune modification n'est faite. La recherche "
+"est limitée à la taxonomie sélectionnée."
 
 #: src/Form/TaxonomyTermForm.php:16
 msgid ""
@@ -268,7 +300,7 @@ msgstr "Terme de taxonomie créé avec succès. %s"
 
 #: src/Controller/Admin/TaxonomyTermController.php:74
 msgid "Taxonomy term successfully updated"
-msgstr "Terme de taxonomie modifié avec succès. %s"
+msgstr "Terme de taxonomie modifié avec succès"
 
 #: src/Controller/Admin/TaxonomyTermController.php:173
 msgid "taxonomy term"

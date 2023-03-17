@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 11:44+0100\n"
+"POT-Creation-Date: 2023-03-17 18:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -227,8 +227,30 @@ msgstr ""
 msgid "Taxonomy terms: %s"
 msgstr ""
 
-#: Module.php:133
+#: Module.php:137
 msgid "Taxonomy (by ID)"
+msgstr ""
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:17
+msgid "Replace literal values by taxonomy terms (properties)"
+msgstr ""
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:18
+msgid ""
+"Search taxonomy terms by title, and if one match, replace the literal value "
+"by a corresponding taxonomy term value. If more than one term match, no "
+"modification is made. Only the properties selected here will be modified."
+msgstr ""
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:32
+msgid "Replace literal values by taxonomy terms (taxonomy)"
+msgstr ""
+
+#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:33
+msgid ""
+"Search taxonomy terms by title, and if one match, replace the literal value "
+"by a corresponding taxonomy term value. The search is limited to the "
+"selected taxonomy."
 msgstr ""
 
 #: src/Form/TaxonomyTermForm.php:16
