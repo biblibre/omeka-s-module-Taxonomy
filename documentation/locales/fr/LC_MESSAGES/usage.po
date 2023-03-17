@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the Taxonomy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Taxonomy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-17 08:11+0100\n"
+"PO-Revision-Date: 2023-03-17 08:22+0100\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: ../../usage.rst:2
+msgid "Usage"
+msgstr "Utilisation"
+
+#: ../../usage.rst:4
+msgid ""
+"In the admin navigation menu, there is a ``Taxonomies`` link. Click "
+"there to go to the taxonomies list. From there it's possible to create, "
+"edit or delete taxonomies. It's also possible to list a taxonomy terms, "
+"and then create, edit or delete terms for this taxonomy."
+msgstr ""
+"Dans le menu de navigation de l'administration, il y a un lien "
+"``Taxonomies``. Cliquer dessus pour aller vers la liste des taxonomies. "
+"Depuis cette page il est possible de créer, modifier ou supprimer des "
+"taxonomies. Il est aussi possible de lister les termes de taxonomie, "
+"puis de créer, modifier ou supprimer des termes pour cette taxonomie."
+
+#: ../../usage.rst:9
+msgid ""
+"Once the taxonomies are created, create/modify a resource template and "
+"include the new data types for the desired properties. Use this resource "
+"template when taxonomies are needed."
+msgstr ""
+"Une fois que les taxonomies sont créées, créer/modifier un modèle de "
+"ressource et inclure les nouveaux types de données pour les propriétés "
+"souhaitées. Utiliser ce modèle de ressource lorsque les taxonomies sont "
+"nécessaires."

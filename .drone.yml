@@ -109,7 +109,25 @@ type: docker
 workspace:
   path: omeka-s/modules/Taxonomy
 ---
+kind: pipeline
+name: documentation
+steps:
+- commands:
+  - apk add git openssh
+  - sh .drone/documentation-push.sh
+  environment:
+    GH_DEPLOY_KEY:
+      from_secret: GH_DEPLOY_KEY
+  image: alpine
+  name: push
+trigger:
+  branch:
+  - master
+  event:
+  - push
+type: docker
+---
 kind: signature
-hmac: dfa69240403b483807503f76bdcb443c6e3f9e66fa708f97e5f20d0382ecae96
+hmac: 926e43d21353cb2d67ec2a44b89ecec40a586a0f4c925713d64ef0e4111e1342
 
 ...

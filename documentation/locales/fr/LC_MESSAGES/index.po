@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the Taxonomy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Taxonomy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-17 08:11+0100\n"
+"PO-Revision-Date: 2023-03-17 08:18+0100\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: ../../index.rst:16
+msgid "Table of contents"
+msgstr "Table des matières"
+
+#: ../../index.rst:2
+msgid "Taxonomy user manual"
+msgstr "Manuel utilisateur de Taxonomy"
+
+#: ../../index.rst:4
+msgid ""
+"`Taxonomy <https://github.com/biblibre/omeka-s-module-Taxonomy>`_ allows "
+"to create controlled vocabularies within Omeka S."
+msgstr ""
+"`Taxonomy <https://github.com/biblibre/omeka-s-module-Taxonomy>`_ permet "
+"de créer des vocabulaires contrôlés dans Omeka S."
+
+#: ../../index.rst:7
+msgid ""
+"Controlled vocabularies (taxonomies) and controlled vocabulary terms "
+"(taxonomy terms) are Omeka S resources, which means:"
+msgstr ""
+"Les vocabulaires contrôlés (taxonomies) et les termes de vocabulaires "
+"contrôlés (termes de taxonomie) sont des ressources Omeka S, ce qui "
+"signifie:"
+
+#: ../../index.rst:10
+msgid ""
+"they can be linked to items, item sets and media like any other Omeka S "
+"resources (they can be linked in annotations too);"
+msgstr ""
+"ils peuvent être liés aux contenus, collections et média comme n'importe "
+"quelle autre ressource Omeka S (ils peuvent aussi être liés dans les "
+"annotations);"
+
+#: ../../index.rst:12
+msgid ""
+"they can be described like any other resources (resource template, "
+"class, properties, annotations);"
+msgstr ""
+"ils peuvent être décrits comme n'importe quelle autre ressource (modèle "
+"de ressource, classe, propriétés, annotations);"
+
+#: ../../index.rst:14
+msgid "they can have a thumbnail."
+msgstr "ils peuvent avoir une vignette."
