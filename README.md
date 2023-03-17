@@ -20,7 +20,7 @@ module](http://omeka.org/s/docs/user-manual/modules/#installing-modules)
 
 In the admin navigation menu, there will be a `Taxonomies` link. Click there to
 go to the taxonomies list. From there it's possible to create, edit or delete
-taxonomies. It's also possible to list a taxonomy terms, and the create, edit
+taxonomies. It's also possible to list a taxonomy terms, and then create, edit
 or delete terms for this taxonomy.
 
 Once the taxonomies are created, create/modify a resource template and include
