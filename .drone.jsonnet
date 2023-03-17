@@ -41,7 +41,7 @@ local DocumentationPipeline() = {
             commands: [
                 'sh .drone/documentation-build.sh',
             ],
-        }
+        },
         {
             name: 'push',
             image: 'alpine',

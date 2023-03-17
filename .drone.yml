@@ -113,6 +113,10 @@ kind: pipeline
 name: documentation
 steps:
 - commands:
+  - sh .drone/documentation-build.sh
+  image: python:3
+  name: build
+- commands:
   - apk add git openssh
   - sh .drone/documentation-push.sh
   environment:
@@ -128,6 +132,6 @@ trigger:
 type: docker
 ---
 kind: signature
-hmac: 926e43d21353cb2d67ec2a44b89ecec40a586a0f4c925713d64ef0e4111e1342
+hmac: 6af8baa5408e195c2c2b2b61ddebc3b200e02347f4e02eda5af40438d5cddf01
 
 ...
