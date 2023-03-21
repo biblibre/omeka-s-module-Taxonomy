@@ -7,8 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Taxonomy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 08:11+0100\n"
-"PO-Revision-Date: 2023-03-17 08:22+0100\n"
+"POT-Creation-Date: 2023-03-21 10:41+0100\n"
+"PO-Revision-Date: 2023-03-21 10:45+0100\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
@@ -16,7 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
-"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "X-Generator: Poedit 2.4.2\n"
 
 #: ../../usage.rst:2
@@ -46,3 +46,52 @@ msgstr ""
 "ressource et inclure les nouveaux types de données pour les propriétés "
 "souhaitées. Utiliser ce modèle de ressource lorsque les taxonomies sont "
 "nécessaires."
+
+#: ../../usage.rst:14
+msgid "Replace existing values by taxonomy terms"
+msgstr "Remplacer des valeurs existantes par des termes de taxonomie"
+
+#: ../../usage.rst:16
+msgid ""
+"It's possible to replace existing literal values by links to taxonomy "
+"terms by using the batch edit tool:"
+msgstr ""
+"Il est possible de remplacer des valeurs littérales existantes par des "
+"liens vers des termes de taxonomie en utilisant l'outil de modification "
+"par lot:"
+
+#: ../../usage.rst:19
+msgid "Search for items, item sets or media,"
+msgstr "Chercher des contenus, collections ou médias,"
+
+#: ../../usage.rst:20
+msgid ""
+"Select **Edit all** or **Edit selected** in the **Batch actions** "
+"dropdown list,"
+msgstr ""
+"Sélectionner **Modifier tout** ou **Modifier sélectionnés** dans la "
+"liste déroulante **Traitements en lot**,"
+
+#: ../../usage.rst:21
+msgid "Click **Go**"
+msgstr "Cliquer sur **Traiter**"
+
+#: ../../usage.rst:22
+msgid ""
+"In **Replace literal values by taxonomy terms (properties)** select the "
+"properties you want to modify,"
+msgstr ""
+"Dans **Remplacer les valeurs littérales par des termes de taxonomie "
+"(propriétés)** sélectionner les propriétés à modifier,"
+
+#: ../../usage.rst:24
+msgid ""
+"In **Replace literal values by taxonomy terms (taxonomy)**, select the "
+"taxonomy containing the desired terms,"
+msgstr ""
+"Dans **Remplacer les valeurs littérales par des termes de taxonomie "
+"(taxonomie)**, sélectionner la taxonomie contenant les termes souhaités,"
+
+#: ../../usage.rst:26
+msgid "Click on the **Save** button."
+msgstr "Cliquer sur le bouton **Enregistrer**."
