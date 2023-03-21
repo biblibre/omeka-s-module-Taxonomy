@@ -96,7 +96,7 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
      * @param int|null $property
      * @return QueryBuilder
      */
-    public function getSubjectValuesQueryBuilder(Resource $resource, $property = null)
+    public function getSubjectValuesQueryBuilder(Resource $resource, $property = null, $resourceType = null, $siteId = null)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->from('Omeka\Entity\Value', 'v')
