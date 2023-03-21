@@ -81,9 +81,12 @@ class Module extends AbstractModule
         $conn = $serviceLocator->get('Omeka\Connection');
 
         $conn->exec(<<<SQL
-            DELETE FROM value
+            UPDATE value JOIN resource ON (value.value_resource_id = resource.id)
+            SET value.value = resource.title,
+                value.type = 'literal',
+                value.value_resource_id = NULL
             WHERE value.type = 'resource:taxonomy'
-            OR value.type LIKE 'resource:taxonomy-term:%'
+               OR value.type LIKE 'resource:taxonomy-term:%'
         SQL);
         $conn->exec('DROP TABLE taxonomy_term');
         $conn->exec('DROP TABLE taxonomy');
@@ -163,7 +166,7 @@ class Module extends AbstractModule
         $view = $event->getTarget();
 
         echo '<strong>' . $view->translate('Warning:') . "</strong>\n";
-        echo $view->translate('Uninstalling this module will permanently delete all taxonomies, taxonomy terms, and all values linked to taxonomies or taxonomy terms');
+        echo $view->translate('Uninstalling this module will permanently delete all taxonomies, taxonomy terms, and will reset to the "literal" data type all values linked to taxonomies or taxonomy terms');
     }
 
     public function onResourceBatchUpdateFormAddElements(Event $event)
