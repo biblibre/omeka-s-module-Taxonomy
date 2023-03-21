@@ -89,7 +89,7 @@ class ApiTest extends TestCase
         $term = $this->api()->create('taxonomy_terms', [
             'o:code' => 'eng',
             'o:taxonomy' => [
-                'o:id' => $taxonomy->id()
+                'o:id' => $taxonomy->id(),
             ],
             'dcterms:title' => [
                 [
