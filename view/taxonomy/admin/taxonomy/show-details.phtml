@@ -25,5 +25,9 @@ $escape = $this->plugin('escapeHtml');
         <h4><?php echo $translate('Terms'); ?></h4>
         <div class="value"><?php echo $this->hyperlink($resource->termCount(), $this->url('admin/taxonomy-term', ['action' => 'browse', 'taxonomy-id' => $resource->id()])); ?></div>
     </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Linked resources'); ?></h4>
+        <div class="value"><?php echo $resource->subjectValueTotalCount(); ?></div>
+    </div>
     <?php $this->trigger('view.details', array('entity' => $resource)); ?>
 </div>
