@@ -174,8 +174,35 @@ class Module extends AbstractModule
         $form = $event->getTarget();
 
         $form->add([
-            'type' => Form\ResourceBatchUpdateTaxonomyFieldset::class,
-            'name' => 'taxonomy',
+            'type' => \Omeka\Form\Element\PropertySelect::class,
+            'name' => 'taxonomy_replace_property_ids',
+            'options' => [
+                'label' => 'Replace literal values by taxonomy terms (properties)', // @translate
+                'info' => 'Search taxonomy terms by title, and if one match, replace the literal value by a corresponding taxonomy term value. If more than one term match, no modification is made. Only the properties selected here will be modified.', // @translate
+            ],
+            'attributes' => [
+                'class' => 'chosen-select',
+                'data-collection-action' => 'replace',
+                'data-placeholder' => 'Select properties', // @translate
+                'id' => 'taxonomy_replace_property_ids',
+                'multiple' => true,
+            ],
+        ]);
+
+        $form->add([
+            'type' => Form\Element\TaxonomySelect::class,
+            'name' => 'taxonomy_replace_taxonomy_id',
+            'options' => [
+                'label' => 'Replace literal values by taxonomy terms (taxonomy)', // @translate
+                'info' => 'Search taxonomy terms by title, and if one match, replace the literal value by a corresponding taxonomy term value. The search is limited to the selected taxonomy.', // @translate
+                'empty_option' => '',
+            ],
+            'attributes' => [
+                'class' => 'chosen-select',
+                'data-collection-action' => 'replace',
+                'data-placeholder' => 'Select taxonomy', // @translate
+                'id' => 'taxonomy_replace_taxonomy_id',
+            ],
         ]);
     }
 
@@ -183,13 +210,12 @@ class Module extends AbstractModule
     {
         $inputFilter = $event->getParam('inputFilter');
 
-        $taxonomyInputFilter = $inputFilter->get('taxonomy');
-        $taxonomyInputFilter->add([
-            'name' => 'replace_property_ids',
+        $inputFilter->add([
+            'name' => 'taxonomy_replace_property_ids',
             'required' => false,
         ]);
-        $taxonomyInputFilter->add([
-            'name' => 'replace_taxonomy_id',
+        $inputFilter->add([
+            'name' => 'taxonomy_replace_taxonomy_id',
             'required' => false,
         ]);
     }
@@ -203,12 +229,9 @@ class Module extends AbstractModule
 
         $request = $event->getParam('request');
         $data = $request->getContent();
-        if (!isset($data['taxonomy'])) {
-            return;
-        }
 
-        $propertyIds = $data['taxonomy']['replace_property_ids'] ?? [];
-        $taxonomyId = $data['taxonomy']['replace_taxonomy_id'] ?? null;
+        $propertyIds = $data['taxonomy_replace_property_ids'] ?? [];
+        $taxonomyId = $data['taxonomy_replace_taxonomy_id'] ?? null;
         if ($propertyIds && $taxonomyId) {
             $em = $this->getServiceLocator()->get('Omeka\EntityManager');
             $logger = $this->getServiceLocator()->get('Omeka\Logger');
@@ -250,8 +273,11 @@ class Module extends AbstractModule
         $rawData = $request->getContent();
         $data = $event->getParam('data');
 
-        if (isset($rawData['taxonomy'])) {
-            $data['taxonomy'] = $rawData['taxonomy'];
+        if (isset($rawData['taxonomy_replace_property_ids'])) {
+            $data['taxonomy_replace_property_ids'] = $rawData['taxonomy_replace_property_ids'];
+        }
+        if (isset($rawData['taxonomy_replace_taxonomy_id'])) {
+            $data['taxonomy_replace_taxonomy_id'] = $rawData['taxonomy_replace_taxonomy_id'];
         }
 
         $event->setParam('data', $data);
