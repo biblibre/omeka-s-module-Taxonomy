@@ -20,6 +20,8 @@ class Module extends AbstractModule
         $acl->allow(null, 'Taxonomy\Api\Adapter\TaxonomyTermAdapter');
         $acl->allow(null, 'Taxonomy\Entity\Taxonomy', 'read');
         $acl->allow(null, 'Taxonomy\Entity\TaxonomyTerm', 'read');
+        $acl->allow(null, 'Taxonomy\Controller\Site\Taxonomy');
+        $acl->allow(null, 'Taxonomy\Controller\Site\TaxonomyTerm');
 
         $api = $services->get('Omeka\ApiManager');
         $dataTypeManager = $services->get('Omeka\DataTypeManager');
