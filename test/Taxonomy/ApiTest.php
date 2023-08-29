@@ -110,10 +110,8 @@ class ApiTest extends TestCase
         ])->getContent();
 
         $data = [
-            'taxonomy' => [
-                'replace_property_ids' => [$languageProperty->id()],
-                'replace_taxonomy_id' => $taxonomy->id(),
-            ],
+            'taxonomy_replace_property_ids' => [$languageProperty->id()],
+            'taxonomy_replace_taxonomy_id' => $taxonomy->id(),
         ];
         $this->api()->batchUpdate('items', [$item->id()], $data, ['detachEntities' => false]);
 
