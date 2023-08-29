@@ -2,6 +2,7 @@
 
 namespace Taxonomy;
 
+use Composer\Semver\Comparator;
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
@@ -41,8 +42,10 @@ class Module extends AbstractModule
             CREATE TABLE taxonomy_term (
                 id INT NOT NULL,
                 taxonomy_id INT NOT NULL,
+                parent_id INT DEFAULT NULL,
                 code VARCHAR(255) NOT NULL,
                 INDEX IDX_C7ED653A9557E6F6 (taxonomy_id),
+                INDEX IDX_C7ED653A727ACA70 (parent_id),
                 UNIQUE INDEX UNIQ_TAXONOMY_ID_CODE (taxonomy_id, code),
                 PRIMARY KEY(id)
             ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
@@ -66,6 +69,13 @@ class Module extends AbstractModule
 
         $conn->exec(<<<SQL
             ALTER TABLE taxonomy_term
+            ADD CONSTRAINT FK_C7ED653A727ACA70
+            FOREIGN KEY (parent_id) REFERENCES taxonomy_term (id)
+            ON DELETE SET NULL
+        SQL);
+
+        $conn->exec(<<<SQL
+            ALTER TABLE taxonomy_term
             ADD CONSTRAINT FK_C7ED653ABF396750
             FOREIGN KEY (id) REFERENCES resource (id)
             ON DELETE CASCADE
@@ -76,6 +86,28 @@ class Module extends AbstractModule
             FOREIGN KEY (id) REFERENCES resource (id)
             ON DELETE CASCADE
         SQL);
+    }
+
+    public function upgrade($oldVersion, $newVersion, ServiceLocatorInterface $serviceLocator)
+    {
+        $conn = $serviceLocator->get('Omeka\Connection');
+
+        if (Comparator::lessThan($oldVersion, '0.2.0')) {
+            $conn->exec(<<<SQL
+                ALTER TABLE taxonomy_term
+                ADD COLUMN parent_id INT DEFAULT NULL AFTER taxonomy_id
+            SQL);
+            $conn->exec(<<<SQL
+                ALTER TABLE taxonomy_term
+                ADD INDEX IDX_C7ED653A727ACA70 (parent_id)
+            SQL);
+            $conn->exec(<<<SQL
+                ALTER TABLE taxonomy_term
+                ADD CONSTRAINT FK_C7ED653A727ACA70
+                FOREIGN KEY (parent_id) REFERENCES taxonomy_term (id)
+                ON DELETE SET NULL
+            SQL);
+        }
     }
 
     public function uninstall(ServiceLocatorInterface $serviceLocator)

@@ -78,6 +78,17 @@ $sectionNavs = [
         <h4><?php echo $translate('Taxonomy'); ?></h4>
         <div class="value"><?php echo $this->hyperlink($taxonomyTerm->taxonomy()->displayTitle(), $taxonomyTerm->taxonomy()->url()); ?></div>
     </div>
+    <div class="meta-group">
+        <h4><?php echo $translate('Parent term'); ?></h4>
+        <?php $parent = $taxonomyTerm->parent(); ?>
+        <div class="value">
+            <?php if ($parent): ?>
+                <?php echo $this->hyperlink($parent->displayTitle(), $parent->url()); ?>
+            <?php else: ?>
+                <?php echo $translate('[None]'); ?>
+            <?php endif; ?>
+        </div>
+    </div>
     <?php $this->trigger('view.show.sidebar'); ?>
 </div>
 

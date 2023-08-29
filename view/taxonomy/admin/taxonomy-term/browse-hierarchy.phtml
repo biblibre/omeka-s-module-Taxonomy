@@ -1,0 +1,39 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'taxonomy-terms browse browse-hierarchy');
+?>
+
+<?php echo $this->pageTitle($translate('Taxonomy terms'), 1, $translate($taxonomy->displayTitle())); ?>
+
+<div id="page-actions">
+    <?php echo $this->hyperlink($translate('View as list'), $this->url('admin/taxonomy-term', ['taxonomy-id' => $taxonomy->id()]), ['class' => 'button']); ?>
+
+    <?php if ($this->userIsAllowed('Taxonomy\Api\Adapter\TaxonomyTermAdapter', 'create')): ?>
+        <?php echo $this->hyperlink($translate('Add new taxonomy term'), $this->url('admin/taxonomy-term', ['action' => 'add'], true), ['class' => 'button']); ?>
+    <?php endif; ?>
+</div>
+
+<?php if($rootNodes): ?>
+    <?php $this->trigger('view.browse-hierarchy.before'); ?>
+
+    <ul class="taxonomy-term-tree">
+        <?php foreach ($rootNodes as $termNode): ?>
+            <?php echo $this->partial('taxonomy/common/taxonomy-term-tree-node', ['termNode' => $termNode]); ?>
+        <?php endforeach; ?>
+    </ul>
+
+    <?php $this->trigger('view.browse-hierarchy.after'); ?>
+
+    <div id="sidebar" class="sidebar">
+        <?php echo $this->hyperlink('', '#', [
+            'class' => 'sidebar-close o-icon-close',
+            'title' => $translate('Close'),
+        ]); ?>
+        <div class="sidebar-content"></div>
+    </div>
+<?php else: ?>
+    <div class="no-resources">
+        <p><?php echo $translate('Omeka could not find any taxonomy terms.'); ?></p>
+    </div>
+<?php endif; ?>

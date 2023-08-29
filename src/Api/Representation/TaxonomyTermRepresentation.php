@@ -44,6 +44,13 @@ class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
         return $taxonomyAdapter->getRepresentation($this->resource->getTaxonomy());
     }
 
+    public function parent()
+    {
+        $taxonomyTermAdapter = $this->getAdapter('taxonomy_terms');
+
+        return $taxonomyTermAdapter->getRepresentation($this->resource->getParent());
+    }
+
     public function siteUrl($siteSlug = null, $canonical = false)
     {
         if (!$siteSlug) {

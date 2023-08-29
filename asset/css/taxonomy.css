@@ -34,3 +34,23 @@ header nav .taxonomy-terms::before, .taxonomy-terms .subhead::before {
 .property .value.taxonomy_terms .resource-name::after {
     content: var(--taxonomy-taxonomy-term-icon-content);
 }
+
+ul.taxonomy-term-tree {
+    padding-left: 0;
+}
+li.taxonomy-term-tree-node {
+    list-style-type: none;
+}
+li.taxonomy-term-tree-node > span {
+    display: flex;
+    align-items: center;
+    justify-items: space-between;
+    border-bottom: 1px solid #dfdfdf;
+    height: 48px;
+}
+li.taxonomy-term-tree-node > span .o-icon-private {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: .5em;
+    opacity: .5;
+}

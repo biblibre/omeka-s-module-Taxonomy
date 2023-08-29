@@ -21,16 +21,25 @@ $form->prepare();
 
 <?php
 $codeInput = $form->get('o:code');
+$parentSelect = $form->get('o:parent');
 if (isset($taxonomyTerm)) {
     $codeInput->setValue($taxonomyTerm->code());
     $codeInput->setAttribute('disabled', true);
     $codeHidden = new \Zend\Form\Element\Hidden('o:code');
     $codeHidden->setValue($taxonomy->code());
     echo $this->formHidden($codeHidden);
+
+    $parent = $taxonomyTerm->parent();
+    if ($parent) {
+        $parentSelect->setValue($parent->id());
+    }
 }
 ?>
 <fieldset id="taxonomy-term" class="section" aria-labelledby="taxonomy-term-label">
     <?php echo $this->formRow($form->get('o:code')); ?>
+
+    <?php $parent = $form->get('o:parent'); ?>
+    <?php echo $this->formRow($form->get('o:parent')); ?>
 </fieldset>
 
 <?php echo $this->partial('common/resource-fields.phtml', [

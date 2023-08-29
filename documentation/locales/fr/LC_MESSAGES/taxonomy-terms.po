@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the Taxonomy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Taxonomy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-30 15:46+0200\n"
+"PO-Revision-Date: 2023-08-30 15:46+0200\n"
+"Last-Translator: \n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.12.1\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ../../taxonomy-terms.rst:2
+msgid "Taxonomy terms"
+msgstr "Termes de taxonomie"
+
+#: ../../taxonomy-terms.rst:4
+msgid ""
+"A taxonomy term is an element of a controlled vocabulary. It belongs to a single "
+"taxonomy."
+msgstr ""
+"Un terme de taxonomie est un élément d'un vocabulaire contrôlé. Il appartient à "
+"une taxonomie."
+
+#: ../../taxonomy-terms.rst:7
+msgid ""
+"Like a taxonomy, it has a unique (among other taxonomy terms of the same "
+"taxonomy) identifier, called **Code**."
+msgstr ""
+"Comme une taxonomie, il a un identifiant unique (parmi les termes de la même "
+"taxonomie), appelé **Code**."
+
+#: ../../taxonomy-terms.rst:10
+msgid ""
+"It can have a parent taxonomy term. The parent term must belong to the same "
+"taxonomy. This means that a taxonomy contains a **hierarchy** of terms."
+msgstr ""
+"Il peut avoir un terme de taxonomie parent. Le terme parent doit appartenir à la "
+"même taxonomie. Cela signifie qu'une taxonomie contient une **hiérarchie** de "
+"termes."
+
+#: ../../taxonomy-terms.rst:13
+msgid ""
+"A taxonomy term is also an Omeka S resource (like items, item sets and media), "
+"which means:"
+msgstr ""
+"Un terme de taxonomie est aussi une ressource Omeka S (comme les contenus, "
+"collections et média), ce qui signifie:"
+
+#: ../../taxonomy-terms.rst:16
+msgid ""
+"it can be linked to items, item sets and media like any other Omeka S resource "
+"(it can be linked in annotations too);"
+msgstr ""
+"il peut être lié à des contenus, collections et média comme n'importe quelle "
+"autre ressource Omeka S (il peut être lié dans les annotations également);"
+
+#: ../../taxonomy-terms.rst:18
+msgid ""
+"it can be described like any other resource (resource template, class, "
+"properties, annotations);"
+msgstr ""
+"il peut être décrit comme n'importe quelle autre ressource (modèle de ressource, "
+"classe, propriétés, annotations);"
+
+#: ../../taxonomy-terms.rst:20
+msgid "it can have a thumbnail."
+msgstr "il peut avoir une vignette."
+
+#: ../../taxonomy-terms.rst:23
+msgid "List taxonomy terms"
+msgstr "Lister les termes de taxonomie"
+
+#: ../../taxonomy-terms.rst:25
+msgid "Taxonomy terms list can be accessed in two different ways:"
+msgstr "La liste des termes de taxonomie est accessible de deux moyens différents:"
+
+#: ../../taxonomy-terms.rst:27
+msgid ""
+"by clicking on the tag icon in :ref:`The Taxonomies tab <TaxonomiesTab>`, or"
+msgstr ""
+"en cliquant sur l'icône d'étiquette dans :ref:`l'onglet Taxonomies "
+"<TaxonomiesTab>`, ou"
+
+#: ../../taxonomy-terms.rst:28
+msgid "by clicking on the \"View terms\" button at the top of the taxonomy page"
+msgstr ""
+"en cliquant sur le bouton \"Voir les termes\" en haut de la page de taxonomie"
+
+#: ../../taxonomy-terms.rst:-1
+msgid "View of a taxonomy terms list page"
+msgstr "Vue d'une page de liste de termes de taxonomie"
+
+#: ../../taxonomy-terms.rst:33
+msgid ""
+"This page is very similar to `The Items tab <https://omeka.org/s/docs/user-"
+"manual/content/items/#the-items-tab>`_. Please refer to this documentation for "
+"general information."
+msgstr ""
+"Cette page est très similaire à `l'onglet Contenus <https://omeka.org/s/docs/"
+"user-manual/content/items/#the-items-tab>`_. Veuillez vous référer à cette "
+"documentation pour les informations générales."
+
+#: ../../taxonomy-terms.rst:37
+msgid "There are a few differences:"
+msgstr "Il y a quelques différences:"
+
+#: ../../taxonomy-terms.rst:39
+msgid "There is an additional column showing the taxonomy's **Code**."
+msgstr ""
+"Il y a une colonne supplémentaire montant le **Code** du terme de taxonomie."
+
+#: ../../taxonomy-terms.rst:40
+msgid "Taxonomy terms can be sorted by **Code**."
+msgstr "Les termes de taxonomie peuvent être triées par **Code**."
+
+#: ../../taxonomy-terms.rst:41
+msgid ""
+"There is an additional button at the top of the page to **View (taxonomy terms) "
+"as hierarchy**."
+msgstr ""
+"Il y a un bouton supplémentaire en haut de la page pour **Voir la hiérarchie**."
+
+#: ../../taxonomy-terms.rst:44
+msgid "View taxonomy terms as hierarchy"
+msgstr "Voir la hiérarchie des termes de taxonomie"
+
+#: ../../taxonomy-terms.rst:46
+msgid ""
+"Click on the \"View as hierarchy\" button to view all your terms as a hierarchy"
+msgstr ""
+"Cliquer sur le bouton \"Voir la hiérarchie\" pour afficher tous les termes de "
+"manière hiérarchique"
+
+#: ../../taxonomy-terms.rst:-1
+msgid "View of a taxonomy terms hierarchy page"
+msgstr "Vue d'une page de hiérarchie des termes de taxonomie"
+
+#: ../../taxonomy-terms.rst:52
+msgid "Add a taxonomy term"
+msgstr "Ajouter un terme de taxonomie"
+
+#: ../../taxonomy-terms.rst:54
+msgid ""
+"To add a new taxonomy term, begin by selecting the the \"Add new taxonomy term\" "
+"button."
+msgstr ""
+"Pour ajouter un nouveau terme de taxonomie, commencer par sélectionner le bouton "
+"\"Ajouter un nouveau terme de taxonomie\"."
+
+#: ../../taxonomy-terms.rst:57
+msgid "Values"
+msgstr "Valeurs"
+
+#: ../../taxonomy-terms.rst:59
+msgid ""
+"The Values tab is where you enter metadata, such as title, description, etc."
+msgstr ""
+"L'onglet Valeurs permet de saisir les métadonnées, comme le titre, la "
+"description, etc."
+
+#: ../../taxonomy-terms.rst:-1
+msgid "Basic view of add taxonomy term page, with no content entered"
+msgstr ""
+"Vue basique de la page d'ajout de terme de taxonomie, avec aucun contenu saisi"
+
+#: ../../taxonomy-terms.rst:64
+msgid ""
+"It is identical to `The Items Values tab <https://omeka.org/s/docs/user-manual/"
+"content/items/#values>`_."
+msgstr ""
+"Il est identique à `l'onglet Valeurs des Contenus <https://omeka.org/s/docs/user-"
+"manual/content/items/#values>`_."
+
+#: ../../taxonomy-terms.rst:68
+msgid "Taxonomy term"
+msgstr "Terme de taxonomie"
+
+#: ../../taxonomy-terms.rst:70
+msgid ""
+"The Taxonomy term tab is where you enter the taxonomy term's unique identifier "
+"(**Code**), and where you select a parent term."
+msgstr ""
+"L'onglet Terme de taxonomie permet de saisir l'identifiant unique (**Code**) du "
+"terme de taxonomie, et de sélectionner un terme parent."
+
+#: ../../taxonomy-terms.rst:-1
+msgid "Basic view of taxonomy term tab, with no content entered"
+msgstr "Vue basique de l'onglet terme de taxonomie, avec aucun contenu saisi"
+
+#: ../../taxonomy-terms.rst:77
+msgid "Advanced"
+msgstr "Avancé"
+
+#: ../../taxonomy-terms.rst:79
+msgid "The Advanced tab is where you can select a thumbnail"
+msgstr "L'onglet Avancé permet de sélectionner une vignette"
+
+#: ../../taxonomy-terms.rst:-1
+msgid "Basic view of advanced tab, with no content entered"
+msgstr "Vue basique de l'onglet avancé, avec aucune contenu saisi"
