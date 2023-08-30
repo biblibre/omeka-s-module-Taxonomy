@@ -3,6 +3,8 @@
 namespace Taxonomy\Entity;
 
 use Omeka\Entity\Resource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @Entity
@@ -20,6 +22,24 @@ class TaxonomyTerm extends Resource
      * @JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $taxonomy;
+
+    /**
+     * @ManyToOne(targetEntity="TaxonomyTerm", inversedBy="children")
+     * @JoinColumn(onDelete="SET NULL")
+     */
+    protected $parent;
+
+    /**
+     * @OneToMany(targetEntity="TaxonomyTerm", mappedBy="parent")
+     */
+    protected Collection $children;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->children = new ArrayCollection();
+    }
 
     public function getResourceName()
     {
@@ -44,5 +64,25 @@ class TaxonomyTerm extends Resource
     public function setTaxonomy(Taxonomy $taxonomy)
     {
         $this->taxonomy = $taxonomy;
+    }
+
+    public function getParent(): ?TaxonomyTerm
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?TaxonomyTerm $parent)
+    {
+        $this->parent = $parent;
+    }
+
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    public function addChild(TaxonomyTerm $child)
+    {
+        $this->children->add($child);
     }
 }

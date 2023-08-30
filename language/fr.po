@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 18:02+0100\n"
-"PO-Revision-Date: 2023-03-17 18:05+0100\n"
+"POT-Creation-Date: 2023-08-30 15:50+0200\n"
+"PO-Revision-Date: 2023-08-30 15:52+0200\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/Controller/Admin/TaxonomyController.php:36
 msgid "Add another taxonomy?"
@@ -58,33 +58,48 @@ msgstr "Vous êtes en train de modifier les %s termes de taxonomie suivants:"
 msgid "You are editing %s taxonomy terms."
 msgstr "Vous êtes en train de modifier %s termes de taxonomie."
 
+#: view/taxonomy/admin/taxonomy-term/browse-hierarchy.phtml:7
 #: view/taxonomy/admin/taxonomy-term/browse.phtml:29
 #: view/taxonomy/admin/taxonomy-term/search.phtml:5
 #: view/taxonomy/common/data-type/value-annotation-taxonomy-term.phtml:10
 msgid "Taxonomy terms"
 msgstr "Termes de taxonomie"
 
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:42
+#: view/taxonomy/admin/taxonomy-term/browse-hierarchy.phtml:10
+msgid "View as list"
+msgstr "Voir la liste"
+
+#: view/taxonomy/admin/taxonomy-term/browse-hierarchy.phtml:13
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:44
 msgid "Add new taxonomy term"
 msgstr "Ajouter un nouveau terme de taxonomie"
 
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:100
+#: view/taxonomy/admin/taxonomy-term/browse-hierarchy.phtml:37
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:220
+msgid "Omeka could not find any taxonomy terms."
+msgstr "Omeka n'a pu trouver aucun terme de taxonomie."
+
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:41
+msgid "View as hierarchy"
+msgstr "Voir la hiérarchie"
+
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:102
 #: view/taxonomy/admin/taxonomy-term/sidebar-select.phtml:8
 msgid "Select taxonomy term"
 msgstr "Sélectionner le terme de taxonomie"
 
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:159
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:177
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:161
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:179
 msgid "Delete taxonomy terms"
 msgstr "Supprimer les termes de taxonomies"
 
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:160
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:162
 msgid "Are you sure you would like to delete the selected taxonomy terms?"
 msgstr ""
 "Êtes-vous sûr de vouloir supprimer les termes de taxonomie sélectionnés ?"
 
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:162
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:180
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:164
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:182
 #, php-format
 msgid ""
 "%1$s: this action will permanently delete %2$s taxonomy terms and cannot be "
@@ -93,17 +108,13 @@ msgstr ""
 "%1$s: cette action supprimera définitivement %2$s termes de taxonomie et ne "
 "peut pas être annulée."
 
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:178
+#: view/taxonomy/admin/taxonomy-term/browse.phtml:180
 msgid ""
 "Are you sure you would like to delete all taxonomy terms on all pages of "
 "this result?"
 msgstr ""
 "Êtes-vous sûr de vouloir supprimer tous les termes de taxonomie sur toutes "
 "les pages de ce résultat ?"
-
-#: view/taxonomy/admin/taxonomy-term/browse.phtml:218
-msgid "Omeka could not find any taxonomy terms."
-msgstr "Omeka n'a pu trouver aucun terme de taxonomie."
 
 #: view/taxonomy/admin/taxonomy-term/form.phtml:16
 msgid "Taxonomy term"
@@ -115,6 +126,11 @@ msgstr "Terme de taxonomie"
 #: view/taxonomy/site/taxonomy-term/show.phtml:12
 msgid "Taxonomy"
 msgstr "Taxonomie"
+
+#: view/taxonomy/admin/taxonomy-term/show-details.phtml:29
+#: view/taxonomy/admin/taxonomy-term/show.phtml:82
+msgid "Parent term"
+msgstr "Terme parent"
 
 #: view/taxonomy/admin/taxonomy-term/show.phtml:21
 msgid "Edit taxonomy term"
@@ -237,16 +253,16 @@ msgstr "Aucune taxonomie trouvée."
 msgid "Taxonomy terms: %s"
 msgstr "Termes de taxonomie: %s"
 
-#: Module.php:137
+#: Module.php:174
 msgid "Taxonomy (by ID)"
 msgstr "Taxonomie (par ID)"
 
-#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:17
+#: Module.php:214
 msgid "Replace literal values by taxonomy terms (properties)"
 msgstr ""
 "Remplacer les valeurs littérales par des termes de taxonomie (propriétés)"
 
-#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:18
+#: Module.php:215
 msgid ""
 "Search taxonomy terms by title, and if one match, replace the literal value "
 "by a corresponding taxonomy term value. If more than one term match, no "
@@ -257,12 +273,12 @@ msgstr ""
 "plus d'un terme correspond, aucune modification n'est faite. Seules les "
 "propriétés sélectionnées ici seront modifiées."
 
-#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:32
+#: Module.php:230
 msgid "Replace literal values by taxonomy terms (taxonomy)"
 msgstr ""
 "Remplacer les valeurs littérales par des termes de taxonomie (taxonomie)"
 
-#: src/Form/ResourceBatchUpdateTaxonomyFieldset.php:33
+#: Module.php:231
 msgid ""
 "Search taxonomy terms by title, and if one match, replace the literal value "
 "by a corresponding taxonomy term value. The search is limited to the "
@@ -273,7 +289,7 @@ msgstr ""
 "plus d'un terme correspond, aucune modification n'est faite. La recherche "
 "est limitée à la taxonomie sélectionnée."
 
-#: src/Form/TaxonomyTermForm.php:16
+#: src/Form/TaxonomyTermForm.php:17
 msgid ""
 "A string that uniquely identifies the term among its taxonomy. Not "
 "modifiable after creation"
@@ -288,53 +304,48 @@ msgstr ""
 "Une chaîne de caractères qui identifie de manière unique cette taxonomie. "
 "Non modifiable après la création"
 
-#: src/DataType/Resource/TaxonomyTerm.php:29
-#, php-format
-msgid "Taxonomy Term: %s"
-msgstr "Terme de taxonomie: %s"
-
 #: src/Controller/Admin/TaxonomyTermController.php:35
 #, php-format
 msgid "Taxonomy term successfully created. %s"
 msgstr "Terme de taxonomie créé avec succès. %s"
 
-#: src/Controller/Admin/TaxonomyTermController.php:74
+#: src/Controller/Admin/TaxonomyTermController.php:81
 msgid "Taxonomy term successfully updated"
 msgstr "Terme de taxonomie modifié avec succès"
 
-#: src/Controller/Admin/TaxonomyTermController.php:173
+#: src/Controller/Admin/TaxonomyTermController.php:194
 msgid "taxonomy term"
 msgstr "terme de taxonomie"
 
-#: src/Controller/Admin/TaxonomyTermController.php:190
+#: src/Controller/Admin/TaxonomyTermController.php:211
 msgid "Taxonomy term successfully deleted"
 msgstr "Terme de taxonomie supprimé avec succès"
 
-#: src/Controller/Admin/TaxonomyTermController.php:213
+#: src/Controller/Admin/TaxonomyTermController.php:234
 msgid "You must select at least one taxonomy term to batch delete."
 msgstr ""
 "Vous devez sélectionner au moins un terme de taxonomie pour la suppression "
 "par lot."
 
-#: src/Controller/Admin/TaxonomyTermController.php:222
+#: src/Controller/Admin/TaxonomyTermController.php:243
 msgid "Taxonomy terms successfully deleted"
 msgstr "Termes de taxonomie supprimés avec succès"
 
-#: src/Controller/Admin/TaxonomyTermController.php:248
+#: src/Controller/Admin/TaxonomyTermController.php:269
 msgid "Deleting taxonomy terms. This may take a while."
 msgstr ""
 "Suppression des termes de taxonomie. Cela peut prendre un certain temps."
 
-#: src/Controller/Admin/TaxonomyTermController.php:266
+#: src/Controller/Admin/TaxonomyTermController.php:287
 msgid "You must select at least one taxonomy term to batch edit."
 msgstr ""
 "Vous devez sélectionner au moins une taxonomie pour la suppression par lot."
 
-#: src/Controller/Admin/TaxonomyTermController.php:288
+#: src/Controller/Admin/TaxonomyTermController.php:309
 msgid "Taxonomy terms successfully edited"
 msgstr "Termes de taxonomie modifiés avec succès"
 
-#: src/Controller/Admin/TaxonomyTermController.php:341
+#: src/Controller/Admin/TaxonomyTermController.php:362
 msgid "Editing taxonomy terms. This may take a while."
 msgstr ""
 "Modification des termes de taxonomie. Cela peut prendre un certain temps."
@@ -381,3 +392,8 @@ msgstr "Taxonomies modifiées avec succès"
 #: src/Controller/Admin/TaxonomyController.php:319
 msgid "Editing taxonomies. This may take a while."
 msgstr "Modification des taxonomies. Cela peut prendre un certain temps."
+
+#: src/DataType/Resource/TaxonomyTerm.php:29
+#, php-format
+msgid "Taxonomy Term: %s"
+msgstr "Terme de taxonomie: %s"

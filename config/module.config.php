@@ -9,6 +9,11 @@ return [
             'taxonomy_terms' => Api\Adapter\TaxonomyTermAdapter::class,
         ],
     ],
+    'controller_plugins' => [
+        'factories' => [
+            'taxonomyTermTree' => Service\Mvc\Controller\Plugin\TaxonomyTermTreeFactory::class,
+        ],
+    ],
     'controllers' => [
         'invokables' => [
             'Taxonomy\Controller\Admin\Taxonomy' => Controller\Admin\TaxonomyController::class,
@@ -42,6 +47,7 @@ return [
             'Taxonomy\Form\TaxonomyForm' => Service\Form\TaxonomyFormFactory::class,
             'Taxonomy\Form\TaxonomyTermForm' => Service\Form\TaxonomyTermFormFactory::class,
             'Taxonomy\Form\Element\TaxonomySelect' => Service\Form\Element\TaxonomySelectFactory::class,
+            'Taxonomy\Form\Element\TaxonomyTermSelect' => Service\Form\Element\TaxonomyTermSelectFactory::class,
         ],
     ],
     'navigation' => [
@@ -114,6 +120,21 @@ return [
                             ],
                         ],
                     ],
+                    'taxonomy-term-hierarchy' => [
+                        'type' => \Laminas\Router\Http\Segment::class,
+                        'options' => [
+                            'route' => '/taxonomy/:taxonomy-id/term-hierarchy',
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'taxonomy-id' => '\d+',
+                            ],
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Taxonomy\Controller\Admin',
+                                'controller' => 'taxonomy-term',
+                                'action' => 'browseHierarchy',
+                            ],
+                        ],
+                    ],
                     'taxonomy-term-id' => [
                         'type' => \Laminas\Router\Http\Segment::class,
                         'options' => [
@@ -167,6 +188,11 @@ return [
                     ],
                 ],
             ],
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            'Taxonomy\TaxonomyTermTree' => Service\Stdlib\TaxonomyTermTreeFactory::class,
         ],
     ],
     'translator' => [

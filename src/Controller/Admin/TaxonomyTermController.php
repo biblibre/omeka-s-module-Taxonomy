@@ -22,7 +22,7 @@ class TaxonomyTermController extends AbstractActionController
         $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
         $taxonomy = $this->api()->read('taxonomies', $taxonomy_id)->getContent();
 
-        $form = $this->getForm(TaxonomyTermForm::class);
+        $form = $this->getForm(TaxonomyTermForm::class, ['taxonomy' => $taxonomy]);
         $form->setAttribute('id', 'add-taxonomy-term');
         if ($this->getRequest()->isPost()) {
             $data = $this->params()->fromPost();
@@ -55,10 +55,17 @@ class TaxonomyTermController extends AbstractActionController
 
     public function editAction()
     {
-        $form = $this->getForm(TaxonomyTermForm::class);
-        $form->setAttribute('id', 'edit-taxonomy-term');
         $response = $this->api()->read('taxonomy_terms', $this->params('id'));
         $taxonomyTerm = $response->getContent();
+
+        $form = $this->getForm(
+            TaxonomyTermForm::class,
+            [
+                'taxonomy' => $taxonomyTerm->taxonomy(),
+                'taxonomy_term' => $taxonomyTerm,
+            ]
+        );
+        $form->setAttribute('id', 'edit-taxonomy-term');
 
         $view = new ViewModel;
         $view->setVariable('form', $form);
@@ -111,6 +118,20 @@ class TaxonomyTermController extends AbstractActionController
         $view->setVariable('resources', $taxonomyTerms);
         $view->setVariable('formDeleteSelected', $formDeleteSelected);
         $view->setVariable('formDeleteAll', $formDeleteAll);
+        return $view;
+    }
+
+    public function browseHierarchyAction()
+    {
+        $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
+        $taxonomy = $this->api()->read('taxonomies', $taxonomy_id)->getContent();
+
+        $rootNodes = $this->taxonomyTermTree()->buildTaxonomyTermTree($taxonomy_id);
+
+        $view = new ViewModel;
+        $view->setVariable('taxonomy', $taxonomy);
+        $view->setVariable('rootNodes', $rootNodes);
+
         return $view;
     }
 

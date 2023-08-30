@@ -26,6 +26,17 @@ $escape = $this->plugin('escapeHtml');
         <div class="value"><?php echo $this->hyperlink($resource->taxonomy()->displayTitle(), $resource->taxonomy()->url()); ?></div>
     </div>
     <div class="meta-group">
+        <h4><?php echo $translate('Parent term'); ?></h4>
+        <?php $parent = $resource->parent(); ?>
+        <div class="value">
+            <?php if ($parent): ?>
+                <?php echo $this->hyperlink($parent->displayTitle(), $parent->url()); ?>
+            <?php else: ?>
+                <?php echo $translate('[None]'); ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="meta-group">
         <h4><?php echo $translate('Linked resources'); ?></h4>
         <div class="value"><?php echo $resource->subjectValueTotalCount(); ?></div>
     </div>

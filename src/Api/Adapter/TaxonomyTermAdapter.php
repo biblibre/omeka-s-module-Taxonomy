@@ -85,6 +85,15 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
             $this->authorize($taxonomy, 'add-term');
             $entity->setTaxonomy($taxonomy);
         }
+
+        if ($this->shouldHydrate($request, 'o:parent')) {
+            try {
+                $parent = $this->getAdapter('taxonomy_terms')->findEntity($request->getValue('o:parent'));
+            } catch (\Omeka\Api\Exception\NotFoundException $e) {
+                $parent = null;
+            }
+            $entity->setParent($parent);
+        }
     }
 
     /**

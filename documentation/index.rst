@@ -13,9 +13,14 @@ terms) are Omeka S resources, which means:
   properties, annotations);
 * they can have a thumbnail.
 
+Taxonomy terms can be arranged in a hierarchy (a taxonomy term can have a
+parent term).
+
 .. toctree::
    :maxdepth: 2
    :caption: Table of contents
 
    installation
-   usage
+   taxonomies
+   taxonomy-terms
+   replace-existing-values

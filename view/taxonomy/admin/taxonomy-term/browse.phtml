@@ -38,8 +38,10 @@ $sortHeadings = [
 
 
 <div id="page-actions">
+    <?php echo $this->hyperlink($translate('View as hierarchy'), $this->url('admin/taxonomy-term-hierarchy', ['taxonomy-id' => $taxonomy->id()]), ['class' => 'button']); ?>
+
     <?php if ($this->userIsAllowed('Taxonomy\Api\Adapter\TaxonomyTermAdapter', 'create')): ?>
-    <?php echo $this->hyperlink($translate('Add new taxonomy term'), $this->url(null, ['action' => 'add'], true), ['class' => 'button']); ?>
+        <?php echo $this->hyperlink($translate('Add new taxonomy term'), $this->url(null, ['action' => 'add'], true), ['class' => 'button']); ?>
     <?php endif; ?>
 </div>
 
@@ -72,7 +74,7 @@ $sortHeadings = [
                 <input type="checkbox" class="select-all" aria-label="<?php echo $translate('Select all'); ?>">
                 <?php echo $translate('Title'); ?>
             </th>
-            <th><?php echo $translate('Identifier'); ?></th>
+            <th><?php echo $translate('Code'); ?></th>
             <th><?php echo $translate('Class'); ?></th>
             <th><?php echo $translate('Owner'); ?></th>
             <th><?php echo $translate('Created'); ?></th>

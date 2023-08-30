@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Taxonomy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 08:11+0100\n"
-"PO-Revision-Date: 2023-03-17 08:18+0100\n"
-"Language: fr\n"
+"POT-Creation-Date: 2023-08-30 15:21+0200\n"
+"PO-Revision-Date: 2023-08-30 15:23+0200\n"
+"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Babel 2.12.1\n"
-"Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#: ../../index.rst:16
+#: ../../index.rst:19
 msgid "Table of contents"
 msgstr "Table des matières"
 
@@ -64,3 +64,11 @@ msgstr ""
 #: ../../index.rst:14
 msgid "they can have a thumbnail."
 msgstr "ils peuvent avoir une vignette."
+
+#: ../../index.rst:16
+msgid ""
+"Taxonomy terms can be arranged in a hierarchy (a taxonomy term can have "
+"a parent term)."
+msgstr ""
+"Les termes de taxonomie peuvent être organisés en hiérarchie (un terme "
+"de taxonomie peut avoir un terme parent)."

@@ -11,6 +11,9 @@ terms) are Omeka S resources, which means:
   properties, annotations);
 * they can have a thumbnail.
 
+Taxonomy terms can be arranged in a hierarchy (a taxonomy term can have a
+parent term).
+
 ## Installation
 
 See general end user documentation for [Installing a
@@ -27,13 +30,14 @@ Once the taxonomies are created, create/modify a resource template and include
 the new data types for the desired properties. Use this resource template when
 taxonomies are needed.
 
+For more information, see the [full documentation](https://biblibre.github.io/omeka-s-module-Taxonomy).
+
 ## Differences with the Thesaurus module
 
 Taxonomy and [Thesaurus] are similar, but there are a few differences:
 
 * Taxonomy uses distinct resource types while Thesaurus uses items with a
   specific class;
-* Taxonomy does not allow a hierarchical structure;
 * Taxonomy does not require the skos ontology.
 
 ## License

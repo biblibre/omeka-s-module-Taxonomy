@@ -1,0 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the Taxonomy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Taxonomy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-30 15:21+0200\n"
+"PO-Revision-Date: 2023-08-30 15:36+0200\n"
+"Last-Translator: \n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.12.1\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ../../taxonomies.rst:2
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+#: ../../taxonomies.rst:4
+msgid ""
+"A taxonomy is a group of taxonomy terms. It's a way to build a "
+"controlled vocabulary in Omeka S."
+msgstr ""
+"Une taxonomie est un groupe de termes de taxonomie. C'est un moyen de "
+"construire un vocabulaire contrôlé dans Omeka S."
+
+#: ../../taxonomies.rst:7
+msgid ""
+"A taxonomy is also an Omeka S resource (like items, item sets and "
+"media), which means:"
+msgstr ""
+"Une taxonomie est aussi une ressource Omeka S (comme les contenus, "
+"collections et média), ce qui signifie:"
+
+#: ../../taxonomies.rst:10
+msgid ""
+"it can be linked to items, item sets and media like any other Omeka S "
+"resource (it can be linked in annotations too);"
+msgstr ""
+"elle peut être liée à des contenus, collections et média comme n'importe "
+"quelle autre ressource Omeka S (elle peut être liée dans les annotations "
+"également);"
+
+#: ../../taxonomies.rst:12
+msgid ""
+"it can be described like any other resource (resource template, class, "
+"properties, annotations);"
+msgstr ""
+"elle peut être décrite comme n'importe quelle autre ressource (modèle de "
+"ressource, classe, propriétés, annotations);"
+
+#: ../../taxonomies.rst:14
+msgid "it can have a thumbnail."
+msgstr "elle peut avoir une vignette."
+
+#: ../../taxonomies.rst:16
+msgid ""
+"A taxonomy has a unique (among other taxonomies) identifier, called "
+"**Code**."
+msgstr ""
+"Une taxonomie a un identifiant unique (parmi les autres taxonomies), "
+"appelé **Code**."
+
+#: ../../taxonomies.rst:21
+msgid "The Taxonomies tab"
+msgstr "Onglet Taxonomies"
+
+#: ../../taxonomies.rst:23
+msgid ""
+"Taxonomies are listed in the **Taxonomies** tab (with the tags icon) in "
+"the left-hand navigation of the administrative dashboard."
+msgstr ""
+"Les taxonomies sont listées dans l'onglet **Taxonomies** (avec l'icône "
+"d'étiquette) dans la navigation de gauche du tableau de bord "
+"d'administration."
+
+#: ../../taxonomies.rst:-1
+msgid ""
+"Basic view of admin taxonomies page, showing a handful of taxonomy "
+"resources"
+msgstr ""
+"Vue basique d'une page admin de taxonomies, montrant une poignée de "
+"ressources de type taxonomie"
+
+#: ../../taxonomies.rst:29
+msgid ""
+"This page is very similar to `The Items tab <https://omeka.org/s/docs/"
+"user-manual/content/items/#the-items-tab>`_. Please refer to this "
+"documentation for general information."
+msgstr ""
+"Cette page est très similaire à `l'onglet Contenus <https://omeka.org/s/"
+"docs/user-manual/content/items/#the-items-tab>`_. Veuillez vous référer "
+"à cette documentation pour les informations générales."
+
+#: ../../taxonomies.rst:33
+msgid "There are a few differences:"
+msgstr "Il y a quelques différences:"
+
+#: ../../taxonomies.rst:35
+msgid "There is an additional column showing the taxonomy's **Code**."
+msgstr ""
+"Il y a une colonne supplémentaire montant le **Code** de la taxonomie."
+
+#: ../../taxonomies.rst:36
+msgid "Taxonomies can be sorted by **Code**."
+msgstr "Les taxonomies peuvent être triées par **Code**."
+
+#: ../../taxonomies.rst:37
+msgid "There is an additional icon to **list taxonomy terms** (tag)."
+msgstr ""
+"Il y a une icône supplémentaire pour **lister les termes de taxonomie** "
+"(étiquette)."
+
+#: ../../taxonomies.rst:40
+msgid "Add a taxonomy"
+msgstr "Ajouter une taxonomie"
+
+#: ../../taxonomies.rst:42
+msgid ""
+"To add a new taxonomy, begin by selecting the the \"Add new taxonomy\" "
+"button."
+msgstr ""
+"Pour ajouter une nouvelle taxonomie, commencer par sélectionner le "
+"bouton \"Ajouter une nouvelle taxonomie\"."
+
+#: ../../taxonomies.rst:45
+msgid "Values"
+msgstr "Valeurs"
+
+#: ../../taxonomies.rst:47
+msgid ""
+"The Values tab is where you enter metadata, such as title, description, "
+"etc."
+msgstr ""
+"L'onglet Valeurs permet de saisir les métadonnées, comme le titre, la "
+"description, etc."
+
+#: ../../taxonomies.rst:-1
+msgid "Basic view of add taxonomy page, with no content entered"
+msgstr ""
+"Vue basique de la page d'ajout de taxonomie, avec aucun contenu saisi"
+
+#: ../../taxonomies.rst:52
+msgid ""
+"It is identical to `The Items Values tab <https://omeka.org/s/docs/user-"
+"manual/content/items/#values>`_."
+msgstr ""
+"Il est identique à `l'onglet Valeurs des Contenus <https://omeka.org/s/"
+"docs/user-manual/content/items/#values>`_."
+
+#: ../../taxonomies.rst:56
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+#: ../../taxonomies.rst:58
+msgid ""
+"The Taxonomy tab is where you enter the taxonomy's unique identifier "
+"(**Code**)"
+msgstr ""
+"L'onglet Taxonomie permet de saisir l'identifiant unique (**Code**) de "
+"la taxonomie"
+
+#: ../../taxonomies.rst:-1
+msgid "Basic view of taxonomy tab, with no content entered"
+msgstr "Vue basique de l'onglet taxonomie, avec aucun contenu saisi"
+
+#: ../../taxonomies.rst:64
+msgid "Advanced"
+msgstr "Avancé"
+
+#: ../../taxonomies.rst:66
+msgid "The Advanced tab is where you can select a thumbnail"
+msgstr "L'onglet Avancé permet de sélectionner une vignette"
+
+#: ../../taxonomies.rst:-1
+msgid "Basic view of advanced tab, with no content entered"
+msgstr "Vue basique de l'onglet avancé, avec aucune contenu saisi"

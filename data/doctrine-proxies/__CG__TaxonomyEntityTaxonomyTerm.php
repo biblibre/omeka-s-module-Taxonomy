@@ -66,10 +66,10 @@ class TaxonomyTerm extends \Taxonomy\Entity\TaxonomyTerm implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'code', 'taxonomy', 'id', 'owner', 'resourceClass', 'resourceTemplate', 'thumbnail', 'title', 'isPublic', 'created', 'modified', 'values'];
+            return ['__isInitialized__', 'code', 'taxonomy', 'parent', 'children', 'id', 'owner', 'resourceClass', 'resourceTemplate', 'thumbnail', 'title', 'isPublic', 'created', 'modified', 'values'];
         }
 
-        return ['__isInitialized__', 'code', 'taxonomy', 'id', 'owner', 'resourceClass', 'resourceTemplate', 'thumbnail', 'title', 'isPublic', 'created', 'modified', 'values'];
+        return ['__isInitialized__', 'code', 'taxonomy', 'parent', 'children', 'id', 'owner', 'resourceClass', 'resourceTemplate', 'thumbnail', 'title', 'isPublic', 'created', 'modified', 'values'];
     }
 
     /**
@@ -229,6 +229,50 @@ class TaxonomyTerm extends \Taxonomy\Entity\TaxonomyTerm implements \Doctrine\OR
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTaxonomy', [$taxonomy]);
 
         return parent::setTaxonomy($taxonomy);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getParent(): ?\Taxonomy\Entity\TaxonomyTerm
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParent', []);
+
+        return parent::getParent();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setParent(?\Taxonomy\Entity\TaxonomyTerm $parent)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParent', [$parent]);
+
+        return parent::setParent($parent);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getChildren(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChildren', []);
+
+        return parent::getChildren();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addChild(\Taxonomy\Entity\TaxonomyTerm $child)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addChild', [$child]);
+
+        return parent::addChild($child);
     }
 
     /**
