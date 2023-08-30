@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taxonomies &mdash; Documentation Taxonomy </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/extra.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Termes de taxonomie" href="taxonomy-terms.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Taxonomy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table des matières</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Taxonomies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-taxonomies-tab">Onglet Taxonomies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-taxonomy">Ajouter une taxonomie</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#values">Valeurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#taxonomy">Taxonomie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced">Avancé</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="taxonomy-terms.html">Termes de taxonomie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="replace-existing-values.html">Remplacer les valeurs existantes par des termes de taxonomie</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Taxonomy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Taxonomies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/taxonomies.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="taxonomies">
+<h1>Taxonomies<a class="headerlink" href="#taxonomies" title="Lien permanent vers cette rubrique"></a></h1>
+<p>Une taxonomie est un groupe de termes de taxonomie. C’est un moyen de construire un vocabulaire contrôlé dans Omeka S.</p>
+<p>Une taxonomie est aussi une ressource Omeka S (comme les contenus, collections et média), ce qui signifie:</p>
+<ul class="simple">
+<li><p>elle peut être liée à des contenus, collections et média comme n’importe quelle autre ressource Omeka S (elle peut être liée dans les annotations également);</p></li>
+<li><p>elle peut être décrite comme n’importe quelle autre ressource (modèle de ressource, classe, propriétés, annotations);</p></li>
+<li><p>elle peut avoir une vignette.</p></li>
+</ul>
+<p>Une taxonomie a un identifiant unique (parmi les autres taxonomies), appelé <strong>Code</strong>.</p>
+<section id="the-taxonomies-tab">
+<span id="taxonomiestab"></span><h2>Onglet Taxonomies<a class="headerlink" href="#the-taxonomies-tab" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Les taxonomies sont listées dans l’onglet <strong>Taxonomies</strong> (avec l’icône d’étiquette) dans la navigation de gauche du tableau de bord d’administration.</p>
+<img alt="Vue basique d'une page admin de taxonomies, montrant une poignée de ressources de type taxonomie" src="_images/taxonomies_browse.png" />
+<p>Cette page est très similaire à <a class="reference external" href="https://omeka.org/s/docs/user-manual/content/items/#the-items-tab">l’onglet Contenus</a>. Veuillez vous référer à cette documentation pour les informations générales.</p>
+<p>Il y a quelques différences:</p>
+<ul class="simple">
+<li><p>Il y a une colonne supplémentaire montant le <strong>Code</strong> de la taxonomie.</p></li>
+<li><p>Les taxonomies peuvent être triées par <strong>Code</strong>.</p></li>
+<li><p>Il y a une icône supplémentaire pour <strong>lister les termes de taxonomie</strong> (étiquette).</p></li>
+</ul>
+</section>
+<section id="add-a-taxonomy">
+<h2>Ajouter une taxonomie<a class="headerlink" href="#add-a-taxonomy" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Pour ajouter une nouvelle taxonomie, commencer par sélectionner le bouton « Ajouter une nouvelle taxonomie ».</p>
+<section id="values">
+<h3>Valeurs<a class="headerlink" href="#values" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’onglet Valeurs permet de saisir les métadonnées, comme le titre, la description, etc.</p>
+<img alt="Vue basique de la page d'ajout de taxonomie, avec aucun contenu saisi" src="_images/taxonomies_add_values.png" />
+<p>Il est identique à <a class="reference external" href="https://omeka.org/s/docs/user-manual/content/items/#values">l’onglet Valeurs des Contenus</a>.</p>
+</section>
+<section id="taxonomy">
+<h3>Taxonomie<a class="headerlink" href="#taxonomy" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’onglet Taxonomie permet de saisir l’identifiant unique (<strong>Code</strong>) de la taxonomie</p>
+<img alt="Vue basique de l'onglet taxonomie, avec aucun contenu saisi" src="_images/taxonomies_add_taxonomy.png" />
+</section>
+<section id="advanced">
+<h3>Avancé<a class="headerlink" href="#advanced" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’onglet Avancé permet de sélectionner une vignette</p>
+<img alt="Vue basique de l'onglet avancé, avec aucune contenu saisi" src="_images/taxonomies_add_advanced.png" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="taxonomy-terms.html" class="btn btn-neutral float-right" title="Termes de taxonomie" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BibLibre.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

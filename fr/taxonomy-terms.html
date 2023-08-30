@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termes de taxonomie &mdash; Documentation Taxonomy </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/extra.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Remplacer les valeurs existantes par des termes de taxonomie" href="replace-existing-values.html" />
+    <link rel="prev" title="Taxonomies" href="taxonomies.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Taxonomy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table des matières</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taxonomies.html">Taxonomies</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Termes de taxonomie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-taxonomy-terms">Lister les termes de taxonomie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-taxonomy-terms-as-hierarchy">Voir la hiérarchie des termes de taxonomie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-taxonomy-term">Ajouter un terme de taxonomie</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#values">Valeurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#taxonomy-term">Terme de taxonomie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced">Avancé</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="replace-existing-values.html">Remplacer les valeurs existantes par des termes de taxonomie</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Taxonomy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Termes de taxonomie</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/taxonomy-terms.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="taxonomy-terms">
+<h1>Termes de taxonomie<a class="headerlink" href="#taxonomy-terms" title="Lien permanent vers cette rubrique"></a></h1>
+<p>Un terme de taxonomie est un élément d’un vocabulaire contrôlé. Il appartient à une taxonomie.</p>
+<p>Comme une taxonomie, il a un identifiant unique (parmi les termes de la même taxonomie), appelé <strong>Code</strong>.</p>
+<p>Il peut avoir un terme de taxonomie parent. Le terme parent doit appartenir à la même taxonomie. Cela signifie qu’une taxonomie contient une <strong>hiérarchie</strong> de termes.</p>
+<p>Un terme de taxonomie est aussi une ressource Omeka S (comme les contenus, collections et média), ce qui signifie:</p>
+<ul class="simple">
+<li><p>il peut être lié à des contenus, collections et média comme n’importe quelle autre ressource Omeka S (il peut être lié dans les annotations également);</p></li>
+<li><p>il peut être décrit comme n’importe quelle autre ressource (modèle de ressource, classe, propriétés, annotations);</p></li>
+<li><p>il peut avoir une vignette.</p></li>
+</ul>
+<section id="list-taxonomy-terms">
+<h2>Lister les termes de taxonomie<a class="headerlink" href="#list-taxonomy-terms" title="Lien permanent vers cette rubrique"></a></h2>
+<p>La liste des termes de taxonomie est accessible de deux moyens différents:</p>
+<ul class="simple">
+<li><p>en cliquant sur l’icône d’étiquette dans <a class="reference internal" href="taxonomies.html#taxonomiestab"><span class="std std-ref">l’onglet Taxonomies</span></a>, ou</p></li>
+<li><p>en cliquant sur le bouton « Voir les termes » en haut de la page de taxonomie</p></li>
+</ul>
+<img alt="Vue d'une page de liste de termes de taxonomie" src="_images/taxonomy_terms_browse.png" />
+<p>Cette page est très similaire à <a class="reference external" href="https://omeka.org/s/docs/user-manual/content/items/#the-items-tab">l’onglet Contenus</a>. Veuillez vous référer à cette documentation pour les informations générales.</p>
+<p>Il y a quelques différences:</p>
+<ul class="simple">
+<li><p>Il y a une colonne supplémentaire montant le <strong>Code</strong> du terme de taxonomie.</p></li>
+<li><p>Les termes de taxonomie peuvent être triées par <strong>Code</strong>.</p></li>
+<li><p>Il y a un bouton supplémentaire en haut de la page pour <strong>Voir la hiérarchie</strong>.</p></li>
+</ul>
+</section>
+<section id="view-taxonomy-terms-as-hierarchy">
+<h2>Voir la hiérarchie des termes de taxonomie<a class="headerlink" href="#view-taxonomy-terms-as-hierarchy" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Cliquer sur le bouton « Voir la hiérarchie » pour afficher tous les termes de manière hiérarchique</p>
+<img alt="Vue d'une page de hiérarchie des termes de taxonomie" src="_images/taxonomy_terms_browse_hierarchy.png" />
+</section>
+<section id="add-a-taxonomy-term">
+<h2>Ajouter un terme de taxonomie<a class="headerlink" href="#add-a-taxonomy-term" title="Lien permanent vers cette rubrique"></a></h2>
+<p>Pour ajouter un nouveau terme de taxonomie, commencer par sélectionner le bouton « Ajouter un nouveau terme de taxonomie ».</p>
+<section id="values">
+<h3>Valeurs<a class="headerlink" href="#values" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’onglet Valeurs permet de saisir les métadonnées, comme le titre, la description, etc.</p>
+<img alt="Vue basique de la page d'ajout de terme de taxonomie, avec aucun contenu saisi" src="_images/taxonomy_terms_add_values.png" />
+<p>Il est identique à <a class="reference external" href="https://omeka.org/s/docs/user-manual/content/items/#values">l’onglet Valeurs des Contenus</a>.</p>
+</section>
+<section id="taxonomy-term">
+<h3>Terme de taxonomie<a class="headerlink" href="#taxonomy-term" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’onglet Terme de taxonomie permet de saisir l’identifiant unique (<strong>Code</strong>) du terme de taxonomie, et de sélectionner un terme parent.</p>
+<img alt="Vue basique de l'onglet terme de taxonomie, avec aucun contenu saisi" src="_images/taxonomy_terms_add_taxonomy_term.png" />
+</section>
+<section id="advanced">
+<h3>Avancé<a class="headerlink" href="#advanced" title="Lien permanent vers cette rubrique"></a></h3>
+<p>L’onglet Avancé permet de sélectionner une vignette</p>
+<img alt="Vue basique de l'onglet avancé, avec aucune contenu saisi" src="_images/taxonomy_terms_add_advanced.png" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="taxonomies.html" class="btn btn-neutral float-left" title="Taxonomies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="replace-existing-values.html" class="btn btn-neutral float-right" title="Remplacer les valeurs existantes par des termes de taxonomie" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BibLibre.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
