@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- Added ability to browse all terms (not only terms of a single taxonomy)
+- Added ability to search taxonomy and taxonomy terms by code
+- Added ability to search taxonomy terms by taxonomy
+
+### Fixed
+- Fixed taxonomy terms "Edit all" and "Delete all" actions that were not taking
+  into account the selected taxonomy
+
+### For developers
+- Added view helper `taxonomySelect`
+- Added method `TaxonomyRepresentation::termsUrl`
+
 ## [0.2.0] - 2023-08-30
 
 - Added the ability to organize taxonomy terms in a hierarchy

@@ -5,7 +5,7 @@ $this->htmlElement('body')->appendAttribute('class', 'taxonomies search');
 <?php echo $this->pageTitle($translate('Advanced search'), 1, $translate('Taxonomies')); ?>
 <form id="advanced-search" method="get" action="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>">
 <?php echo $this->partial(
-    'common/advanced-search',
+    'taxonomy/common/advanced-search',
     ['query' => $this->params()->fromQuery(), 'resourceType' => 'taxonomy']
 ); ?>
 <div id="page-actions">

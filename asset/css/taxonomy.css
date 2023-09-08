@@ -19,7 +19,10 @@ header nav .taxonomies::before, .taxonomies .subhead::before {
     content: var(--taxonomy-taxonomy-icon-content);
 }
 
-header nav .taxonomy-terms::before, .taxonomy-terms .subhead::before {
+header nav .taxonomy-terms::before {
+    content: var(--taxonomy-taxonomy-term-icon-content);
+}
+.taxonomy-terms .subhead::before {
     content: var(--taxonomy-taxonomy-icon-content);
 }
 

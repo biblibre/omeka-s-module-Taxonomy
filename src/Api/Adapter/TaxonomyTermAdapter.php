@@ -49,7 +49,7 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
     {
         parent::buildQuery($qb, $query);
 
-        if (isset($query['code'])) {
+        if (isset($query['code']) && is_string($query['code']) && $query['code'] !== '') {
             $qb->andWhere($qb->expr()->eq(
                 'omeka_root.code',
                 $this->createNamedParameter($qb, $query['code'])

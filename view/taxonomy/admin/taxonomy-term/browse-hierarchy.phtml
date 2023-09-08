@@ -7,10 +7,10 @@ $this->htmlElement('body')->appendAttribute('class', 'taxonomy-terms browse brow
 <?php echo $this->pageTitle($translate('Taxonomy terms'), 1, $translate($taxonomy->displayTitle())); ?>
 
 <div id="page-actions">
-    <?php echo $this->hyperlink($translate('View as list'), $this->url('admin/taxonomy-term', ['taxonomy-id' => $taxonomy->id()]), ['class' => 'button']); ?>
+    <?php echo $this->hyperlink($translate('View as list'), $this->url('admin/taxonomy-term', [], ['query' => ['taxonomy_id' => $taxonomy->id()]]), ['class' => 'button']); ?>
 
     <?php if ($this->userIsAllowed('Taxonomy\Api\Adapter\TaxonomyTermAdapter', 'create')): ?>
-        <?php echo $this->hyperlink($translate('Add new taxonomy term'), $this->url('admin/taxonomy-term', ['action' => 'add'], true), ['class' => 'button']); ?>
+        <?php echo $this->hyperlink($translate('Add new taxonomy term'), $this->url('admin/taxonomy-id', ['id' => $taxonomy->id(), 'action' => 'add-term']), ['class' => 'button']); ?>
     <?php endif; ?>
 </div>
 

@@ -1,0 +1,19 @@
+<div class="field">
+    <div class="field-meta">
+        <label for="taxonomy_id"><?php echo $this->translate('Search by taxonomy'); ?></label>
+        <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $this->translate('Expand')]); ?>
+        <div class="collapsible">
+            <div class="field-description"><?php echo $this->translate('Searches for terms that belong to this taxonomy.'); ?></div>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <?php echo $this->taxonomySelect([
+            'name' => 'taxonomy_id',
+            'attributes' => [
+                'id' => 'taxonomy_id',
+                'value' => $query['taxonomy_id'] ?? null,
+            ],
+        ]); ?>
+    </div>
+</div>

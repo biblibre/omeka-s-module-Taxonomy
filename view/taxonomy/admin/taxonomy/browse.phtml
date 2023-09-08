@@ -104,7 +104,7 @@ $sortHeadings = [
                     <span class="o-icon-private" aria-label="<?php echo $translate('Private'); ?>"></span>
                 <?php endif; ?>
                 <ul class="actions">
-                    <li><?php echo $this->hyperlink('', $this->url('admin/taxonomy-term', ['taxonomy-id' => $taxonomy->id()]), [
+                    <li><?php echo $this->hyperlink('', $this->url('admin/taxonomy-term', [], ['query' => ['taxonomy_id' => $taxonomy->id()]]), [
                         'class' => 'o-icon-taxonomy-terms',
                         'title' => $translate('Terms'),
                     ]); ?></li>

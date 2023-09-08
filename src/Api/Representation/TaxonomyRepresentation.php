@@ -77,6 +77,20 @@ class TaxonomyRepresentation extends AbstractResourceEntityRepresentation
         );
     }
 
+    public function termsUrl($action = 'browse', $canonical = false)
+    {
+        $url = $this->getViewHelper('Url');
+
+        return $url(
+            'admin/taxonomy-term',
+            ['action' => $action],
+            [
+                'query' => ['taxonomy_id' => $this->id()],
+                'force_canonical' => $canonical,
+            ]
+        );
+    }
+
     public function valueRepresentation()
     {
         $valueRepresentation = parent::valueRepresentation();

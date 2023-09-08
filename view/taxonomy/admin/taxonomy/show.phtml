@@ -2,13 +2,6 @@
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'taxonomies show');
-$viewTermsLink = $this->url(
-    'admin/taxonomy-term',
-    [
-        'action' => 'browse',
-        'taxonomy-id' => $taxonomy->id(),
-    ]
-);
 if ($owner = $taxonomy->owner()) {
     $ownerText = $escape($taxonomy->owner()->name());
 } else {
@@ -27,7 +20,7 @@ $sectionNavs = [
     <?php if ($taxonomy->userIsAllowed('update')): ?>
     <?php echo $taxonomy->link($translate('Edit taxonomy'), 'edit', ['class' => 'button']); ?>
     <?php endif; ?>
-    <a href="<?php echo $viewTermsLink; ?>" class="button"><?php echo $translate('View terms'); ?></a>
+    <a href="<?php echo $taxonomy->termsUrl(); ?>" class="button"><?php echo $translate('View terms'); ?></a>
 </div>
 
 <?php echo $this->sectionNav($sectionNavs, 'view.show.section_nav', $taxonomy); ?>
@@ -82,7 +75,7 @@ $sectionNavs = [
     </div>
     <div class="meta-group">
         <h4><?php echo $translate('Terms'); ?></h4>
-        <div class="value"><?php echo $this->hyperlink($taxonomy->termCount(), $this->url('admin/taxonomy-term', ['action' => 'browse', 'taxonomy-id' => $taxonomy->id()])); ?></div>
+        <div class="value"><?php echo $this->hyperlink($taxonomy->termCount(), $taxonomy->termsUrl()); ?></div>
     </div>
     <?php $this->trigger('view.show.sidebar'); ?>
 </div>

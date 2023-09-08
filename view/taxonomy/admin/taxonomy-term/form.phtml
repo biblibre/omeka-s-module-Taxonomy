@@ -9,8 +9,6 @@ $form->prepare();
 
 <?php echo $this->form()->openTag($form); ?>
 
-<input type="hidden" name="o:taxonomy[o:id]" value="<?php echo $this->params()->fromRoute('taxonomy-id'); ?>">
-
 <?php echo $this->sectionNav([
     'resource-values' => $translate('Values'),
     'taxonomy-term' => $translate('Taxonomy term'),

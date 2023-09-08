@@ -1,0 +1,11 @@
+<?php
+$value = isset($query['code']) ? $query['code'] : null;
+?>
+<div class="field">
+    <div class="field-meta">
+        <label for="code"><?php echo $this->translate('Search by code'); ?></label>
+    </div>
+    <div class="inputs">
+        <input type="text" name="code" id="code" value="<?php echo $this->escapeHtml($value); ?>">
+    </div>
+</div>

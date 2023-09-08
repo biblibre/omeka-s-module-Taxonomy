@@ -26,7 +26,11 @@ $sortHeadings = [
 ];
 ?>
 
-<?php echo $this->pageTitle($translate('Taxonomy terms'), 1, $translate($taxonomy->displayTitle())); ?>
+<?php if (isset($taxonomy)): ?>
+    <?php echo $this->pageTitle($translate('Taxonomy terms'), 1, $taxonomy->displayTitle()); ?>
+<?php else: ?>
+    <?php echo $this->pageTitle($translate('Taxonomy terms'), 1); ?>
+<?php endif; ?>
 
 <?php echo $this->searchFilters(); ?>
 
@@ -38,11 +42,14 @@ $sortHeadings = [
 
 
 <div id="page-actions">
-    <?php echo $this->hyperlink($translate('View as hierarchy'), $this->url('admin/taxonomy-term-hierarchy', ['taxonomy-id' => $taxonomy->id()]), ['class' => 'button']); ?>
+    <?php if (isset($taxonomy)): ?>
+        <?php echo $this->hyperlink($translate('View as hierarchy'), $this->url('admin/taxonomy-term-hierarchy', ['taxonomy-id' => $taxonomy->id()]), ['class' => 'button']); ?>
 
-    <?php if ($this->userIsAllowed('Taxonomy\Api\Adapter\TaxonomyTermAdapter', 'create')): ?>
-        <?php echo $this->hyperlink($translate('Add new taxonomy term'), $this->url(null, ['action' => 'add'], true), ['class' => 'button']); ?>
+        <?php if ($this->userIsAllowed('Taxonomy\Api\Adapter\TaxonomyTermAdapter', 'create')): ?>
+            <?php echo $this->hyperlink($translate('Add new taxonomy term'), $this->url('admin/taxonomy-id', ['id' => $taxonomy->id(), 'action' => 'add-term']), ['class' => 'button']); ?>
+        <?php endif; ?>
     <?php endif; ?>
+
 </div>
 
 <?php $this->trigger('view.browse.before'); ?>

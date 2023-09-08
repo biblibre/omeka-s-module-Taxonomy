@@ -21,7 +21,7 @@ $sectionNavs = [
     <?php echo $taxonomyTerm->link($translate('Edit taxonomy term'), 'edit', ['class' => 'button']); ?>
     <?php endif; ?>
     <a href="<?php echo $taxonomyTerm->taxonomy()->url(); ?>" class="button"><?php echo $translate('View taxonomy'); ?></a>
-    <a href="<?php echo $this->url('admin/taxonomy-term', ['taxonomy-id' => $taxonomyTerm->taxonomy()->id()]); ?>" class="button"><?php echo $translate('View taxonomy terms'); ?></a>
+    <a href="<?php echo $this->url('admin/taxonomy-term', [], ['query' => ['taxonomy_id' => $taxonomyTerm->taxonomy()->id()]]); ?>" class="button"><?php echo $translate('View taxonomy terms'); ?></a>
 </div>
 
 <?php echo $this->sectionNav($sectionNavs, 'view.show.section_nav', $taxonomyTerm); ?>

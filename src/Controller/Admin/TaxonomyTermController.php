@@ -5,7 +5,6 @@ use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Omeka\Form\ConfirmForm;
 use Omeka\Form\ResourceBatchUpdateForm;
-use Omeka\Stdlib\Message;
 use Taxonomy\Form\TaxonomyTermForm;
 
 class TaxonomyTermController extends AbstractActionController
@@ -14,42 +13,6 @@ class TaxonomyTermController extends AbstractActionController
     {
         $view = new ViewModel;
         $view->setVariable('query', $this->params()->fromQuery());
-        return $view;
-    }
-
-    public function addAction()
-    {
-        $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
-        $taxonomy = $this->api()->read('taxonomies', $taxonomy_id)->getContent();
-
-        $form = $this->getForm(TaxonomyTermForm::class, ['taxonomy' => $taxonomy]);
-        $form->setAttribute('id', 'add-taxonomy-term');
-        if ($this->getRequest()->isPost()) {
-            $data = $this->params()->fromPost();
-            $data = $this->mergeValuesJson($data);
-            $form->setData($data);
-            if ($form->isValid()) {
-                $response = $this->api($form)->create('taxonomy_terms', $data);
-                if ($response) {
-                    $message = new Message(
-                        'Taxonomy term successfully created. %s', // @translate
-                        sprintf(
-                            '<a href="%s">%s</a>',
-                            htmlspecialchars($this->url()->fromRoute(null, [], true)),
-                            $this->translate('Add another taxonomy term?')
-                        ));
-                    $message->setEscapeHtml(false);
-                    $this->messenger()->addSuccess($message);
-                    return $this->redirect()->toUrl($response->getContent()->url());
-                }
-            } else {
-                $this->messenger()->addFormErrors($form);
-            }
-        }
-
-        $view = new ViewModel;
-        $view->setVariable('form', $form);
-        $view->setVariable('taxonomy', $taxonomy);
         return $view;
     }
 
@@ -90,13 +53,9 @@ class TaxonomyTermController extends AbstractActionController
 
     public function browseAction()
     {
-        $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
-        $taxonomy = $this->api()->read('taxonomies', $taxonomy_id)->getContent();
-
         $this->setBrowseDefaults('created');
 
         $query = $this->params()->fromQuery();
-        $query['taxonomy_id'] = $taxonomy->id();
         $response = $this->api()->search('taxonomy_terms', $query);
         $this->paginator($response->getTotalResults());
 
@@ -113,11 +72,16 @@ class TaxonomyTermController extends AbstractActionController
 
         $view = new ViewModel;
         $taxonomyTerms = $response->getContent();
-        $view->setVariable('taxonomy', $taxonomy);
         $view->setVariable('taxonomyTerms', $taxonomyTerms);
         $view->setVariable('resources', $taxonomyTerms);
         $view->setVariable('formDeleteSelected', $formDeleteSelected);
         $view->setVariable('formDeleteAll', $formDeleteAll);
+
+        if (!empty($query['taxonomy_id'])) {
+            $taxonomy = $this->api()->read('taxonomies', $query['taxonomy_id'])->getContent();
+            $view->setVariable('taxonomy', $taxonomy);
+        }
+
         return $view;
     }
 
@@ -218,8 +182,12 @@ class TaxonomyTermController extends AbstractActionController
             'admin/taxonomy-term',
             [
                 'action' => 'browse',
-                'taxonomy-id' => $taxonomyTerm->taxonomy()->id(),
-            ]
+            ],
+            [
+                'query' => [
+                    'taxonomy_id' => $taxonomyTerm->taxonomy()->id(),
+                ],
+            ],
         );
     }
 

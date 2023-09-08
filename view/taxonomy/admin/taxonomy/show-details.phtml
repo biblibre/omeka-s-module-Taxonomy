@@ -23,7 +23,7 @@ $escape = $this->plugin('escapeHtml');
     </div>
     <div class="meta-group">
         <h4><?php echo $translate('Terms'); ?></h4>
-        <div class="value"><?php echo $this->hyperlink($resource->termCount(), $this->url('admin/taxonomy-term', ['action' => 'browse', 'taxonomy-id' => $resource->id()])); ?></div>
+        <div class="value"><?php echo $this->hyperlink($resource->termCount(), $resource->termsUrl()); ?></div>
     </div>
     <div class="meta-group">
         <h4><?php echo $translate('Linked resources'); ?></h4>

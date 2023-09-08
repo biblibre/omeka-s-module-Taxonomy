@@ -70,6 +70,24 @@ return [
                     ],
                 ],
             ],
+            [
+                'label' => 'Taxonomy terms', // @translate
+                'class' => 'taxonomy-terms',
+                'route' => 'admin/taxonomy-term',
+                'action' => 'browse',
+                'resource' => 'Taxonomy\Controller\Admin\TaxonomyTerm',
+                'privilege' => 'browse',
+                'pages' => [
+                    [
+                        'route' => 'admin/taxonomy-term-id',
+                        'visible' => false,
+                    ],
+                    [
+                        'route' => 'admin/taxonomy-term',
+                        'visible' => false,
+                    ],
+                ],
+            ],
         ],
     ],
     'router' => [
@@ -105,21 +123,6 @@ return [
                             ],
                         ],
                     ],
-                    'taxonomy-term' => [
-                        'type' => \Laminas\Router\Http\Segment::class,
-                        'options' => [
-                            'route' => '/taxonomy/:taxonomy-id/term[/:action]',
-                            'constraints' => [
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'taxonomy-id' => '\d+',
-                            ],
-                            'defaults' => [
-                                '__NAMESPACE__' => 'Taxonomy\Controller\Admin',
-                                'controller' => 'taxonomy-term',
-                                'action' => 'browse',
-                            ],
-                        ],
-                    ],
                     'taxonomy-term-hierarchy' => [
                         'type' => \Laminas\Router\Http\Segment::class,
                         'options' => [
@@ -132,6 +135,20 @@ return [
                                 '__NAMESPACE__' => 'Taxonomy\Controller\Admin',
                                 'controller' => 'taxonomy-term',
                                 'action' => 'browseHierarchy',
+                            ],
+                        ],
+                    ],
+                    'taxonomy-term' => [
+                        'type' => \Laminas\Router\Http\Segment::class,
+                        'options' => [
+                            'route' => '/taxonomy-term[/:action]',
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Taxonomy\Controller\Admin',
+                                'controller' => 'taxonomy-term',
+                                'action' => 'browse',
                             ],
                         ],
                     ],
@@ -203,6 +220,11 @@ return [
                 'pattern' => '%s.mo',
                 'text_domain' => null,
             ],
+        ],
+    ],
+    'view_helpers' => [
+        'factories' => [
+            'taxonomySelect' => Service\View\Helper\TaxonomySelectFactory::class,
         ],
     ],
     'view_manager' => [

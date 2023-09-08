@@ -7,6 +7,7 @@ use Omeka\Stdlib\Message;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Taxonomy\Form\TaxonomyForm;
+use Taxonomy\Form\TaxonomyTermForm;
 
 class TaxonomyController extends AbstractActionController
 {
@@ -46,6 +47,42 @@ class TaxonomyController extends AbstractActionController
 
         $view = new ViewModel;
         $view->setVariable('form', $form);
+        return $view;
+    }
+
+    public function addTermAction()
+    {
+        $taxonomy = $this->api()->read('taxonomies', $this->params('id'))->getContent();
+
+        $form = $this->getForm(TaxonomyTermForm::class, ['taxonomy' => $taxonomy]);
+        $form->setAttribute('id', 'add-taxonomy-term');
+        if ($this->getRequest()->isPost()) {
+            $data = $this->params()->fromPost();
+            $data = $this->mergeValuesJson($data);
+            $data['o:taxonomy'] = ['o:id' => $taxonomy->id()];
+            $form->setData($data);
+            if ($form->isValid()) {
+                $response = $this->api($form)->create('taxonomy_terms', $data);
+                if ($response) {
+                    $message = new Message(
+                        'Taxonomy term successfully created. %s', // @translate
+                        sprintf(
+                            '<a href="%s">%s</a>',
+                            htmlspecialchars($this->url()->fromRoute(null, [], true)),
+                            $this->translate('Add another taxonomy term?')
+                        ));
+                    $message->setEscapeHtml(false);
+                    $this->messenger()->addSuccess($message);
+                    return $this->redirect()->toUrl($response->getContent()->url());
+                }
+            } else {
+                $this->messenger()->addFormErrors($form);
+            }
+        }
+
+        $view = new ViewModel;
+        $view->setVariable('form', $form);
+        $view->setVariable('taxonomy', $taxonomy);
         return $view;
     }
 
