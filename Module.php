@@ -30,7 +30,11 @@ class Module extends AbstractModule
         $taxonomies = $api->search('taxonomies')->getContent();
         foreach ($taxonomies as $taxonomy) {
             $dataTypeName = sprintf('resource:taxonomy-term:%s', $taxonomy->code());
-            $dataTypeManager->setFactory($dataTypeName, Service\DataType\ResourceTaxonomyTermFactory::class);
+            $dataTypeManager->configure([
+                'factories' => [
+                    $dataTypeName => Service\DataType\ResourceTaxonomyTermFactory::class,
+                ],
+            ]);
         }
     }
 
