@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed data type registration for Omeka S 4.0+
 - Fixed `subjectValueTotalCount` for Omeka S 4.0+
+- Fixed call to `displaySubjectValues` for Omeka S 4.0+
 
 ## [0.3.0] - 2023-09-08
 

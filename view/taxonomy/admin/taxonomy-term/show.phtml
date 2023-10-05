@@ -39,8 +39,11 @@ $sectionNavs = [
 <div id="taxonomy-term-linked" class="section">
     <?php
     $page = $this->params()->fromQuery('page', 1);
-    $property = $this->params()->fromQuery('property');
-    $subjectValues = $taxonomyTerm->displaySubjectValues($page, 25);
+    if (version_compare(\Omeka\Module::VERSION, '4.0', '<')) {
+        $subjectValues = $taxonomyTerm->displaySubjectValues($page, 25);
+    } else {
+        $subjectValues = $taxonomyTerm->displaySubjectValues(['page' => $page, 'perPage' => 25]);
+    }
     ?>
     <?php if ($subjectValues): ?>
         <p><?php echo $translate('The following resources link to this taxonomy term:'); ?></p>
