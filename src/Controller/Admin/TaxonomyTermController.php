@@ -129,7 +129,7 @@ class TaxonomyTermController extends AbstractActionController
     {
         $this->setBrowseDefaults('created');
 
-        $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
+        $taxonomy_id = $this->params()->fromQuery('taxonomy_id');
         $taxonomy = $this->api()->read('taxonomies', $taxonomy_id)->getContent();
         $query = $this->params()->fromQuery();
         $query['taxonomy_id'] = $taxonomy->id();
