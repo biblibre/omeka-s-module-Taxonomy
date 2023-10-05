@@ -69,6 +69,11 @@ class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
         );
     }
 
+    public function subjectValueTotalCount($property = null)
+    {
+        return $this->getAdapter()->getSubjectValueTotalCount($this->resource, $property);
+    }
+
     public function valueRepresentation()
     {
         $valueRepresentation = parent::valueRepresentation();
