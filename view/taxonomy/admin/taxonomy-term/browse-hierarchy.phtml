@@ -2,6 +2,9 @@
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'taxonomy-terms browse browse-hierarchy');
+$this->headLink()->appendStylesheet($this->assetUrl('css/jstree.css', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('vendor/jstree/jstree.min.js', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('js/taxonomy-term-tree.js', 'Taxonomy'));
 ?>
 
 <?php echo $this->pageTitle($translate('Taxonomy terms'), 1, $translate($taxonomy->displayTitle())); ?>
@@ -14,26 +17,16 @@ $this->htmlElement('body')->appendAttribute('class', 'taxonomy-terms browse brow
     <?php endif; ?>
 </div>
 
-<?php if($rootNodes): ?>
-    <?php $this->trigger('view.browse-hierarchy.before'); ?>
+<?php $this->trigger('view.browse-hierarchy.before'); ?>
 
-    <ul class="taxonomy-term-tree">
-        <?php foreach ($rootNodes as $termNode): ?>
-            <?php echo $this->partial('taxonomy/common/taxonomy-term-tree-node', ['termNode' => $termNode]); ?>
-        <?php endforeach; ?>
-    </ul>
+<div class="taxonomy-term-tree" data-taxonomy-id="<?= $taxonomy->id() ?>"></div>
 
-    <?php $this->trigger('view.browse-hierarchy.after'); ?>
+<?php $this->trigger('view.browse-hierarchy.after'); ?>
 
-    <div id="sidebar" class="sidebar">
-        <?php echo $this->hyperlink('', '#', [
-            'class' => 'sidebar-close o-icon-close',
-            'title' => $translate('Close'),
-        ]); ?>
-        <div class="sidebar-content"></div>
-    </div>
-<?php else: ?>
-    <div class="no-resources">
-        <p><?php echo $translate('Omeka could not find any taxonomy terms.'); ?></p>
-    </div>
-<?php endif; ?>
+<div id="sidebar" class="sidebar">
+    <?php echo $this->hyperlink('', '#', [
+        'class' => 'sidebar-close o-icon-close',
+        'title' => $translate('Close'),
+    ]); ?>
+    <div class="sidebar-content"></div>
+</div>

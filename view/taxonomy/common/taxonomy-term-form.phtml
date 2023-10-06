@@ -1,0 +1,52 @@
+<?php
+use Omeka\Api\Exception\NotFoundException;
+
+$translate = $this->plugin('translate');
+$this->headLink()->appendStylesheet($this->assetUrl('css/taxonomy-term-form.css', 'Taxonomy'));
+$this->headScript()->appendFile($this->assetUrl('js/taxonomy-term-form.js', 'Taxonomy'));
+
+$taxonomyTerm = null;
+$taxonomyTermId = $element->getValue();
+if ($taxonomyTermId) {
+    try {
+        $taxonomyTerm = $this->api()->read('taxonomy_terms', $taxonomyTermId)->getContent();
+    } catch (NotFoundException $e) {
+        $element->setValue(null);
+    }
+}
+?>
+<div class="taxonomy-term-form-element<?php if (!$taxonomyTerm) echo ' empty'; ?>">
+    <?php if ($taxonomyTerm): ?>
+        <span class="selected-taxonomy-term">
+            <?= $taxonomyTerm->linkPretty(); ?>
+        </span>
+    <?php else: ?>
+        <span class="selected-taxonomy-term" style="display: none;">
+        </span>
+    <?php endif; ?>
+
+    <span class="no-selected-taxonomy-term">
+        <?php echo $translate('[No taxonomy term selected]'); ?>
+    </span>
+
+    <?php $sidebarContentUrl = $this->url(
+        'admin/default',
+        ['controller' => 'taxonomy-term', 'action' => 'sidebar-select'],
+        [
+            'query' => [
+                'taxonomy_id' => $element->getOption('taxonomy_id'),
+                'exclude_children_of' => $element->getOption('taxonomy_term_id'),
+                'exclude_ids' => $element->getOption('taxonomy_term_id'),
+            ],
+        ]
+    ); ?>
+    <button type="button" class="taxonomy-term-form-select" data-sidebar-content-url="<?php echo $this->escapeHtml($sidebarContentUrl); ?>">
+        <?php echo $translate('Select'); ?>
+    </button>
+
+    <button type="button" class="taxonomy-term-form-clear red button">
+        <?php echo $translate('Clear'); ?>
+    </button>
+
+    <?php echo $this->formHidden($element); ?>
+</div>

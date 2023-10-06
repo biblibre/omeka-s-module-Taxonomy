@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- Avoid hitting memory limit when working with large number of taxonomy terms:
+  - Taxonomy term select is replaced by a selector similar to the asset
+    selector
+  - Taxonomy term hierarchy now displays only root terms. Children are loaded
+    dynamically when user clicks on a term
+
 ## [0.3.1] - 2023-10-05
 
 ### Fixed

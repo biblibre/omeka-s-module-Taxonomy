@@ -51,6 +51,22 @@ class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
         return $taxonomyTermAdapter->getRepresentation($this->resource->getParent());
     }
 
+    public function childrenCount()
+    {
+        $api = $this->getServiceLocator()->get('Omeka\ApiManager');
+        $response = $api->search('taxonomy_terms', [
+            'parent_id' => $this->id(),
+            'limit' => 0,
+        ]);
+
+        return $response->getTotalResults();
+    }
+
+    public function hasChildren()
+    {
+        return $this->childrenCount() > 0;
+    }
+
     public function siteUrl($siteSlug = null, $canonical = false)
     {
         if (!$siteSlug) {

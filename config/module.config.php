@@ -43,11 +43,13 @@ return [
         ],
     ],
     'form_elements' => [
+        'invokables' => [
+            'Taxonomy\Form\Element\TaxonomyTerm' => Form\Element\TaxonomyTerm::class,
+        ],
         'factories' => [
             'Taxonomy\Form\TaxonomyForm' => Service\Form\TaxonomyFormFactory::class,
             'Taxonomy\Form\TaxonomyTermForm' => Service\Form\TaxonomyTermFormFactory::class,
             'Taxonomy\Form\Element\TaxonomySelect' => Service\Form\Element\TaxonomySelectFactory::class,
-            'Taxonomy\Form\Element\TaxonomyTermSelect' => Service\Form\Element\TaxonomyTermSelectFactory::class,
         ],
     ],
     'navigation' => [
@@ -138,6 +140,20 @@ return [
                             ],
                         ],
                     ],
+                    'taxonomy-term-children' => [
+                        'type' => \Laminas\Router\Http\Segment::class,
+                        'options' => [
+                            'route' => '/taxonomy/:taxonomy-id/term-children',
+                            'constraints' => [
+                                'taxonomy-id' => '\d+',
+                            ],
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Taxonomy\Controller\Admin',
+                                'controller' => 'taxonomy-term',
+                                'action' => 'termChildren',
+                            ],
+                        ],
+                    ],
                     'taxonomy-term' => [
                         'type' => \Laminas\Router\Http\Segment::class,
                         'options' => [
@@ -223,8 +239,16 @@ return [
         ],
     ],
     'view_helpers' => [
+        'invokables' => [
+            'formTaxonomyTerm' => Form\View\Helper\FormTaxonomyTerm::class,
+        ],
         'factories' => [
             'taxonomySelect' => Service\View\Helper\TaxonomySelectFactory::class,
+        ],
+        'delegators' => [
+             'Laminas\Form\View\Helper\FormElement' => [
+                Service\Delegator\FormElementDelegatorFactory::class,
+            ],
         ],
     ],
     'view_manager' => [

@@ -1,0 +1,7 @@
+.taxonomy-term-form-element:not(.empty) .no-selected-taxonomy-term {
+    display: none;
+}
+
+.selected-taxonomy-term, .no-selected-taxonomy-term {
+    display: block;
+}

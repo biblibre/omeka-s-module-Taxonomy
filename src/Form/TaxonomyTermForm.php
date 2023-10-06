@@ -3,7 +3,7 @@ namespace Taxonomy\Form;
 
 use Omeka\Form\ResourceForm;
 use Laminas\Form\Element\Text;
-use Taxonomy\Form\Element\TaxonomyTermSelect;
+use Taxonomy\Form\Element\TaxonomyTerm;
 
 class TaxonomyTermForm extends ResourceForm
 {
@@ -27,10 +27,9 @@ class TaxonomyTermForm extends ResourceForm
 
         $this->add([
             'name' => 'o:parent',
-            'type' => TaxonomyTermSelect::class,
+            'type' => TaxonomyTerm::class,
             'options' => [
                 'label' => 'Parent term', // @translate
-                'empty_option' => '',
                 'taxonomy_id' => $taxonomy->id(),
                 'taxonomy_term_id' => $taxonomy_term ? $taxonomy_term->id() : null,
             ],

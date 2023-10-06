@@ -90,11 +90,27 @@ class TaxonomyTermController extends AbstractActionController
         $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
         $taxonomy = $this->api()->read('taxonomies', $taxonomy_id)->getContent();
 
-        $rootNodes = $this->taxonomyTermTree()->buildTaxonomyTermTree($taxonomy_id);
-
         $view = new ViewModel;
         $view->setVariable('taxonomy', $taxonomy);
-        $view->setVariable('rootNodes', $rootNodes);
+
+        return $view;
+    }
+
+    public function termChildrenAction()
+    {
+        $id = $this->params()->fromQuery('id');
+        if ($id) {
+            $data = ['parent_id' => $id, 'sort_by' => 'title'];
+            $children = $this->api()->search('taxonomy_terms', $data)->getContent();
+        } else {
+            $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
+            $data = ['taxonomy_id' => $taxonomy_id, 'parent_id' => null, 'sort_by' => 'title'];
+            $children = $this->api()->search('taxonomy_terms', $data)->getContent();
+        }
+
+        $view = new ViewModel;
+        $view->setVariable('terms', $children);
+        $view->setTerminal(true);
 
         return $view;
     }
@@ -138,6 +154,7 @@ class TaxonomyTermController extends AbstractActionController
         $this->paginator($response->getTotalResults());
 
         $view = new ViewModel;
+        $view->setVariable('taxonomy', $taxonomy);
         $view->setVariable('taxonomyTerms', $response->getContent());
         $view->setVariable('searchValue', $this->params()->fromQuery('search'));
         $view->setTerminal(true);

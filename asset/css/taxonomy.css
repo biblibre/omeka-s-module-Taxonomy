@@ -38,20 +38,26 @@ header nav .taxonomy-terms::before {
     content: var(--taxonomy-taxonomy-term-icon-content);
 }
 
-ul.taxonomy-term-tree {
-    padding-left: 0;
-}
-li.taxonomy-term-tree-node {
-    list-style-type: none;
-}
-li.taxonomy-term-tree-node > span {
+.taxonomy-term-tree .jstree-anchor {
     display: flex;
+}
+
+.taxonomy-term-tree .jstree-themeicon {
+    display: none;
+}
+
+.taxonomy-term-tree ul.actions {
+    display: inline-flex;
+}
+
+.taxonomy-term-tree-node-content {
+    flex-grow: 1;
+    padding-right: 36px;
+    display: inline-flex;
     align-items: center;
     justify-items: space-between;
-    border-bottom: 1px solid #dfdfdf;
-    height: 48px;
 }
-li.taxonomy-term-tree-node > span .o-icon-private {
+.taxonomy-term-tree-node-content .o-icon-private {
     display: inline-block;
     vertical-align: bottom;
     margin-left: .5em;

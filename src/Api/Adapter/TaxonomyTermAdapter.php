@@ -56,6 +56,44 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
             ));
         }
 
+        if (array_key_exists('parent_id', $query)) {
+            if ($query['parent_id'] === null) {
+                $qb->andWhere($qb->expr()->isNull('omeka_root.parent'));
+            } else {
+                $qb->andWhere($qb->expr()->eq(
+                    'omeka_root.parent',
+                    $this->createNamedParameter($qb, $query['parent_id'])
+                ));
+            }
+        }
+
+        $exclude_ids = [];
+        if (isset($query['exclude_ids'])) {
+            if (is_string($query['exclude_ids'])) {
+                $exclude_ids = explode(',', $query['exclude_ids']);
+            } elseif (is_array($query['exclude_ids'])) {
+                $exclude_ids = $query['exclude_ids'];
+            } else {
+                $exclude_ids = [$query['exclude_ids']];
+            }
+        }
+
+        if (isset($query['exclude_children_of'])) {
+            $connection = $this->getEntityManager()->getConnection();
+            $children_ids = $connection->fetchFirstColumn(
+                'WITH RECURSIVE child (id) as (select id from taxonomy_term where parent_id = ? union all select t.id from child c join taxonomy_term t on t.parent_id = c.id) select id from child',
+                [$query['exclude_children_of']]
+            );
+            $exclude_ids = array_merge($exclude_ids, $children_ids);
+        }
+
+        if (!empty($exclude_ids)) {
+            $qb->andWhere($qb->expr()->notIn(
+                'omeka_root.id',
+                $this->createNamedParameter($qb, $exclude_ids),
+            ));
+        }
+
         if (isset($query['taxonomy_id']) && is_numeric($query['taxonomy_id'])) {
             $taxonomyAlias = $this->createAlias();
             $qb->innerJoin(

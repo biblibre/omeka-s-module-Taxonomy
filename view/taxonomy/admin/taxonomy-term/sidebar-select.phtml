@@ -9,6 +9,9 @@ $taxonomyTermsFound = count($taxonomyTerms) > 0;
 <div class="search-nav">
     <div id="sidebar-resource-search" class="resource-search" data-search-url="<?php echo $escape($this->url(null, [], [], true)); ?>">
         <input type="text" name="search" value="<?php echo $escape($searchValue); ?>" id="resource-list-search">
+        <input type="hidden" name="taxonomy_id" value="<?= $taxonomy->id(); ?>">
+        <input type="hidden" name="exclude_children_of" value="<?= $escape($this->params()->fromQuery('exclude_children_of')) ?>">
+        <input type="hidden" name="exclude_ids" value="<?= $escape($this->params()->fromQuery('exclude_ids')) ?>">
         <button type="button" class="o-icon-search"><?php echo $translate('Search'); ?></button>
     </div>
     <?php if ($taxonomyTermsFound): ?>
@@ -16,7 +19,7 @@ $taxonomyTermsFound = count($taxonomyTerms) > 0;
     <?php endif; ?>
 </div>
 
-<div class="taxonomy-terms resource-list">
+<div class="taxonomy-terms resource-list taxonomy-term-list">
     <?php if ($taxonomyTermsFound): ?>
         <?php
         foreach ($taxonomyTerms as $taxonomyTerm): ?>
@@ -28,7 +31,8 @@ $taxonomyTermsFound = count($taxonomyTerms) > 0;
                 $escape($taxonomyTerm->displayTitle())
             );
             echo $hyperlink->raw($content, '#', [
-                'class' => 'sidebar-content select-resource resource-link',
+                'class' => 'sidebar-content select-resource select-taxonomy-term resource-link taxonomy-term-link',
+                'data-taxonomy-term-id' => $taxonomyTerm->id(),
                 'data-sidebar-content-url' => $taxonomyTerm->url('show-details'),
                 'data-sidebar-selector' => '#resource-details',
             ]);

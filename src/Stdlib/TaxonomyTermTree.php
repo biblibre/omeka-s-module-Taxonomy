@@ -18,6 +18,7 @@ class TaxonomyTermTree
         return $this->apiManager;
     }
 
+    // FIXME delete ?
     public function buildTaxonomyTermTree($taxonomy_id)
     {
         $terms = $this->getApiManager()->search('taxonomy_terms', ['taxonomy_id' => $taxonomy_id])->getContent();
