@@ -9,6 +9,6 @@
     </p>
     <?php echo $this->hyperlink($this->translate('Taxonomy terms'), '#', [
         'class' => 'o-icon-taxonomy-terms button value-annotation-resource-select',
-        'data-sidebar-content-url' => $this->url('admin/taxonomy-term', ['action' => 'sidebar-select', 'taxonomy-id' => $taxonomy->id()], false),
+        'data-sidebar-content-url' => $this->url('admin/taxonomy-term', ['action' => 'sidebar-select'], ['query' => ['taxonomy_id' => $taxonomy->id(), 'sort_by' => 'title', 'sort_order' => 'asc']], false),
     ]); ?>
 </div>

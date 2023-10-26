@@ -3,6 +3,7 @@ namespace Taxonomy\Controller\Admin;
 
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
+use Laminas\View\Model\JsonModel;
 use Omeka\Form\ConfirmForm;
 use Omeka\Form\ResourceBatchUpdateForm;
 use Taxonomy\Form\TaxonomyTermForm;
@@ -96,23 +97,35 @@ class TaxonomyTermController extends AbstractActionController
         return $view;
     }
 
-    public function termChildrenAction()
+    public function browseJstreeAction()
     {
-        $id = $this->params()->fromQuery('id');
-        if ($id) {
-            $data = ['parent_id' => $id, 'sort_by' => 'title'];
-            $children = $this->api()->search('taxonomy_terms', $data)->getContent();
-        } else {
-            $taxonomy_id = $this->params()->fromRoute('taxonomy-id');
-            $data = ['taxonomy_id' => $taxonomy_id, 'parent_id' => null, 'sort_by' => 'title'];
-            $children = $this->api()->search('taxonomy_terms', $data)->getContent();
+        $query = $this->params()->fromQuery();
+
+        if (!array_key_exists('parent_id', $query)) {
+            $query['parent_id'] = null;
         }
 
-        $view = new ViewModel;
-        $view->setVariable('terms', $children);
-        $view->setTerminal(true);
+        $context = $query['context'] ?? '';
+        unset($query['context']);
+        if ($context === 'sidebar-select') {
+            $partialName = 'taxonomy/common/taxonomy-term-jstree-node-text-sidebar-select.phtml';
+        } else {
+            $partialName = 'taxonomy/common/taxonomy-term-jstree-node-text.phtml';
+        }
 
-        return $view;
+        $taxonomyTerms = $this->api()->search('taxonomy_terms', $query)->getContent();
+        $partialViewHelper = $this->viewHelpers()->get('partial');
+
+        $response = [];
+        foreach ($taxonomyTerms as $taxonomyTerm) {
+            $response[] = [
+                'id' => $taxonomyTerm->id(),
+                'text' => $partialViewHelper($partialName, ['taxonomyTerm' => $taxonomyTerm]),
+                'children' => $taxonomyTerm->hasChildren(),
+            ];
+        }
+
+        return new JsonModel($response);
     }
 
     public function showAction()

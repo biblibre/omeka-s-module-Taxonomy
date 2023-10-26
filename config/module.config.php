@@ -140,20 +140,6 @@ return [
                             ],
                         ],
                     ],
-                    'taxonomy-term-children' => [
-                        'type' => \Laminas\Router\Http\Segment::class,
-                        'options' => [
-                            'route' => '/taxonomy/:taxonomy-id/term-children',
-                            'constraints' => [
-                                'taxonomy-id' => '\d+',
-                            ],
-                            'defaults' => [
-                                '__NAMESPACE__' => 'Taxonomy\Controller\Admin',
-                                'controller' => 'taxonomy-term',
-                                'action' => 'termChildren',
-                            ],
-                        ],
-                    ],
                     'taxonomy-term' => [
                         'type' => \Laminas\Router\Http\Segment::class,
                         'options' => [

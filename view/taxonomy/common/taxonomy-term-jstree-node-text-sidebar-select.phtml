@@ -1,0 +1,15 @@
+<span class="taxonomy-term-tree-node-content">
+    <?php
+    $attributes = [
+        'class' => 'sidebar-content select-resource select-taxonomy-term resource-link taxonomy-term-link',
+        'data-taxonomy-term-id' => $taxonomyTerm->id(),
+        'data-sidebar-content-url' => $taxonomyTerm->url('show-details'),
+        'data-sidebar-selector' => '#resource-details',
+    ];
+    ?>
+    <?= $this->hyperlink($taxonomyTerm->displayTitle(), '#', $attributes); ?>
+
+    <?php if (!$taxonomyTerm->isPublic()): ?>
+        <span class="o-icon-private" aria-label="<?php echo $this->translate('Private'); ?>"></span>
+    <?php endif; ?>
+</span>

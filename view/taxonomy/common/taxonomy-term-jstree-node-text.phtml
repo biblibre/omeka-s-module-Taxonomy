@@ -1,0 +1,30 @@
+<span class="taxonomy-term-tree-node-content">
+    <?= $taxonomyTerm->link($taxonomyTerm->displayTitle()); ?>
+
+    <?php if (!$taxonomyTerm->isPublic()): ?>
+        <span class="o-icon-private" aria-label="<?php echo $this->translate('Private'); ?>"></span>
+    <?php endif; ?>
+
+    <ul class="actions">
+        <?php if ($taxonomyTerm->userIsAllowed('update')): ?>
+            <li><?php echo $taxonomyTerm->link('', 'edit', [
+                'class' => 'o-icon-edit',
+                'title' => $this->translate('Edit'),
+            ]); ?></li>
+        <?php endif; ?>
+        <?php if ($taxonomyTerm->userIsAllowed('delete')): ?>
+            <li><?php echo $this->hyperlink('', '#', [
+                'data-sidebar-selector' => '#sidebar',
+                'data-sidebar-content-url' => $taxonomyTerm->url('delete-confirm'),
+                'class' => 'o-icon-delete sidebar-content',
+                'title' => $this->translate('Delete'),
+            ]); ?></li>
+        <?php endif; ?>
+        <li><?php echo $this->hyperlink('', '#', [
+            'data-sidebar-selector' => '#sidebar',
+            'data-sidebar-content-url' => $taxonomyTerm->url('show-details'),
+            'class' => 'o-icon-more sidebar-content',
+            'title' => $this->translate('Details'),
+        ]); ?></li>
+    </ul>
+</span>

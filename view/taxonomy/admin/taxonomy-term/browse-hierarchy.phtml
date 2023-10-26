@@ -2,9 +2,6 @@
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'taxonomy-terms browse browse-hierarchy');
-$this->headLink()->appendStylesheet($this->assetUrl('css/jstree.css', 'Omeka'));
-$this->headScript()->appendFile($this->assetUrl('vendor/jstree/jstree.min.js', 'Omeka'));
-$this->headScript()->appendFile($this->assetUrl('js/taxonomy-term-tree.js', 'Taxonomy'));
 ?>
 
 <?php echo $this->pageTitle($translate('Taxonomy terms'), 1, $translate($taxonomy->displayTitle())); ?>
@@ -19,7 +16,7 @@ $this->headScript()->appendFile($this->assetUrl('js/taxonomy-term-tree.js', 'Tax
 
 <?php $this->trigger('view.browse-hierarchy.before'); ?>
 
-<div class="taxonomy-term-tree" data-taxonomy-id="<?= $taxonomy->id() ?>"></div>
+<div class="taxonomy-term-tree" data-children-url="<?= $this->url('admin/taxonomy-term', ['action' => 'browse-jstree'], ['query' => ['taxonomy_id' => $taxonomy->id(), 'sort_by' => 'title', 'sort_order' => 'asc']]) ?>"></div>
 
 <?php $this->trigger('view.browse-hierarchy.after'); ?>
 

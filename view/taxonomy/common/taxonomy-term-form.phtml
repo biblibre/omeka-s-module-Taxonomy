@@ -30,13 +30,15 @@ if ($taxonomyTermId) {
     </span>
 
     <?php $sidebarContentUrl = $this->url(
-        'admin/default',
-        ['controller' => 'taxonomy-term', 'action' => 'sidebar-select'],
+        'admin/taxonomy-term',
+        ['action' => 'sidebar-select'],
         [
             'query' => [
                 'taxonomy_id' => $element->getOption('taxonomy_id'),
                 'exclude_children_of' => $element->getOption('taxonomy_term_id'),
                 'exclude_ids' => $element->getOption('taxonomy_term_id'),
+                'sort_by' => 'title',
+                'sort_order' => 'asc',
             ],
         ]
     ); ?>

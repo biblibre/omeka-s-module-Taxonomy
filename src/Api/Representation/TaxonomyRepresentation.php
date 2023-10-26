@@ -91,7 +91,7 @@ class TaxonomyRepresentation extends AbstractResourceEntityRepresentation
         );
     }
 
-    public function subjectValueTotalCount($property = null)
+    public function subjectValueTotalCount($property = null, $resourceType = null, $siteId = null)
     {
         return $this->getAdapter()->getSubjectValueTotalCount($this->resource, $property);
     }

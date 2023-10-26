@@ -151,7 +151,11 @@ class Module extends AbstractModule
     {
         $view = $event->getTarget();
         if ($view->params()->fromRoute('__ADMIN__')) {
+            $view->headLink()->appendStylesheet($view->assetUrl('css/jstree.css', 'Omeka'));
             $view->headLink()->appendStylesheet($view->assetUrl('css/taxonomy.css', 'Taxonomy'));
+
+            $view->headScript()->appendFile($view->assetUrl('vendor/jstree/jstree.min.js', 'Omeka'));
+            $view->headScript()->appendFile($view->assetUrl('js/taxonomy-term-tree.js', 'Taxonomy'));
             $view->headScript()->appendFile($view->assetUrl('js/resource-form.js', 'Taxonomy'));
         }
     }

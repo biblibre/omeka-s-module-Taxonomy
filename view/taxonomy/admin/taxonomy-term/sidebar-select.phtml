@@ -6,42 +6,65 @@ $taxonomyTermsFound = count($taxonomyTerms) > 0;
 ?>
 
 <h3><?php echo $translate('Select taxonomy term'); ?></h3>
-<div class="search-nav">
-    <div id="sidebar-resource-search" class="resource-search" data-search-url="<?php echo $escape($this->url(null, [], [], true)); ?>">
-        <input type="text" name="search" value="<?php echo $escape($searchValue); ?>" id="resource-list-search">
-        <input type="hidden" name="taxonomy_id" value="<?= $taxonomy->id(); ?>">
-        <input type="hidden" name="exclude_children_of" value="<?= $escape($this->params()->fromQuery('exclude_children_of')) ?>">
-        <input type="hidden" name="exclude_ids" value="<?= $escape($this->params()->fromQuery('exclude_ids')) ?>">
-        <button type="button" class="o-icon-search"><?php echo $translate('Search'); ?></button>
-    </div>
-    <?php if ($taxonomyTermsFound): ?>
-        <?php echo $this->pagination('common/sidebar-pagination.phtml'); ?>
-    <?php endif; ?>
-</div>
 
-<div class="taxonomy-terms resource-list taxonomy-term-list">
-    <?php if ($taxonomyTermsFound): ?>
-        <?php
-        foreach ($taxonomyTerms as $taxonomyTerm): ?>
-        <div class="resource taxonomy-term">
-            <?php
-            $content = sprintf(
-                '%s<span class="resource-name">%s</span>',
-                $this->thumbnail($taxonomyTerm, 'square'),
-                $escape($taxonomyTerm->displayTitle())
-            );
-            echo $hyperlink->raw($content, '#', [
-                'class' => 'sidebar-content select-resource select-taxonomy-term resource-link taxonomy-term-link',
-                'data-taxonomy-term-id' => $taxonomyTerm->id(),
-                'data-sidebar-content-url' => $taxonomyTerm->url('show-details'),
-                'data-sidebar-selector' => '#resource-details',
-            ]);
-            ?>
+<button type="button" class="taxonomy-tree-view-toggle">
+    <?= $escape($translate('Tree view')) ?>
+</button>
+
+<div class="taxonomy-term-sidebar-list">
+    <div class="search-nav">
+        <div id="sidebar-resource-search" class="resource-search" data-search-url="<?php echo $escape($this->url(null, [], [], true)); ?>">
+            <input type="text" name="search" value="<?php echo $escape($searchValue); ?>" id="resource-list-search">
+            <input type="hidden" name="taxonomy_id" value="<?= $taxonomy->id(); ?>">
+            <input type="hidden" name="exclude_children_of" value="<?= $escape($this->params()->fromQuery('exclude_children_of')) ?>">
+            <input type="hidden" name="exclude_ids" value="<?= $escape($this->params()->fromQuery('exclude_ids')) ?>">
+            <button type="button" class="o-icon-search"><?php echo $translate('Search'); ?></button>
         </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <span class="no-resources"><?php echo $translate('No taxonomy terms found.'); ?></span>
-    <?php endif; ?>
+        <?php if ($taxonomyTermsFound): ?>
+            <?php echo $this->pagination('common/sidebar-pagination.phtml'); ?>
+        <?php endif; ?>
+    </div>
+
+    <div class="taxonomy-terms resource-list taxonomy-term-list">
+        <?php if ($taxonomyTermsFound): ?>
+            <?php
+            foreach ($taxonomyTerms as $taxonomyTerm): ?>
+            <div class="resource taxonomy-term">
+                <?php
+                $content = sprintf(
+                    '%s<span class="resource-name">%s</span>',
+                    $this->thumbnail($taxonomyTerm, 'square'),
+                    $escape($taxonomyTerm->displayTitle())
+                );
+                $parent = $taxonomyTerm;
+                $ancestors = [];
+                while ($parent = $parent->parent()) {
+                    $ancestors[] = $parent->displayTitle();
+                }
+                echo $hyperlink->raw($content, '#', [
+                    'class' => 'sidebar-content select-resource select-taxonomy-term resource-link taxonomy-term-link',
+                    'title' => $taxonomyTerm->displayTitle() . ' · ' . implode(' · ', $ancestors),
+                    'data-taxonomy-term-id' => $taxonomyTerm->id(),
+                    'data-sidebar-content-url' => $taxonomyTerm->url('show-details'),
+                    'data-sidebar-selector' => '#resource-details',
+                ]);
+                ?>
+            </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <span class="no-resources"><?php echo $translate('No taxonomy terms found.'); ?></span>
+        <?php endif; ?>
+    </div>
 </div>
 
-
+<div class="taxonomy-term-sidebar-tree">
+    <div class="taxonomy-terms resource-list taxonomy-term-list">
+        <?php
+            $jstreeQuery = $this->params()->fromQuery();
+            unset($jstreeQuery['page']);
+            unset($jstreeQuery['search']);
+            $jstreeQuery['context'] = 'sidebar-select';
+        ?>
+        <div class="taxonomy-term-tree" data-children-url="<?= $this->url('admin/taxonomy-term', ['action' => 'browse-jstree'], ['query' => $jstreeQuery]) ?>"></div>
+    </div>
+</div>

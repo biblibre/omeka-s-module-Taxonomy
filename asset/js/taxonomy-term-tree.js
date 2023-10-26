@@ -1,17 +1,31 @@
 (function () {
     'use strict';
 
-    $(document).ready(function() {
-        $('.taxonomy-term-tree').each(function () {
-            const taxonomyId = this.getAttribute('data-taxonomy-id');
+    $(document).ready(function (event) {
+        $('#content').on('click', '.taxonomy-tree-view-toggle', function (event) {
+            $(this).closest('.sidebar').toggleClass('taxonomy-tree-view');
+        });
+    });
+
+    $(document).on('o:sidebar-content-loaded', function (event) {
+        initTaxonomyTermTree(event.target);
+    });
+
+    $(document).ready(function (event) {
+        initTaxonomyTermTree(event.target);
+    });
+
+    function initTaxonomyTermTree (context) {
+        $('.taxonomy-term-tree', context).each(function () {
+            const childrenUrl = this.getAttribute('data-children-url');
             $(this).jstree({
                 core: {
                     data: {
-                        url: `/admin/taxonomy/${taxonomyId}/term-children`,
+                        url: childrenUrl,
                         data: function (node) {
                             const params = {};
                             if (node.id !== '#') {
-                                params.id = node.id;
+                                params.parent_id = node.id;
                             }
 
                             return params;
@@ -22,12 +36,12 @@
         });
 
         // Make clicks on taxonomy term title and edit icon work as expected
-        $('.taxonomy-term-tree').on('changed.jstree', function (event, data) {
+        $('.taxonomy-term-tree', context).on('changed.jstree', function (event, data) {
             const target = data.event.target;
             const href = target.getAttribute('href');
             if (href && href !== '#') {
                 location.href = href
             }
         });
-    });
+    }
 })();

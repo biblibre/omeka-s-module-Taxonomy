@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     selector
   - Taxonomy term hierarchy now displays only root terms. Children are loaded
     dynamically when user clicks on a term
+- Added a tree view in the taxonomy term selection sidebar
 
 ## [0.3.1] - 2023-10-05
 

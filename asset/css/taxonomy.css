@@ -63,3 +63,38 @@ header nav .taxonomy-terms::before {
     margin-left: .5em;
     opacity: .5;
 }
+
+.sidebar .taxonomy-term-sidebar-tree {
+    display: none;
+}
+
+.sidebar.taxonomy-tree-view .taxonomy-term-sidebar-tree {
+    display: block;
+}
+.sidebar.taxonomy-tree-view .taxonomy-term-sidebar-list {
+    display: none;
+}
+
+.sidebar button.taxonomy-tree-view-toggle {
+    background-color: transparent;
+    color: #676767;
+    box-shadow: none;
+    margin: 12px;
+    padding: 0;
+    line-height: 1;
+    min-height: 0
+}
+.sidebar button.taxonomy-tree-view-toggle:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "";
+    display: inline-block;
+    margin-right: 6px
+}
+.sidebar.taxonomy-tree-view button.taxonomy-tree-view-toggle:before {
+    content: ""
+}
+
+.taxonomy-term-sidebar-tree .jstree-children:not(.jstree-container-ul) {
+    padding-left: 12px;
+}

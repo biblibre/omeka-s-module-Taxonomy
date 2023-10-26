@@ -13,7 +13,7 @@ $escape = $this->plugin('escapeHtml');
     <?php
     echo $this->hyperlink(sprintf($translate('Taxonomy terms: %s'), $taxonomy->displayTitle()), '#taxonomy-term-resource-select', [
         'class' => 'o-icon-taxonomy-terms button resource-select',
-        'data-sidebar-content-url' => $taxonomy->termsUrl('sidebar-select'),
+        'data-sidebar-content-url' => $this->url('admin/taxonomy-term', ['action' => 'sidebar-select'], ['query' => ['taxonomy_id' => $taxonomy->id(), 'sort_by' => 'title', 'sort_order' => 'asc']]),
     ]);
     ?>
 </div>
