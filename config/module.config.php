@@ -214,6 +214,11 @@ return [
             'Taxonomy\TaxonomyTermTree' => Service\Stdlib\TaxonomyTermTreeFactory::class,
         ],
     ],
+    'solr_value_formatters' => [
+        'factories' => [
+            'taxonomy_term_ancestors' => Service\SolrValueFormatter\TaxonomyTermAncestorsFactory::class,
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [
