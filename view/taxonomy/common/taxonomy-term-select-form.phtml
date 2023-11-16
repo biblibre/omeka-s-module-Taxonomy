@@ -1,0 +1,9 @@
+<?php
+$this->headLink()->appendStylesheet('https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css');
+$this->headLink()->appendStylesheet($this->assetUrl('css/taxonomy-term-select-form.css', 'Taxonomy'));
+$this->headScript()->appendFile('https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js');
+$this->headScript()->appendFile($this->assetUrl('js/taxonomy-term-select-form.js', 'Taxonomy'));
+$element->setAttribute('data-search-url', $this->url('taxonomy-term-search', [], ['force_canonical' => true]));
+$element->setAttribute('data-taxonomy-id', $element->getOption('taxonomy_id'));
+?>
+<?= $this->formSelect($element) ?>

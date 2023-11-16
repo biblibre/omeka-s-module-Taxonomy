@@ -20,6 +20,7 @@ return [
             'Taxonomy\Controller\Admin\TaxonomyTerm' => Controller\Admin\TaxonomyTermController::class,
             'Taxonomy\Controller\Site\Taxonomy' => Controller\Site\TaxonomyController::class,
             'Taxonomy\Controller\Site\TaxonomyTerm' => Controller\Site\TaxonomyTermController::class,
+            'Taxonomy\Controller\TaxonomyTermSearch' => Controller\TaxonomyTermSearchController::class,
         ],
     ],
     'data_types' => [
@@ -45,6 +46,7 @@ return [
     'form_elements' => [
         'invokables' => [
             'Taxonomy\Form\Element\TaxonomyTerm' => Form\Element\TaxonomyTerm::class,
+            'Taxonomy\Form\Element\TaxonomyTermSelect' => Form\Element\TaxonomyTermSelect::class,
         ],
         'factories' => [
             'Taxonomy\Form\TaxonomyForm' => Service\Form\TaxonomyFormFactory::class,
@@ -207,6 +209,22 @@ return [
                     ],
                 ],
             ],
+            'taxonomy-term-search' => [
+                'type' => \Laminas\Router\Http\Segment::class,
+                'options' => [
+                    'route' => '/taxonomy-term-search',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Taxonomy\Controller',
+                        'controller' => 'TaxonomyTermSearch',
+                        'action' => 'search',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'search_form_elements' => [
+        'factories' => [
+            'taxonomy_term_select' => Service\SearchFormElement\TaxonomyTermSelectFactory::class,
         ],
     ],
     'service_manager' => [
@@ -232,6 +250,7 @@ return [
     'view_helpers' => [
         'invokables' => [
             'formTaxonomyTerm' => Form\View\Helper\FormTaxonomyTerm::class,
+            'formTaxonomyTermSelect' => Form\View\Helper\FormTaxonomyTermSelect::class,
         ],
         'factories' => [
             'taxonomySelect' => Service\View\Helper\TaxonomySelectFactory::class,

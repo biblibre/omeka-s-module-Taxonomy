@@ -15,6 +15,7 @@ class FormElementDelegatorFactory implements DelegatorFactoryInterface
         $formElement = $callback();
 
         $formElement->addClass('Taxonomy\Form\Element\TaxonomyTerm', 'formTaxonomyTerm');
+        $formElement->addClass('Taxonomy\Form\Element\TaxonomyTermSelect', 'formTaxonomyTermSelect');
 
         return $formElement;
     }

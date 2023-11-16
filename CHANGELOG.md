@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Taxonomy term hierarchy now displays only root terms. Children are loaded
     dynamically when user clicks on a term
 - Added a tree view in the taxonomy term selection sidebar
+- Added a [Search](https://github.com/biblibre/omeka-s-module-Search) form
+  element to be able to search for a taxonomy term
 
 ## [0.3.1] - 2023-10-05
 
