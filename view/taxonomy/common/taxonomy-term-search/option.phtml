@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var Taxonomy\Api\Representation\TaxonomyTermRepresentation $taxonomyTerm
+ */
+?>
+
+<?php
+$term = $taxonomyTerm;
+$ancestors = [];
+while ($term = $term->parent()) {
+    $ancestors[] = $term->displayTitle();
+}
+?>
+
+<div class="taxonomy-term-search-option-title"><?= $taxonomyTerm->displayTitle() ?></div>
+<div class="taxonomy-term-search-option-ancestors"><?= implode(' &middot; ', $ancestors) ?></div>

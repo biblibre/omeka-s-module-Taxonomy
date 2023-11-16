@@ -1,3 +1,12 @@
 .ts-control > input {
     height: unset;
 }
+
+.taxonomy-term-search-option-ancestors {
+    font-size: smaller;
+    filter: opacity(80%);
+}
+
+.ts-dropdown .taxonomy-term-search-option-ancestors .highlight {
+    background: unset;
+}

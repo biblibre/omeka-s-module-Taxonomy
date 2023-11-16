@@ -20,6 +20,18 @@ class TaxonomyTermSearchController extends AbstractActionController
         ];
         $terms = $this->api()->search('taxonomy_terms', $params)->getContent();
 
-        return new JsonModel($terms);
+        $response = [];
+        $partial = $this->viewHelpers()->get('Partial');
+        foreach ($terms as $term) {
+            $response[] = [
+                'id' => $term->id(),
+                'title' => $term->displayTitle(),
+                'render' => [
+                    'option' => $partial('taxonomy/common/taxonomy-term-search/option', ['taxonomyTerm' => $term]),
+                ],
+            ];
+        }
+
+        return new JsonModel($response);
     }
 }

@@ -4,8 +4,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.taxonomy-term-select').forEach(function (el) {
             const settings = {
-                valueField: 'o:id',
-                labelField: 'o:title',
+                valueField: 'id',
+                labelField: 'title',
                 searchField: [],
                 load: function(query, callback) {
                     this.clearOptions();
@@ -21,6 +21,11 @@
                         }).catch(()=>{
                             callback();
                         });
+                },
+                render: {
+                    option: function (data, escape) {
+                        return '<div>' + data.render.option + '</div>';
+                    },
                 },
             };
             new TomSelect(el, settings);
