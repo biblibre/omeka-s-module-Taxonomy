@@ -51,18 +51,9 @@ class TaxonomyTermSelect implements SearchFormElementInterface
         $taxonomySelect->setAttribute('data-field-data-key', 'taxonomy_id');
         $taxonomySelect->setAttribute('required', true);
 
-        $maxDepthInput = new \Laminas\Form\Element\Number('max_depth');
-        $maxDepthInput->setLabel('Maximum depth'); // @translate
-        $maxDepthInput->setValue($formElementData['max_depth'] ?? '1');
-        $maxDepthInput->setAttribute('data-field-data-key', 'max_depth');
-        $maxDepthInput->setAttribute('required', true);
-        $maxDepthInput->setAttribute('min', '1');
-
         $configForm = $view->formRow($labelInput);
         $configForm .= $view->formRow($fieldNameSelect);
-
         $configForm .= $view->formRow($taxonomySelect);
-        $configForm .= $view->formRow($maxDepthInput);
 
         return $configForm;
     }
