@@ -1,0 +1,73 @@
+.taxonomy-term-tree {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.taxonomy-term-tree .jstree-container-ul {
+    margin: 0;
+}
+
+.taxonomy-term-tree .jstree-container-ul,
+.taxonomy-term-tree .jstree-container-ul ul {
+    list-style-type: none;
+}
+
+.taxonomy-term-tree .jstree-children {
+    padding-left: 36px;
+}
+
+.taxonomy-term-tree .jstree-container-ul,
+.taxonomy-term-tree .jstree-container-ul > li {
+    padding-left: 0;
+}
+
+.taxonomy-term-tree .jstree-node {
+    position: relative;
+}
+
+.taxonomy-term-tree .jstree-anchor {
+    width: 100%;
+    background-color: rgba(0, 0, 0, .04);
+    padding: 6px;
+    position: relative;
+    margin-bottom: 6px;
+    display: block;
+    margin: 6px 0 0;
+}
+
+.taxonomy-term-tree .jstree-hovered,
+.taxonomy-term-tree .jstree-clicked {
+    background-color: rgba(0, 0, 0, .12);
+}
+
+.taxonomy-term-tree i.jstree-icon {
+    font-style: normal;
+    position: absolute;
+    right: 12px;
+    top: 0;
+}
+
+.taxonomy-term-tree .jstree-icon:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.taxonomy-term-tree .jstree-open > .jstree-ocl,
+.taxonomy-term-tree .jstree-closed > .jstree-ocl {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    background-color: rgba(0, 0, 0, .2);
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    right: 0;
+}
+
+.taxonomy-term-tree .jstree-open > .jstree-ocl:before {
+    content: "";
+}
+
+.taxonomy-term-tree .jstree-closed > .jstree-ocl:before {
+    content: "";
+}

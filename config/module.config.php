@@ -9,6 +9,11 @@ return [
             'taxonomy_terms' => Api\Adapter\TaxonomyTermAdapter::class,
         ],
     ],
+    'block_layouts' => [
+        'factories' => [
+            'taxonomyTermTree' => Service\Site\BlockLayout\TaxonomyTermTreeFactory::class,
+        ],
+    ],
     'controller_plugins' => [
         'factories' => [
             'taxonomyTermTree' => Service\Mvc\Controller\Plugin\TaxonomyTermTreeFactory::class,
@@ -188,6 +193,20 @@ return [
                                 '__NAMESPACE__' => 'Taxonomy\Controller\Site',
                                 'controller' => 'taxonomy',
                                 'action' => 'show',
+                            ],
+                        ],
+                    ],
+                    'taxonomy-term' => [
+                        'type' => \Laminas\Router\Http\Segment::class,
+                        'options' => [
+                            'route' => '/taxonomy-term[/:action]',
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                '__NAMESPACE__' => 'Taxonomy\Controller\Site',
+                                'controller' => 'taxonomy-term',
+                                'action' => 'browse-jstree',
                             ],
                         ],
                     ],

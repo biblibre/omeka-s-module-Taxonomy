@@ -38,9 +38,12 @@
         // Make clicks on taxonomy term title and edit icon work as expected
         $('.taxonomy-term-tree', context).on('changed.jstree', function (event, data) {
             const target = data.event.target;
-            const href = target.getAttribute('href');
-            if (href && href !== '#') {
-                location.href = href
+            const link = target.closest('a[href]');
+            if (link) {
+                const href = link.getAttribute('href');
+                if (href && href !== '#') {
+                    location.href = href
+                }
             }
         });
     }
