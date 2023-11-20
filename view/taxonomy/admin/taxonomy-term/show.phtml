@@ -10,7 +10,7 @@ if ($owner = $taxonomyTerm->owner()) {
 
 $sectionNavs = [
     'taxonomy-term-metadata' => $translate('Metadata'),
-    'taxonomy-term-linked' => $translate('Linked resources'),
+    'resources-linked' => $translate('Linked resources'),
 ];
 ?>
 
@@ -36,18 +36,13 @@ $sectionNavs = [
     <?php echo $taxonomyTerm->displayValues(); ?>
 </div>
 
-<div id="taxonomy-term-linked" class="section">
-    <?php
-    $page = $this->params()->fromQuery('page', 1);
-    if (version_compare(\Omeka\Module::VERSION, '4.0', '<')) {
-        $subjectValues = $taxonomyTerm->displaySubjectValues($page, 25);
-    } else {
-        $subjectValues = $taxonomyTerm->displaySubjectValues(['page' => $page, 'perPage' => 25]);
-    }
-    ?>
-    <?php if ($subjectValues): ?>
-        <p><?php echo $translate('The following resources link to this taxonomy term:'); ?></p>
-        <?php echo $subjectValues; ?>
+<div id="resources-linked" class="section">
+    <?php if ($taxonomyTerm->subjectValueTotalCountCompat()): ?>
+        <?= $taxonomyTerm->displaySubjectValuesCompat([
+            'page' => $this->params()->fromQuery('page', 1),
+            'perPage' => 25,
+            'resourceProperty' => $this->params()->fromQuery('resource_property'),
+        ]); ?>
     <?php else: ?>
         <div class="no-resources">
             <p><?php echo $translate('No resources link to this taxonomy term.'); ?></p>

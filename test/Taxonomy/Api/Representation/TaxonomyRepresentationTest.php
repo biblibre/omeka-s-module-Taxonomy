@@ -22,7 +22,7 @@ class TaxonomyRepresentationTest extends TestCase
 
     public function testSubjectValueTotalCountDoesNotThrow()
     {
-        $count = $this->taxonomy->subjectValueTotalCount();
+        $count = $this->taxonomy->subjectValueTotalCountCompat();
         $this->assertEquals(0, $count);
     }
 }

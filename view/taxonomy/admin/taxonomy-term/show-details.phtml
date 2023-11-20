@@ -38,7 +38,7 @@ $escape = $this->plugin('escapeHtml');
     </div>
     <div class="meta-group">
         <h4><?php echo $translate('Linked resources'); ?></h4>
-        <div class="value"><?php echo $resource->subjectValueTotalCount(); ?></div>
+        <div class="value"><?php echo $resource->subjectValueTotalCountCompat(); ?></div>
     </div>
     <?php $this->trigger('view.details', array('entity' => $resource)); ?>
 </div>

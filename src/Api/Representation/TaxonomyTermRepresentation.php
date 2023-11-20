@@ -1,7 +1,7 @@
 <?php
 namespace Taxonomy\Api\Representation;
 
-use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
+use Taxonomy\Api\Representation\AbstractResourceEntityRepresentation;
 
 class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
 {
@@ -83,11 +83,6 @@ class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
             ],
             ['force_canonical' => $canonical]
         );
-    }
-
-    public function subjectValueTotalCount($property = null, $resourceType = null, $siteId = null)
-    {
-        return $this->getAdapter()->getSubjectValueTotalCount($this->resource, $property);
     }
 
     public function valueRepresentation()

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 - Add a site block layout to display a taxonomy term tree
+- Fix "Linked resources" sections for all versions of Omeka S >= 3.1
 
 ## [0.4.0] - 2023-11-16
 
