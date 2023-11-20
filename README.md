@@ -58,7 +58,6 @@ Taxonomy and [Thesaurus] are similar, but there are a few differences:
 
 ## Sponsors
 
-* Bibliothèque patrimoniale de Montauban
 * Université de Lille
 
 ## License
