@@ -2,7 +2,6 @@
 
 namespace Taxonomy\Site\BlockLayout;
 
-use Laminas\Form\Form;
 use Laminas\Form\FormElementManager;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Site\BlockLayout\AbstractBlockLayout;

@@ -1,8 +1,6 @@
 <?php
 namespace Taxonomy\Api\Representation;
 
-use Taxonomy\Api\Representation\AbstractResourceEntityRepresentation;
-
 class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
 {
     public function getControllerName()
