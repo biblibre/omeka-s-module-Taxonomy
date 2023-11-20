@@ -12,7 +12,7 @@ abstract class AbstractResourceEntityRepresentation extends \Omeka\Api\Represent
         }
         if (version_compare(\Omeka\Module::VERSION, '4.1', '<')) {
             // Method subjectValueTotalCount has been removed in 4.0
-            return $this->getAdapter()->getSubjectValueTotalCount($this->resource, $property);
+            return $this->getAdapter()->getSubjectValueTotalCount($this->resource, $propertyId);
         }
 
         return $this->subjectValueTotalCount($propertyId, $resourceType, $siteId);
