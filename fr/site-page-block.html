@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="fr" >
 <head>
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Replace existing values by taxonomy terms &mdash; Taxonomy  documentation</title>
+  <title>Bloc de page de site &mdash; Documentation Taxonomy </title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/extra.css" type="text/css" />
@@ -15,11 +15,11 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Site page block" href="site-page-block.html" />
-    <link rel="prev" title="Taxonomy terms" href="taxonomy-terms.html" /> 
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Remplacer les valeurs existantes par des termes de taxonomie" href="replace-existing-values.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,19 +35,19 @@
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Table of contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table des matières</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="taxonomies.html">Taxonomies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="taxonomy-terms.html">Taxonomy terms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Replace existing values by taxonomy terms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="site-page-block.html">Site page block</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taxonomy-terms.html">Termes de taxonomie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="replace-existing-values.html">Remplacer les valeurs existantes par des termes de taxonomie</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bloc de page de site</a></li>
 </ul>
 
         </div>
@@ -64,9 +64,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Replace existing values by taxonomy terms</li>
+      <li class="breadcrumb-item active">Bloc de page de site</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/replace-existing-values.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/site-page-block.rst.txt" rel="nofollow"> Afficher la source de la page</a>
       </li>
   </ul>
   <hr/>
@@ -74,28 +74,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="replace-existing-values-by-taxonomy-terms">
-<h1>Replace existing values by taxonomy terms<a class="headerlink" href="#replace-existing-values-by-taxonomy-terms" title="Permalink to this heading"></a></h1>
-<p>It’s possible to replace existing literal values by links to taxonomy
-terms by using the batch edit tool:</p>
-<ul class="simple">
-<li><p>Search for items, item sets or media,</p></li>
-<li><p>Select <strong>Edit all</strong> or <strong>Edit selected</strong> in the <strong>Batch actions</strong> dropdown list,</p></li>
-<li><p>Click <strong>Go</strong></p></li>
-<li><p>In <strong>Replace literal values by taxonomy terms (properties)</strong> select the
-properties you want to modify,</p></li>
-<li><p>In <strong>Replace literal values by taxonomy terms (taxonomy)</strong>, select the taxonomy
-containing the desired terms,</p></li>
-<li><p>Click on the <strong>Save</strong> button.</p></li>
-</ul>
+  <section id="site-page-block">
+<h1>Bloc de page de site<a class="headerlink" href="#site-page-block" title="Lien permanent vers cette rubrique"></a></h1>
+<p>Le bloc de page « Arborescence de termes de taxonomie » affiche tous les termes racine d’une taxonomie et permet aux utilisateurs de charger les enfants d’un terme en cliquant dessus. Cliquer sur le titre du terme les emmène sur la page du terme de taxonomie où ils peuvent voir les propriétés du terme de taxonomie ainsi que les ressources liées.</p>
+<p>Le lien et l’apparence peuvent être personnalisés par les thèmes en surchargeant <code class="docutils literal notranslate"><span class="pre">taxonomy/common/taxonomy-term-jstree-node-text-public.phtml</span></code></p>
+<p>Pour ajouter le bloc « Arborescence de termes de taxonomie » à une page, voir la documentation officielle sur <a class="reference external" href="https://omeka.org/s/docs/user-manual/sites/site_pages/#editing-pages">comment modifier les pages</a>.</p>
+<p>Une fois le bloc ajouté à une page vous avez la possibilité de sélectionner une taxonomie. Seuls les termes appartenant à cette taxonomie seront affichés.</p>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="taxonomy-terms.html" class="btn btn-neutral float-left" title="Taxonomy terms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="site-page-block.html" class="btn btn-neutral float-right" title="Site page block" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="replace-existing-values.html" class="btn btn-neutral float-left" title="Remplacer les valeurs existantes par des termes de taxonomie" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 
   <hr/>
@@ -104,9 +95,9 @@ containing the desired terms,</p></li>
     <p>&#169; Copyright 2023, BibLibre.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

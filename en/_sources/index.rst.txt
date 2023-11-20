@@ -24,3 +24,4 @@ parent term).
    taxonomies
    taxonomy-terms
    replace-existing-values
+   site-page-block
