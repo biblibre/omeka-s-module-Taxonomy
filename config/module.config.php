@@ -281,6 +281,9 @@ return [
         ],
     ],
     'view_manager' => [
+        'strategies' => [
+            'ViewJsonStrategy',
+        ],
         'template_path_stack' => [
             dirname(__DIR__) . '/view',
         ],
