@@ -37,6 +37,10 @@ $escape = $this->plugin('escapeHtml');
         </div>
     </div>
     <div class="meta-group">
+        <h4><?= $translate ('Children') ?></h4>
+        <div class="value"><?= $this->hyperlink($resource->childrenCount(), $this->url('admin/taxonomy-term', [], ['query' => ['parent_id' => $resource->id()]])) ?></div>
+    </div>
+    <div class="meta-group">
         <h4><?php echo $translate('Linked resources'); ?></h4>
         <div class="value"><?= $this->hyperlink($resource->subjectValueTotalCountCompat(), $resource->adminUrl() . '#resources-linked'); ?></div>
     </div>

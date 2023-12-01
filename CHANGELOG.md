@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 - In admin "show-details" sidebar, make the linked resources count clickable
+- Show children count on term show page and in show-details sidebar
 
 ## [0.5.1] - 2023-11-23
 

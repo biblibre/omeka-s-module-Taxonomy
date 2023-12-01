@@ -87,6 +87,10 @@ $sectionNavs = [
             <?php endif; ?>
         </div>
     </div>
+    <div class="meta-group">
+        <h4><?= $translate ('Children') ?></h4>
+        <div class="value"><?= $this->hyperlink($resource->childrenCount(), $this->url('admin/taxonomy-term', [], ['query' => ['parent_id' => $resource->id()]])) ?></div>
+    </div>
     <?php $this->trigger('view.show.sidebar'); ?>
 </div>
 
