@@ -75,6 +75,16 @@ $sectionNavs = [
         <h4><?php echo $translate('Terms'); ?></h4>
         <div class="value"><?php echo $this->hyperlink($taxonomy->termCount(), $taxonomy->termsUrl()); ?></div>
     </div>
+
+    <div class="meta-group">
+        <h4><?= $translate('Sites') ?></h4>
+        <?php foreach ($this->api()->search('sites')->getContent() as $site): ?>
+            <div class="value">
+                <?= $this->hyperlink($site->title(), $taxonomy->siteUrl($site->slug())) ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
     <?php $this->trigger('view.show.sidebar'); ?>
 </div>
 
