@@ -273,6 +273,7 @@ return [
         ],
         'factories' => [
             'taxonomySelect' => Service\View\Helper\TaxonomySelectFactory::class,
+            'taxonomyTermSelect' => Service\View\Helper\TaxonomyTermSelectFactory::class,
         ],
         'delegators' => [
              'Laminas\Form\View\Helper\FormElement' => [

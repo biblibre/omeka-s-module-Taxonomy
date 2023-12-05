@@ -67,6 +67,16 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
             }
         }
 
+        if (isset($query['ancestor_id'])) {
+            $ancestor_id = (int) $query['ancestor_id'];
+            $parent_ids = $this->getDescendantsIds($ancestor_id);
+            $parent_ids[] = $ancestor_id;
+            $qb->andWhere($qb->expr()->in(
+                'omeka_root.parent',
+                $this->createNamedParameter($qb, $parent_ids),
+            ));
+        }
+
         $exclude_ids = [];
         if (isset($query['exclude_ids'])) {
             if (is_string($query['exclude_ids'])) {
@@ -79,12 +89,8 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
         }
 
         if (isset($query['exclude_children_of'])) {
-            $connection = $this->getEntityManager()->getConnection();
-            $children_ids = $connection->fetchFirstColumn(
-                'WITH RECURSIVE child (id) as (select id from taxonomy_term where parent_id = ? union all select t.id from child c join taxonomy_term t on t.parent_id = c.id) select id from child',
-                [$query['exclude_children_of']]
-            );
-            $exclude_ids = array_merge($exclude_ids, $children_ids);
+            $descendants_ids = $this->getDescendantsIds((int) $query['exclude_children_of']);
+            $exclude_ids = array_merge($exclude_ids, $descendants_ids);
         }
 
         if (!empty($exclude_ids)) {
@@ -132,6 +138,23 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
             }
             $entity->setParent($parent);
         }
+    }
+
+    public function getDescendantsIds(int $taxonomyTermId): array
+    {
+        $connection = $this->getEntityManager()->getConnection();
+
+        $sql = <<<'SQL'
+        WITH RECURSIVE descendant (id) AS (
+            SELECT id FROM taxonomy_term WHERE parent_id = ?
+            UNION ALL
+            SELECT t.id FROM descendant c JOIN taxonomy_term t ON t.parent_id = c.id
+        ) SELECT id FROM descendant
+        SQL;
+
+        $descendantsIds = $connection->fetchFirstColumn($sql, [$taxonomyTermId]);
+
+        return $descendantsIds;
     }
 
     /**

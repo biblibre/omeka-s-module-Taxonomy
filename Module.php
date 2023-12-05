@@ -140,6 +140,28 @@ class Module extends AbstractModule
         $sharedEventManager->attach('Omeka\Form\ResourceBatchUpdateForm', 'form.add_input_filters', [$this, 'onResourceBatchUpdateFormAddInputFilters']);
         $sharedEventManager->attach('*', 'api.hydrate.post', [$this, 'onApiHydratePost']);
         $sharedEventManager->attach('*', 'api.preprocess_batch_update', [$this, 'onApiPreprocessBatchUpdate']);
+
+        $resourceControllers = [
+            'Omeka\Controller\Admin\Item',
+            'Omeka\Controller\Admin\ItemSet',
+            'Omeka\Controller\Admin\Media',
+            'Omeka\Controller\Site\Item',
+            'Omeka\Controller\Site\ItemSet',
+            'Omeka\Controller\Site\Media',
+        ];
+        foreach ($resourceControllers as $controller) {
+            $sharedEventManager->attach($controller, 'view.advanced_search', [$this, 'onViewAdvancedSearch']);
+            $sharedEventManager->attach($controller, 'view.search.filters', [$this, 'onViewSearchFilters']);
+        }
+
+        $resourceAdapters = [
+            'Omeka\Api\Adapter\ItemAdapter',
+            'Omeka\Api\Adapter\ItemSetAdapter',
+            'Omeka\Api\Adapter\MediaAdapter',
+        ];
+        foreach ($resourceAdapters as $adapter) {
+            $sharedEventManager->attach($adapter, 'api.search.query', [$this, 'onApiSearchQuery']);
+        }
     }
 
     public function getConfig()
@@ -323,5 +345,86 @@ class Module extends AbstractModule
         }
 
         $event->setParam('data', $data);
+    }
+
+    public function onViewAdvancedSearch(Event $event)
+    {
+        $query = $event->getParam('query');
+        $resourceType = $event->getParam('resourceType');
+        $partials = $event->getParam('partials');
+
+        $taxonomyPartials = [
+            'taxonomy/common/advanced-search/taxonomy-linked-to-term',
+        ];
+
+        // Insert partials before the "Sort" partial, if it exists
+        $sortPartialIndex = array_search('common/advanced-search/sort', $partials);
+        if ($sortPartialIndex) {
+            array_splice($partials, $sortPartialIndex, 0, $taxonomyPartials);
+        } else {
+            $partials = array_merge($partials, $taxonomyPartials);
+        }
+
+        $event->setParam('partials', $partials);
+    }
+
+    public function onViewSearchFilters(Event $event)
+    {
+        $translator = $this->getServiceLocator()->get('MvcTranslator');
+        $api = $this->getServiceLocator()->get('Omeka\ApiManager');
+
+        $query = $event->getParam('query');
+        $filters = $event->getParam('filters');
+
+        if (!empty($query['taxonomy_linked_to_term'])) {
+            $filterLabel = $translator->translate('Linked to taxonomy term');
+            try {
+                $taxonomyTerm = $api->read('taxonomy_terms', $query['taxonomy_linked_to_term'])->getContent();
+                $filters[$filterLabel][] = $taxonomyTerm->title();
+            } catch (\Omeka\Api\Exception\NotFoundException $e) {
+                $filters[$filterLabel][] = $query['taxonomy_linked_to_term'];
+            }
+        }
+
+        if (!empty($query['taxonomy_linked_to_term_or_descendants'])) {
+            $taxonomyTermId = $query['taxonomy_linked_to_term_or_descendants'];
+            $filterLabel = $translator->translate('Linked to taxonomy term or descendants');
+            try {
+                $taxonomyTerm = $api->read('taxonomy_terms', $taxonomyTermId)->getContent();
+                $filters[$filterLabel][] = $taxonomyTerm->title();
+            } catch (\Omeka\Api\Exception\NotFoundException $e) {
+                $filters[$filterLabel][] = $taxonomyTermId;
+            }
+        }
+
+        $event->setParam('filters', $filters);
+    }
+
+    public function onApiSearchQuery(Event $event)
+    {
+        $qb = $event->getParam('queryBuilder');
+        $request = $event->getParam('request');
+
+        $query = $request->getContent();
+        if (!empty($query['taxonomy_linked_to_term'])) {
+            $alias = 'taxonomy_linked_to_term_values';
+            $qb->innerJoin('omeka_root.values', $alias);
+            $qb->andWhere($qb->expr()->eq("$alias.valueResource", $query['taxonomy_linked_to_term']));
+        }
+
+        if (!empty($query['taxonomy_linked_to_term_or_descendants'])) {
+            $taxonomyTermId = (int) $query['taxonomy_linked_to_term_or_descendants'];
+            $apiAdapterManager = $this->getServiceLocator()->get('Omeka\ApiAdapterManager');
+            $taxonomyTermAdapter = $apiAdapterManager->get('taxonomy_terms');
+
+            $descendantsIds = $taxonomyTermAdapter->getDescendantsIds($taxonomyTermId);
+
+            $alias = 'taxonomy_linked_to_term_or_descendants_values';
+            $qb->innerJoin('omeka_root.values', $alias);
+            $qb->andWhere($qb->expr()->in(
+                "$alias.valueResource",
+                [$taxonomyTermId, ...$descendantsIds]
+            ));
+        }
     }
 }

@@ -1,0 +1,53 @@
+<div class="field">
+    <div class="field-meta">
+        <label for="taxonomy_linked_to_term"><?php echo $this->translate('Search by links to taxonomy term'); ?></label>
+        <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $this->translate('Expand')]); ?>
+        <div class="collapsible">
+            <div class="field-description"><?php echo $this->translate('Searches for resources that links to a taxonomy term, in any property'); ?></div>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <?php $valueOptions = []; ?>
+        <?php if (!empty($query['taxonomy_linked_to_term'])): ?>
+            <?php $taxonomyTerms = $this->api()->search('taxonomy_terms', ['id' => $query['taxonomy_linked_to_term']])->getContent(); ?>
+            <?php $valueOptions = array_map(fn ($term) => ['value' => $term->id(), 'label' => $term->title(), 'selected' => true], $taxonomyTerms); ?>
+        <?php endif; ?>
+        <?php echo $this->taxonomyTermSelect([
+            'name' => 'taxonomy_linked_to_term',
+            'options' => [
+                'value_options' => $valueOptions,
+            ],
+            'attributes' => [
+                'id' => 'taxonomy_linked_to_term',
+            ],
+        ]); ?>
+    </div>
+</div>
+
+<div class="field">
+    <div class="field-meta">
+        <label for="taxonomy_linked_to_term_or_descendants"><?php echo $this->translate('Search by links to taxonomy term or its descendants'); ?></label>
+        <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $this->translate('Expand')]); ?>
+        <div class="collapsible">
+            <div class="field-description"><?php echo $this->translate('Searches for resources that links to a taxonomy term or one of its descendants, in any property'); ?></div>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <?php $valueOptions = []; ?>
+        <?php if (!empty($query['taxonomy_linked_to_term_or_descendants'])): ?>
+            <?php $taxonomyTerms = $this->api()->search('taxonomy_terms', ['id' => $query['taxonomy_linked_to_term_or_descendants']])->getContent(); ?>
+            <?php $valueOptions = array_map(fn ($term) => ['value' => $term->id(), 'label' => $term->title(), 'selected' => true], $taxonomyTerms); ?>
+        <?php endif; ?>
+        <?php echo $this->taxonomyTermSelect([
+            'name' => 'taxonomy_linked_to_term_or_descendants',
+            'options' => [
+                'value_options' => $valueOptions,
+            ],
+            'attributes' => [
+                'id' => 'taxonomy_linked_to_term_or_descendants',
+            ],
+        ]); ?>
+    </div>
+</div>

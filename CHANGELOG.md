@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - In admin "show-details" sidebar, make the linked resources count clickable
 - Show children count on term show page and in show-details sidebar
+- Modify admin and site advanced search forms to be able to search resources
+  that links to a specific taxonomy term or its descendants.
 
 ## [0.5.1] - 2023-11-23
 
