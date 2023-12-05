@@ -42,4 +42,53 @@ class TaxonomyTermController extends AbstractActionController
 
         return new JsonModel($response);
     }
+
+    public function linkedValuesAction()
+    {
+        $taxonomyTerm = $this->api()->read('taxonomy_terms', $this->params('id'))->getContent();
+
+        $partialViewHelper = $this->viewHelpers()->get('partial');
+        $query = $this->params()->fromQuery();
+
+        $values = [];
+        foreach ($taxonomyTerm->linkedValues($query) as $linkedValue) {
+            $resource = $linkedValue->resource();
+            $values[] = [
+                $partialViewHelper('taxonomy/site/taxonomy-term/linked-values/resource', ['resource' => $resource]),
+            ];
+        }
+
+        $response = [
+            'values' => $values,
+            'total' => $taxonomyTerm->linkedValuesCount(),
+        ];
+
+        return new JsonModel($response);
+    }
+
+    public function linkedValuesGridConfigAction()
+    {
+        $config = [
+            'columns' => [
+                $this->translate('Resource'),
+            ],
+            'server' => [
+                'url' => $this->url()->fromRoute('site/taxonomy-term-id', ['action' => 'linked-values'], [], true),
+            ],
+            'autoWidth' => false,
+            'pagination' => [
+                'limit' => $this->settings()->get('pagination_per_page', 25),
+                'summary' => false,
+                'buttonsCount' => 0,
+            ],
+            'language' => [
+                'pagination' => [
+                    'previous' => $this->translate('Previous'),
+                    'next' => $this->translate('Next'),
+                ],
+            ],
+        ];
+
+        return new JsonModel($config);
+    }
 }

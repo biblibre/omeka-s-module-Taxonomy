@@ -289,4 +289,44 @@ class TaxonomyTermAdapter extends AbstractResourceEntityAdapter
         }
         return $qb;
     }
+
+    public function getLinkedValues(Resource $resource, array $query = [])
+    {
+        $qb = $this->getLinkedValuesQueryBuilder($resource);
+        $qb->select('v');
+
+        $page = $query['page'] ?? null;
+        $perPage = $query['per_page'] ?? null;
+        $offset = (is_numeric($page) && is_numeric($perPage))
+            ? (($page - 1) * $perPage)
+            : null;
+        $qb->setMaxResults($perPage);
+        $qb->setFirstResult($offset);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getLinkedValuesCount(Resource $resource)
+    {
+        $qb = $this->getLinkedValuesQueryBuilder($resource);
+        $qb->select('COUNT(v.id)');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    protected function getLinkedValuesQueryBuilder(Resource $resource)
+    {
+        $descendantsIds = $this->getDescendantsIds($resource->getId());
+        $selfAndDescendantsIds = [$resource->getId(), ...$descendantsIds];
+
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->from('Omeka\Entity\Value', 'v')
+            ->join('v.resource', 'r')
+            ->where($qb->expr()->in(
+                'v.valueResource',
+                $this->createNamedParameter($qb, $selfAndDescendantsIds)
+            ));
+
+        return $qb;
+    }
 }

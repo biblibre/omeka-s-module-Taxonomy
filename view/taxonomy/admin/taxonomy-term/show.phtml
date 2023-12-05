@@ -1,6 +1,8 @@
 <?php
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
+$this->headScript()->appendFile('https://unpkg.com/gridjs/dist/gridjs.umd.js');
+$this->headScript()->appendFile($this->assetUrl('js/linked-values.js', 'Taxonomy'));
 $this->htmlElement('body')->appendAttribute('class', 'taxonomy-terms show');
 if ($owner = $taxonomyTerm->owner()) {
     $ownerText = $escape($taxonomyTerm->owner()->name());
@@ -36,16 +38,13 @@ $sectionNavs = [
     <?php echo $taxonomyTerm->displayValues(); ?>
 </div>
 
+
 <div id="resources-linked" class="section">
-    <?php if ($taxonomyTerm->subjectValueTotalCountCompat()): ?>
-        <?= $taxonomyTerm->displaySubjectValuesCompat([
-            'page' => $this->params()->fromQuery('page', 1),
-            'perPage' => 25,
-            'resourceProperty' => $this->params()->fromQuery('resource_property'),
-        ]); ?>
+    <?php if ($taxonomyTerm->linkedValuesCount() > 0): ?>
+        <div class="taxonomy-linked-values-grid" data-config-url="<?= $taxonomyTerm->adminUrl('linked-values-grid-config') ?>"></div>
     <?php else: ?>
         <div class="no-resources">
-            <p><?php echo $translate('No resources link to this taxonomy term.'); ?></p>
+            <p><?php echo $translate('No resources link to this taxonomy term or its descendants.'); ?></p>
         </div>
     <?php endif; ?>
 </div>

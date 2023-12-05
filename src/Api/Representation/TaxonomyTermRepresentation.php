@@ -1,6 +1,8 @@
 <?php
 namespace Taxonomy\Api\Representation;
 
+use Omeka\Api\Representation\ValueRepresentation;
+
 class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
 {
     public function getControllerName()
@@ -95,5 +97,24 @@ class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
         $valueRepresentation['taxonomy_title'] = $taxonomy->title();
 
         return $valueRepresentation;
+    }
+
+    public function linkedValues(array $query = [])
+    {
+        $taxonomyTermAdapter = $this->getAdapter('taxonomy_terms');
+
+        $values = $taxonomyTermAdapter->getLinkedValues($this->resource, $query);
+        $linkedValues = [];
+        foreach ($values as $value) {
+            $valueRep = new ValueRepresentation($value, $this->getServiceLocator());
+            $linkedValues[] = $valueRep;
+        }
+
+        return $linkedValues;
+    }
+
+    public function linkedValuesCount()
+    {
+        return $this->getAdapter()->getLinkedValuesCount($this->resource);
     }
 }
