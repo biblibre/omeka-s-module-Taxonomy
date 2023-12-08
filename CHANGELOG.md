@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.7.0] - 2023-12-08
 
 - Add Solr transformation to add taxonomy term ancestors to the list of values
   (requires Solr module 0.13.0)
@@ -77,6 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
+[0.7.0]: https://github.com/biblibre/omeka-s-module-Taxonomy/releases/tag/v0.7.0
 [0.6.0]: https://github.com/biblibre/omeka-s-module-Taxonomy/releases/tag/v0.6.0
 [0.5.1]: https://github.com/biblibre/omeka-s-module-Taxonomy/releases/tag/v0.5.1
 [0.5.0]: https://github.com/biblibre/omeka-s-module-Taxonomy/releases/tag/v0.5.0
