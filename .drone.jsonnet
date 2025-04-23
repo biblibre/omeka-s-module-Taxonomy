@@ -63,10 +63,12 @@ local DocumentationPipeline() = {
 };
 
 [
-    Pipeline('3.1.2', '8.0', 'mariadb:10.6'),
-    Pipeline('3.2.3', '8.0', 'mariadb:10.6'),
-    Pipeline('4.0.1', '8.0', 'mariadb:10.6'),
-    Pipeline('4.0.1', '8.1', 'mariadb:10.6'),
-    Pipeline('4.0.1', '8.2', 'mariadb:10.6'),
+    Pipeline('3.1.2', '8.0', 'mariadb:10.11'),
+    Pipeline('3.2.3', '8.0', 'mariadb:10.11'),
+    Pipeline('4.0.1', '8.1', 'mariadb:10.11'),
+    Pipeline('4.0.1', '8.2', 'mariadb:10.11'),
+    Pipeline('4.1.1', '8.1', 'mariadb:10.11'),
+    Pipeline('4.1.1', '8.2', 'mariadb:10.11'),
+    Pipeline('4.1.1', '8.2', 'mariadb:11.8'),
     DocumentationPipeline(),
 ]
