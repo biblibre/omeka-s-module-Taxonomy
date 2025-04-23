@@ -1,11 +1,11 @@
 ---
 kind: pipeline
-name: omeka:3.1.2 php:8.0 mariadb:10.11
+name: omeka:3.1.2 php:8.0 mariadb:10
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
     MYSQL_ROOT_PASSWORD: root
-  image: mariadb:10.11
+  image: mariadb:10
   name: db
 steps:
 - commands:
@@ -22,12 +22,12 @@ workspace:
   path: omeka-s/modules/Taxonomy
 ---
 kind: pipeline
-name: omeka:3.2.3 php:8.0 mariadb:10.11
+name: omeka:3.2.3 php:8.0 mariadb:10
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
     MYSQL_ROOT_PASSWORD: root
-  image: mariadb:10.11
+  image: mariadb:10
   name: db
 steps:
 - commands:
@@ -44,12 +44,12 @@ workspace:
   path: omeka-s/modules/Taxonomy
 ---
 kind: pipeline
-name: omeka:4.0.1 php:8.1 mariadb:10.11
+name: omeka:4.0.1 php:8.1 mariadb:10
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
     MYSQL_ROOT_PASSWORD: root
-  image: mariadb:10.11
+  image: mariadb:10
   name: db
 steps:
 - commands:
@@ -66,12 +66,12 @@ workspace:
   path: omeka-s/modules/Taxonomy
 ---
 kind: pipeline
-name: omeka:4.0.1 php:8.2 mariadb:10.11
+name: omeka:4.0.1 php:8.2 mariadb:10
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
     MYSQL_ROOT_PASSWORD: root
-  image: mariadb:10.11
+  image: mariadb:10
   name: db
 steps:
 - commands:
@@ -88,12 +88,12 @@ workspace:
   path: omeka-s/modules/Taxonomy
 ---
 kind: pipeline
-name: omeka:4.1.1 php:8.1 mariadb:10.11
+name: omeka:4.1.1 php:8.1 mariadb:10
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
     MYSQL_ROOT_PASSWORD: root
-  image: mariadb:10.11
+  image: mariadb:10
   name: db
 steps:
 - commands:
@@ -110,12 +110,12 @@ workspace:
   path: omeka-s/modules/Taxonomy
 ---
 kind: pipeline
-name: omeka:4.1.1 php:8.2 mariadb:10.11
+name: omeka:4.1.1 php:8.2 mariadb:10
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
     MYSQL_ROOT_PASSWORD: root
-  image: mariadb:10.11
+  image: mariadb:10
   name: db
 steps:
 - commands:
@@ -132,12 +132,12 @@ workspace:
   path: omeka-s/modules/Taxonomy
 ---
 kind: pipeline
-name: omeka:4.1.1 php:8.2 mariadb:11.8
+name: omeka:4.1.1 php:8.2 mariadb:11
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
     MYSQL_ROOT_PASSWORD: root
-  image: mariadb:11.8
+  image: mariadb:11
   name: db
 steps:
 - commands:
@@ -176,6 +176,6 @@ trigger:
 type: docker
 ---
 kind: signature
-hmac: cb3d9cb634d84483c45d4fd36bdcc9cfffbf23c42a6fa11323632e3e79913b97
+hmac: 7d518caf1c445a350d793a2d4d74fcb2d729790552e11427bd037baad5af85be
 
 ...
