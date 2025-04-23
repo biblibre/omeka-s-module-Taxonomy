@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-20 16:23+0100\n"
+"POT-Creation-Date: 2025-04-22 15:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,11 @@ msgstr ""
 
 #: src/Controller/Admin/TaxonomyController.php:72
 msgid "Add another taxonomy term?"
+msgstr ""
+
+#: src/Controller/Admin/TaxonomyTermController.php:408
+#: view/taxonomy/admin/taxonomy-term/form.phtml:14
+msgid "Taxonomy term"
 msgstr ""
 
 #: src/DataType/Resource/Taxonomy.php:39
@@ -75,7 +80,7 @@ msgid "View as hierarchy"
 msgstr ""
 
 #: view/taxonomy/admin/taxonomy-term/browse.phtml:103
-#: view/taxonomy/admin/taxonomy-term/show.phtml:8
+#: view/taxonomy/admin/taxonomy-term/show.phtml:10
 #: view/taxonomy/admin/taxonomy/browse.phtml:94
 #: view/taxonomy/admin/taxonomy/show.phtml:8
 msgid "[no owner]"
@@ -113,44 +118,45 @@ msgstr ""
 msgid "Omeka could not find any taxonomy terms."
 msgstr ""
 
-#: view/taxonomy/admin/taxonomy-term/form.phtml:14
-msgid "Taxonomy term"
-msgstr ""
-
 #: view/taxonomy/admin/taxonomy-term/show-details.phtml:25
-#: view/taxonomy/admin/taxonomy-term/show.phtml:76
+#: view/taxonomy/admin/taxonomy-term/show.phtml:75
 #: view/taxonomy/admin/taxonomy/form.phtml:14
-#: view/taxonomy/site/taxonomy-term/show.phtml:12
+#: view/taxonomy/site/taxonomy-term/show.phtml:14
 msgid "Taxonomy"
 msgstr ""
 
 #: view/taxonomy/admin/taxonomy-term/show-details.phtml:29
-#: view/taxonomy/admin/taxonomy-term/show.phtml:80
+#: view/taxonomy/admin/taxonomy-term/show.phtml:79
 msgid "Parent term"
 msgstr ""
 
-#: view/taxonomy/admin/taxonomy-term/show.phtml:21
-msgid "Edit taxonomy term"
+#: view/taxonomy/admin/taxonomy-term/show-details.phtml:40
+#: view/taxonomy/admin/taxonomy-term/show.phtml:90
+msgid "Children"
 msgstr ""
 
 #: view/taxonomy/admin/taxonomy-term/show.phtml:23
+msgid "Edit taxonomy term"
+msgstr ""
+
+#: view/taxonomy/admin/taxonomy-term/show.phtml:25
 msgid "View taxonomy"
 msgstr ""
 
-#: view/taxonomy/admin/taxonomy-term/show.phtml:24
+#: view/taxonomy/admin/taxonomy-term/show.phtml:26
 msgid "View taxonomy terms"
 msgstr ""
 
-#: view/taxonomy/admin/taxonomy-term/show.phtml:48
-#: view/taxonomy/site/taxonomy-term/show.phtml:39
-msgid "No resources link to this taxonomy term."
+#: view/taxonomy/admin/taxonomy-term/show.phtml:47
+#: view/taxonomy/site/taxonomy-term/show.phtml:35
+msgid "No resources link to this taxonomy term or its descendants."
 msgstr ""
 
-#: view/taxonomy/admin/taxonomy-term/sidebar-select.phtml:11
+#: view/taxonomy/admin/taxonomy-term/sidebar-select.phtml:12
 msgid "Tree view"
 msgstr ""
 
-#: view/taxonomy/admin/taxonomy-term/sidebar-select.phtml:55
+#: view/taxonomy/admin/taxonomy-term/sidebar-select.phtml:56
 msgid "No taxonomy terms found."
 msgstr ""
 
@@ -243,6 +249,24 @@ msgstr ""
 msgid "Search by code"
 msgstr ""
 
+#: view/taxonomy/common/advanced-search/taxonomy-linked-to-term.phtml:3
+msgid "Search by links to taxonomy term"
+msgstr ""
+
+#: view/taxonomy/common/advanced-search/taxonomy-linked-to-term.phtml:6
+msgid "Searches for resources that links to a taxonomy term, in any property"
+msgstr ""
+
+#: view/taxonomy/common/advanced-search/taxonomy-linked-to-term.phtml:30
+msgid "Search by links to taxonomy term or its descendants"
+msgstr ""
+
+#: view/taxonomy/common/advanced-search/taxonomy-linked-to-term.phtml:33
+msgid ""
+"Searches for resources that links to a taxonomy term or one of its "
+"descendants, in any property"
+msgstr ""
+
 #: view/taxonomy/common/advanced-search/taxonomy.phtml:3
 msgid "Search by taxonomy"
 msgstr ""
@@ -260,38 +284,48 @@ msgstr ""
 msgid "[No taxonomy term selected]"
 msgstr ""
 
-#: view/taxonomy/site/taxonomy-term/show.phtml:35
-msgid "The following resources link to this taxonomy term:"
-msgstr ""
-
 #: view/taxonomy/site/taxonomy/show.phtml:30
 msgid "The following resources link to this taxonomy:"
 msgstr ""
 
-#: Module.php:182
+#: Module.php:207
 msgid "Taxonomy (by ID)"
 msgstr ""
 
-#: Module.php:222
+#: Module.php:247
 msgid "Replace literal values by taxonomy terms (properties)"
 msgstr ""
 
-#: Module.php:223
+#: Module.php:248
 msgid ""
 "Search taxonomy terms by title, and if one match, replace the literal value "
 "by a corresponding taxonomy term value. If more than one term match, no "
 "modification is made. Only the properties selected here will be modified."
 msgstr ""
 
-#: Module.php:238
+#: Module.php:263
 msgid "Replace literal values by taxonomy terms (taxonomy)"
 msgstr ""
 
-#: Module.php:239
+#: Module.php:264
 msgid ""
 "Search taxonomy terms by title, and if one match, replace the literal value "
 "by a corresponding taxonomy term value. The search is limited to the "
 "selected taxonomy."
+msgstr ""
+
+#: Module.php:452
+msgid "Taxonomy sidebar default view"
+msgstr ""
+
+#: Module.php:453
+msgid ""
+"View to display by default when selecting a taxonomy term to attach to a "
+"resource"
+msgstr ""
+
+#: Module.php:455
+msgid "List view"
 msgstr ""
 
 #: src/Form/TaxonomyTermForm.php:17
@@ -387,6 +421,10 @@ msgstr ""
 msgid "Editing taxonomies. This may take a while."
 msgstr ""
 
+#: src/View/Helper/TaxonomyTermSelect.php:22
+msgid "Select taxonomy term…"
+msgstr ""
+
 #: src/View/Helper/TaxonomySelect.php:28
 msgid "Select taxonomy…"
 msgstr ""
@@ -397,6 +435,10 @@ msgstr ""
 
 #: src/SolrValueFormatter/TaxonomyTermAncestors.php:18
 msgid "Add taxonomy term ancestors IDs"
+msgstr ""
+
+#: src/SolrTransformation/TaxonomyTermAncestors.php:13
+msgid "Add taxonomy term ancestors"
 msgstr ""
 
 #: src/DataType/Resource/TaxonomyTerm.php:29

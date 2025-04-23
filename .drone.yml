@@ -15,7 +15,7 @@ steps:
   - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
   - ../../vendor/bin/phpunit
   - ../../node_modules/.bin/gulp test:module:cs
-  image: ghcr.io/biblibre/omeka-s-ci:3.1.2-php8.0
+  image: git.biblibre.com/omeka-s/omeka-s-ci:3.1.2-php8.0
   name: test
 type: docker
 workspace:
@@ -37,7 +37,7 @@ steps:
   - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
   - ../../vendor/bin/phpunit
   - ../../node_modules/.bin/gulp test:module:cs
-  image: ghcr.io/biblibre/omeka-s-ci:3.2.3-php8.0
+  image: git.biblibre.com/omeka-s/omeka-s-ci:3.2.3-php8.0
   name: test
 type: docker
 workspace:
@@ -59,7 +59,7 @@ steps:
   - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
   - ../../vendor/bin/phpunit
   - ../../node_modules/.bin/gulp test:module:cs
-  image: ghcr.io/biblibre/omeka-s-ci:4.0.1-php8.0
+  image: git.biblibre.com/omeka-s/omeka-s-ci:4.0.1-php8.0
   name: test
 type: docker
 workspace:
@@ -81,7 +81,7 @@ steps:
   - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
   - ../../vendor/bin/phpunit
   - ../../node_modules/.bin/gulp test:module:cs
-  image: ghcr.io/biblibre/omeka-s-ci:4.0.1-php8.1
+  image: git.biblibre.com/omeka-s/omeka-s-ci:4.0.1-php8.1
   name: test
 type: docker
 workspace:
@@ -103,7 +103,7 @@ steps:
   - bash -c "cd ../.. && php /usr/local/libexec/wait-for-db.php"
   - ../../vendor/bin/phpunit
   - ../../node_modules/.bin/gulp test:module:cs
-  image: ghcr.io/biblibre/omeka-s-ci:4.0.1-php8.2
+  image: git.biblibre.com/omeka-s/omeka-s-ci:4.0.1-php8.2
   name: test
 type: docker
 workspace:
@@ -132,6 +132,6 @@ trigger:
 type: docker
 ---
 kind: signature
-hmac: 6af8baa5408e195c2c2b2b61ddebc3b200e02347f4e02eda5af40438d5cddf01
+hmac: b09df57e3b916bc7ae02c0f4100d6028b720f403857c679869024dabfd3857d1
 
 ...

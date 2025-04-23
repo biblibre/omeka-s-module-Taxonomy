@@ -162,6 +162,9 @@ class Module extends AbstractModule
         foreach ($resourceAdapters as $adapter) {
             $sharedEventManager->attach($adapter, 'api.search.query', [$this, 'onApiSearchQuery']);
         }
+
+        $sharedEventManager->attach('Omeka\Form\UserForm', 'form.add_elements', [$this, 'onUserFormAddElements']);
+        $sharedEventManager->attach('Omeka\Form\ResourceBatchUpdateForm', 'form.add_input_filters', [$this, 'onUserFormAddInputFilters']);
     }
 
     public function getConfig()
@@ -426,5 +429,49 @@ class Module extends AbstractModule
                 [$taxonomyTermId, ...$descendantsIds]
             ));
         }
+    }
+
+    public function onUserFormAddElements(Event $event)
+    {
+        $userSettings = $this->getServiceLocator()->get('Omeka\Settings\User');
+
+        $form = $event->getTarget();
+
+        $settingsFieldset = $form->get('user-settings');
+        $element_groups = $settingsFieldset->getOption('element_groups');
+        if ($element_groups) {
+            $element_groups['taxonomy'] = 'Taxonomy'; // @translate
+            $settingsFieldset->setOption('element_groups', $element_groups);
+        }
+
+        $userId = $form->getOption('user_id');
+
+        $settingsFieldset->add([
+            'type' => \Laminas\Form\Element\Select::class,
+            'name' => 'taxonomy_sidebar_default_view',
+            'options' => [
+                'element_group' => 'taxonomy',
+                'label' => 'Taxonomy sidebar default view', // @translate
+                'info' => 'View to display by default when selecting a taxonomy term to attach to a resource', // @translate
+                'value_options' => [
+                    'list' => 'List view', // @translate
+                    'tree' => 'Tree view', // @translate
+                ],
+            ],
+            'attributes' => [
+                'id' => 'taxonomy_sidebar_default_view',
+                'value' => $userId ? $userSettings->get('taxonomy_sidebar_default_view', 'list', $userId) : 'list',
+            ],
+        ]);
+    }
+
+    public function onUserFormAddInputFilters(Event $event)
+    {
+        $inputFilter = $event->getParam('inputFilter');
+
+        $inputFilter->get('user-settings')->add([
+            'name' => 'taxonomy_sidebar_default_view',
+            'required' => false,
+        ]);
     }
 }
