@@ -164,7 +164,7 @@ class Module extends AbstractModule
         }
 
         $sharedEventManager->attach('Omeka\Form\UserForm', 'form.add_elements', [$this, 'onUserFormAddElements']);
-        $sharedEventManager->attach('Omeka\Form\ResourceBatchUpdateForm', 'form.add_input_filters', [$this, 'onUserFormAddInputFilters']);
+        $sharedEventManager->attach('Omeka\Form\UserForm', 'form.add_input_filters', [$this, 'onUserFormAddInputFilters']);
     }
 
     public function getConfig()
