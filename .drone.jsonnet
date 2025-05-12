@@ -8,7 +8,7 @@ local Pipeline(omekaVersion, phpVersion, dbImage) = {
     steps: [
         {
             name: 'test',
-            image: 'ghcr.io/biblibre/omeka-s-ci:' + omekaVersion + '-php' + phpVersion,
+            image: 'git.biblibre.com/omeka-s/omeka-s-ci:' + omekaVersion + '-php' + phpVersion,
             commands: [
                 'cp -rT /usr/src/omeka-s ../..',
                 "echo 'host = \"db\"\\nuser = \"root\"\\npassword = \"root\"\\ndbname = \"omeka_test\"\\n' > ../../application/test/config/database.ini",
@@ -63,10 +63,12 @@ local DocumentationPipeline() = {
 };
 
 [
-    Pipeline('3.1.2', '8.0', 'mariadb:10.6'),
-    Pipeline('3.2.3', '8.0', 'mariadb:10.6'),
-    Pipeline('4.0.1', '8.0', 'mariadb:10.6'),
-    Pipeline('4.0.1', '8.1', 'mariadb:10.6'),
-    Pipeline('4.0.1', '8.2', 'mariadb:10.6'),
+    Pipeline('3.1.2', '8.0', 'mariadb:10'),
+    Pipeline('3.2.3', '8.0', 'mariadb:10'),
+    Pipeline('4.0.1', '8.1', 'mariadb:10'),
+    Pipeline('4.0.1', '8.2', 'mariadb:10'),
+    Pipeline('4.1.1', '8.1', 'mariadb:10'),
+    Pipeline('4.1.1', '8.2', 'mariadb:10'),
+    Pipeline('4.1.1', '8.2', 'mariadb:11'),
     DocumentationPipeline(),
 ]

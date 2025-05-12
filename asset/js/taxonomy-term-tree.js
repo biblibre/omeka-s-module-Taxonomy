@@ -3,7 +3,7 @@
 
     $(document).ready(function (event) {
         $('#content').on('click', '.taxonomy-tree-view-toggle', function (event) {
-            $(this).closest('.sidebar').toggleClass('taxonomy-tree-view');
+            this.classList.toggle('taxonomy-tree-view-enabled');
         });
     });
 

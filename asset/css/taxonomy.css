@@ -68,10 +68,10 @@ header nav .taxonomy-terms::before {
     display: none;
 }
 
-.sidebar.taxonomy-tree-view .taxonomy-term-sidebar-tree {
+.taxonomy-tree-view-enabled ~ .taxonomy-term-sidebar-tree {
     display: block;
 }
-.sidebar.taxonomy-tree-view .taxonomy-term-sidebar-list {
+.taxonomy-tree-view-enabled ~ .taxonomy-term-sidebar-list {
     display: none;
 }
 
@@ -91,7 +91,7 @@ header nav .taxonomy-terms::before {
     display: inline-block;
     margin-right: 6px
 }
-.sidebar.taxonomy-tree-view button.taxonomy-tree-view-toggle:before {
+button.taxonomy-tree-view-toggle.taxonomy-tree-view-enabled:before {
     content: ""
 }
 
