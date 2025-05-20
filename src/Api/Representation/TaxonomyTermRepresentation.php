@@ -117,4 +117,23 @@ class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
     {
         return $this->getAdapter()->getLinkedValuesCount($this->resource);
     }
+
+    public function linkedResources(array $query = [])
+    {
+        $api = $this->getServiceLocator()->get('Omeka\ApiManager');
+
+        $query['taxonomy_linked_to_term_or_descendants'] = $this->id();
+
+        return $api->search('resources', $query)->getContent();
+    }
+
+    public function linkedResourcesCount(array $query = [])
+    {
+        $api = $this->getServiceLocator()->get('Omeka\ApiManager');
+
+        $query['taxonomy_linked_to_term_or_descendants'] = $this->id();
+        $query['limit'] = 0;
+
+        return $api->search('resources', $query)->getTotalResults();
+    }
 }

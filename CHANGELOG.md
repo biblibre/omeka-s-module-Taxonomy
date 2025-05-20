@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+**This module now requires Omeka S 4.1 or greater**
+
+- Add search and sort capabilities to the linked resources block on taxonomy
+  term page
+
 ## [0.8.0] - 2025-05-12
 
 - Add user setting to change the default view (list or tree) in the taxonomy

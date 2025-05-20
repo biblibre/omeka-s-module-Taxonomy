@@ -158,6 +158,7 @@ class Module extends AbstractModule
             'Omeka\Api\Adapter\ItemAdapter',
             'Omeka\Api\Adapter\ItemSetAdapter',
             'Omeka\Api\Adapter\MediaAdapter',
+            'Omeka\Api\Adapter\ResourceAdapter',
         ];
         foreach ($resourceAdapters as $adapter) {
             $sharedEventManager->attach($adapter, 'api.search.query', [$this, 'onApiSearchQuery']);

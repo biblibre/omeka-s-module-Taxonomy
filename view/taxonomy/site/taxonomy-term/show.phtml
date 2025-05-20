@@ -2,8 +2,7 @@
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'taxonomy-terms show');
-$this->headScript()->appendFile('https://unpkg.com/gridjs/dist/gridjs.umd.js');
-$this->headScript()->appendFile($this->assetUrl('js/linked-values.js', 'Taxonomy'));
+$this->headLink()->appendStylesheet($this->assetUrl('css/site/taxonomy.css', 'Taxonomy'));
 ?>
 
 <?php echo $this->pageTitle($taxonomyTerm->displayTitle()); ?>
@@ -26,15 +25,6 @@ $this->headScript()->appendFile($this->assetUrl('js/linked-values.js', 'Taxonomy
     <?php echo $taxonomyTerm->displayValues(); ?>
 </div>
 
-<div id="taxonomy-term-linked" class="section">
-    <h2><?php echo $translate('Linked resources'); ?></h2>
-    <?php if ($taxonomyTerm->linkedValuesCount() > 0): ?>
-        <div class="taxonomy-linked-values-grid" data-config-url="<?= $this->url('site/taxonomy-term-id', ['action' => 'linked-values-grid-config'], [], true) ?>"></div>
-    <?php else: ?>
-        <div class="no-resources">
-            <p><?php echo $translate('No resources link to this taxonomy term or its descendants.'); ?></p>
-        </div>
-    <?php endif; ?>
-</div>
+<?= $this->partial('taxonomy/site/taxonomy-term/linked-resources', ['taxonomyTerm' => $taxonomyTerm]) ?>
 
 <?php $this->trigger('view.show.after'); ?>

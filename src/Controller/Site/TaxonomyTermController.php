@@ -43,52 +43,29 @@ class TaxonomyTermController extends AbstractActionController
         return new JsonModel($response);
     }
 
-    public function linkedValuesAction()
+    public function linkedResourcesAction()
     {
-        $taxonomyTerm = $this->api()->read('taxonomy_terms', $this->params('id'))->getContent();
-
         $partialViewHelper = $this->viewHelpers()->get('partial');
+
         $query = $this->params()->fromQuery();
+        $query['taxonomy_linked_to_term_or_descendants'] = $this->params('id');
 
         $values = [];
-        foreach ($taxonomyTerm->linkedValues($query) as $linkedValue) {
-            $resource = $linkedValue->resource();
-            $values[] = [
-                $partialViewHelper('taxonomy/site/taxonomy-term/linked-values/resource', ['resource' => $resource]),
-            ];
+        $response = $this->api()->search('resources', $query);
+        $this->paginator($response->getTotalResults());
+        foreach ($response->getContent() as $resource) {
+            $values[] = $partialViewHelper('taxonomy/site/taxonomy-term/linked-resources/resource', ['resource' => $resource]);
         }
+
+        $total = $response->getTotalResults();
+        $paginator = $this->viewHelpers()->get('pagination')->getPaginator();
 
         $response = [
             'values' => $values,
-            'total' => $taxonomyTerm->linkedValuesCount(),
+            'total' => $paginator->getTotalCount(),
+            'pages' => $paginator->getPageCount(),
         ];
 
         return new JsonModel($response);
-    }
-
-    public function linkedValuesGridConfigAction()
-    {
-        $config = [
-            'columns' => [
-                $this->translate('Resource'),
-            ],
-            'server' => [
-                'url' => $this->url()->fromRoute('site/taxonomy-term-id', ['action' => 'linked-values'], [], true),
-            ],
-            'autoWidth' => false,
-            'pagination' => [
-                'limit' => $this->settings()->get('pagination_per_page', 25),
-                'summary' => false,
-                'buttonsCount' => 0,
-            ],
-            'language' => [
-                'pagination' => [
-                    'previous' => $this->translate('Previous'),
-                    'next' => $this->translate('Next'),
-                ],
-            ],
-        ];
-
-        return new JsonModel($config);
     }
 }

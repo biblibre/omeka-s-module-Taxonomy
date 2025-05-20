@@ -1,0 +1,11 @@
+.taxonomy-linked-resources__head {
+    display: flex;
+    column-gap: 1em;
+    margin-bottom: 15px;
+}
+
+.taxonomy-linked-resources__sort {
+    display: flex;
+    align-items: center;
+    column-gap: .5em;
+}

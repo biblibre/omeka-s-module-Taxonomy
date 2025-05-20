@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var Taxonomy\Api\Representation\TaxonomyTermRepresentation $taxonomyTerm
+ */
+
+$this->headScript()->appendFile($this->assetUrl('js/linked-resources.js', 'Taxonomy'));
+?>
+
+<section class="section taxonomy-linked-resources" data-url="<?= $this->url('site/taxonomy-term-id', ['action' => 'linked-resources'], [], true) ?>">
+    <h2><?= $this->translate('Linked resources'); ?></h2>
+
+    <?php if ($taxonomyTerm->linkedResourcesCount() > 0): ?>
+        <div class="taxonomy-linked-resources__head">
+            <?= $this->partial('taxonomy/site/taxonomy-term/linked-resources/search'); ?>
+            <?= $this->partial('taxonomy/site/taxonomy-term/linked-resources/sort'); ?>
+        </div>
+
+        <div class="taxonomy-linked-resources__resources"></div>
+
+        <div class="taxonomy-linked-resources__foot">
+            <div class="taxonomy-linked-resources__pagination"></div>
+        </div>
+    <?php else: ?>
+        <div class="no-resources">
+            <p><?php echo $this->translate('No resources link to this taxonomy term or its descendants.'); ?></p>
+        </div>
+    <?php endif; ?>
+</section>
