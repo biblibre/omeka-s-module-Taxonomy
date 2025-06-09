@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-22 15:21+0200\n"
+"POT-Creation-Date: 2025-06-09 08:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 #: view/taxonomy/admin/taxonomy-term/show-details.phtml:25
 #: view/taxonomy/admin/taxonomy-term/show.phtml:75
 #: view/taxonomy/admin/taxonomy/form.phtml:14
-#: view/taxonomy/site/taxonomy-term/show.phtml:14
+#: view/taxonomy/site/taxonomy-term/show.phtml:13
 msgid "Taxonomy"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgid "View taxonomy terms"
 msgstr ""
 
 #: view/taxonomy/admin/taxonomy-term/show.phtml:47
-#: view/taxonomy/site/taxonomy-term/show.phtml:35
+#: view/taxonomy/site/taxonomy-term/linked-resources.phtml:25
 msgid "No resources link to this taxonomy term or its descendants."
 msgstr ""
 
@@ -284,47 +284,67 @@ msgstr ""
 msgid "[No taxonomy term selected]"
 msgstr ""
 
+#: view/taxonomy/site/taxonomy-term/linked-resources/search.phtml:2
+msgid "Search linked resources..."
+msgstr ""
+
+#: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:4
+msgid "Title (asc)"
+msgstr ""
+
+#: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:5
+msgid "Title (desc)"
+msgstr ""
+
+#: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:6
+msgid "Date (asc)"
+msgstr ""
+
+#: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:7
+msgid "Date (desc)"
+msgstr ""
+
 #: view/taxonomy/site/taxonomy/show.phtml:30
 msgid "The following resources link to this taxonomy:"
 msgstr ""
 
-#: Module.php:207
+#: Module.php:208
 msgid "Taxonomy (by ID)"
 msgstr ""
 
-#: Module.php:247
+#: Module.php:248
 msgid "Replace literal values by taxonomy terms (properties)"
 msgstr ""
 
-#: Module.php:248
+#: Module.php:249
 msgid ""
 "Search taxonomy terms by title, and if one match, replace the literal value "
 "by a corresponding taxonomy term value. If more than one term match, no "
 "modification is made. Only the properties selected here will be modified."
 msgstr ""
 
-#: Module.php:263
+#: Module.php:264
 msgid "Replace literal values by taxonomy terms (taxonomy)"
 msgstr ""
 
-#: Module.php:264
+#: Module.php:265
 msgid ""
 "Search taxonomy terms by title, and if one match, replace the literal value "
 "by a corresponding taxonomy term value. The search is limited to the "
 "selected taxonomy."
 msgstr ""
 
-#: Module.php:452
+#: Module.php:455
 msgid "Taxonomy sidebar default view"
 msgstr ""
 
-#: Module.php:453
+#: Module.php:456
 msgid ""
 "View to display by default when selecting a taxonomy term to attach to a "
 "resource"
 msgstr ""
 
-#: Module.php:455
+#: Module.php:458
 msgid "List view"
 msgstr ""
 
