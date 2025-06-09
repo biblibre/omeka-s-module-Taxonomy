@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (searchInput) {
             let timeoutId;
             searchInput.addEventListener('input', () => {
-                console.log('foo');
                 clearTimeout(timeoutId);
                 timeoutId = setTimeout(refresh, 250);
             });
