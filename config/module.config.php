@@ -59,6 +59,10 @@ return [
             'Taxonomy\Form\Element\TaxonomySelect' => Service\Form\Element\TaxonomySelectFactory::class,
         ],
     ],
+    'js_translate_strings' => [
+        'Next', // @translate
+        'Previous', // @translate
+    ],
     'navigation' => [
         'AdminResource' => [
             [

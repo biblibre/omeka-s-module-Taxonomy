@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-09 08:52+0200\n"
-"PO-Revision-Date: 2025-06-09 08:58+0200\n"
+"POT-Creation-Date: 2025-06-19 12:21+0200\n"
+"PO-Revision-Date: 2025-06-19 12:24+0200\n"
 "Last-Translator: Julian Maurice <julian.maurice@biblibre.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: src/Controller/Admin/TaxonomyController.php:37
 msgid "Add another taxonomy?"
@@ -304,20 +304,20 @@ msgid "Search linked resources..."
 msgstr "Recherche dans les ressources liées..."
 
 #: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:4
-msgid "Title (asc)"
-msgstr "Titre (asc)"
+msgid "Title (A-Z)"
+msgstr "Titre (A-Z)"
 
 #: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:5
-msgid "Title (desc)"
-msgstr "Titre (desc)"
+msgid "Title (Z-A)"
+msgstr "Titre (Z-A)"
 
 #: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:6
-msgid "Date (asc)"
-msgstr "Date (asc)"
+msgid "Date (ascending)"
+msgstr "Date (croissant)"
 
 #: view/taxonomy/site/taxonomy-term/linked-resources/sort.phtml:7
-msgid "Date (desc)"
-msgstr "Date (desc)"
+msgid "Date (descending)"
+msgstr "Date (décroissant)"
 
 #: view/taxonomy/site/taxonomy/show.phtml:30
 msgid "The following resources link to this taxonomy:"
