@@ -25,3 +25,4 @@ parent term).
    taxonomy-terms
    replace-existing-values
    site-page-block
+   user-settings
