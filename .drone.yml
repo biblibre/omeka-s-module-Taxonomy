@@ -87,6 +87,31 @@ trigger:
   - push
 type: docker
 ---
+kind: pipeline
+name: omeka:4.1.1 php:8.2 mariadb:10.5 cypress solr:9.6.1
+services:
+- environment:
+    MYSQL_DATABASE: omeka_test
+    MYSQL_ROOT_PASSWORD: root
+  image: mariadb:10.5
+  name: db
+- name: omekas
+  environment:
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+    MYSQL_DATABASE: omeka_test
+    MYSQL_HOST: db
+    OMEKA_THEMES: https://github.com/omeka-s-themes/default/releases/download/v1.9.1/theme-default-v1.9.1.zip
+    APPLICATION_ENV: development
+  image: giocomai/omeka-s-docker:v4.1.1
+steps:
+- commands:
+  - bash -c "npx cypress run"
+  image: cypress/included
+  name: cypress
+workspace:
+  path: /var/www/html/modules/Taxonomy
+---
 kind: signature
 hmac: 782835d5d5124a50a49e7c5cf3910ec576d59cb250da9c706e37d1fe79136676
 

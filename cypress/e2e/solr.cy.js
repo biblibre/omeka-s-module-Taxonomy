@@ -126,24 +126,7 @@ describe('Solr', () =>
     registerAndLogin();
 
     cy.get('#menu .modules').click();
-    cy.get('#modules [action="/admin/module/install?id=Taxonomy"]').click();
     cy.get('#modules [action="/admin/module/deactivate?id=Taxonomy"]').should('exist');
-    cy.get('#menu [href="/admin/resource-template"]').click();
-    cy.get('#page-actions .button[href="/admin/resource-template/add"]');
-    cy.get('input[name="o:label"]').click();
-    cy.get('input[name="o:label"]').clear();
-    cy.get('input[name="o:label"]').type('Taxonomy template');
-    cy.get('.selector-parent[data-vocabulary-id="1"]').click();
-    cy.get('.selector-parent[data-vocabulary-id="1"] [data-property-id="9"]').click();
-    cy.get('#properties [data-property-id="9"] .actions .o-icon-edit').click();
-    cy.get('#alternate-label').click();
-    cy.get('#alternate-label').clear();
-    cy.get('#alternate-label').type('Taxonomy');
-    cy.get('#data_type_chosen').click();
-    cy.contains('#data_type_chosen .chosen-results .active-result', 'Taxonomy').click();
-    cy.get('#set-changes').click();
-    cy.get('#page-actions button').click();
-    cy.get('.messages .success').should('exist');
 
     cy.get('#menu [href="/admin/taxonomy"]').click();
     cy.get('#page-actions .button').click();
@@ -158,24 +141,52 @@ describe('Solr', () =>
     cy.get('input[name="o:code"]').type('MYTAX');
     cy.get('#page-actions [type="submit"]').click();
     cy.get('.messages .success').should('exist');
+
+    cy.get('#menu [href="/admin/resource-template"]').click();
+    cy.get('#page-actions .button[href="/admin/resource-template/add"]').click();
+    cy.get('input[name="o:label"]').click();
+    cy.get('input[name="o:label"]').clear();
+    cy.get('input[name="o:label"]').type('Taxonomy template');
+    cy.get('.selector-parent[data-vocabulary-id="1"]').click();
+    cy.get('.selector-parent[data-vocabulary-id="1"] [data-property-id="9"]').click();
+    cy.get('#properties [data-property-id="9"] .actions .o-icon-edit').click();
+    cy.get('#alternate-label').click();
+    cy.get('#alternate-label').clear();
+    cy.get('#alternate-label').type('Taxonomy');
+    cy.get('#data_type_chosen').click();
+    cy.contains('#data_type_chosen .chosen-results .active-result', 'Taxonomy').click();
+    cy.get('#set-changes').click();
+
+    cy.get('.selector-parent[data-vocabulary-id="1"]').click();
+    cy.get('.selector-parent[data-vocabulary-id="1"] [data-property-id="38"]').click();
+    cy.get('#properties [data-property-id="38"] .actions .o-icon-edit').click();
+    cy.get('#alternate-label').click();
+    cy.get('#alternate-label').clear();
+    cy.get('#alternate-label').type('Term');
+    cy.get('#data_type_chosen').click();
+    cy.contains('#data_type_chosen .chosen-results .active-result', 'Taxonomy Term: My Taxonomy').click();
+    cy.get('#set-changes').click();
+
+    cy.get('#page-actions button').click();
+    cy.get('.messages .success').should('exist');
     
     cy.get('#menu .items').click();
     cy.get('#page-actions .button').click();
 
-    cy.get('#resource-template-select').closest('.inputs').within(() => {
+    cy.get('#resource-template-select').closest('.field').within(() => {
       cy.root().click();
-      cy.root().contains('.chosen-result', 'Taxonomy template').click();
+      cy.root().contains('.active-result', 'Taxonomy template').click();
     });
 
-    cy.get('#properties [data-property-term="dcterms:form"] .inputs .o-icon-taxonomies').click();
-    cy.contains('.taxonomies .resource-list a', 'My Taxonomy').click();
+    cy.get('#properties [data-property-term="dcterms:format"] .inputs .o-icon-taxonomies').click();
+    cy.contains('.taxonomies.resource-list a', 'My Taxonomy').click();
     cy.get('#select-item').click();
 
     cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').click();
     cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').clear();
     cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').type('Item with taxonomy');
 
-    cy.get('#page-actions button[type="submit]').click();
+    cy.get('#page-actions button[type="submit"]').click();
 
     cy.get('#menu [href="/admin/taxonomy"]').click();
     cy.contains('.resource-name', 'My Taxonomy').click();
@@ -194,6 +205,9 @@ describe('Solr', () =>
     cy.get('#page-actions input[type="submit"]').click();
     cy.get('.messages .success').should('exist');
 
+    cy.get('#menu [href="/admin/taxonomy"]').click();
+    cy.contains('.resource-name', 'My Taxonomy').click();
+    cy.get('#page-actions a.button').eq(1).click();
     cy.get('#page-actions a.button').eq(1).click();
 
     cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').click();
@@ -206,9 +220,126 @@ describe('Solr', () =>
     cy.get('input[name="o:code"]').type('MYTAG2');
 
     cy.get('.taxonomy-term-form-select').click();
-    cy.contains('.resource .taxonomy-term a', 'MYTAG').click();
+    cy.contains('.resource.taxonomy-term a', 'Tag').click();
 
     cy.get('#page-actions input[type="submit"]').click();
     cy.get('.messages .success').should('exist');
+
+    // Item with a term and a taxonmy
+    cy.get('#menu .items').click();
+    cy.get('#page-actions .button').click();
+
+    cy.get('#resource-template-select').closest('.field').within(() => {
+      cy.root().click();
+      cy.root().contains('.active-result', 'Taxonomy template').click();
+    });
+
+    cy.get('#properties [data-property-term="dcterms:format"] .inputs .o-icon-taxonomies').click();
+    cy.contains('.taxonomies.resource-list a', 'My Taxonomy').click();
+    cy.get('#select-item').click();
+
+    cy.get('#properties [data-property-term="dcterms:hasFormat"] .inputs .o-icon-taxonomy-terms').click();
+    cy.contains('.taxonomy-terms.resource-list a', 'Tag').click();
+    cy.get('#select-item').click();
+
+
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').click();
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').clear();
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').type('Item with taxonomy and term');
+
+    cy.get('#page-actions button[type="submit"]').click();
+
+    // Item with a term being created
+    cy.get('#menu .items').click();
+    cy.get('#page-actions .button').click();
+
+    cy.get('#resource-template-select').closest('.field').within(() => {
+      cy.root().click();
+      cy.root().contains('.active-result', 'Taxonomy template').click();
+    });
+
+    cy.get('#properties [data-property-term="dcterms:hasFormat"] .inputs .o-icon-taxonomy-terms').click();
+    cy.contains('.taxonomy-terms.resource-list a', 'Tag2').click();
+    cy.get('#select-item').click();
+
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').click();
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').clear();
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').type('Item with term');
+
+    cy.get('#page-actions button[type="submit"]').click();
+
+    // Item with nothing being created
+    cy.get('#menu .items').click();
+    cy.get('#page-actions .button').click();
+
+    cy.get('#resource-template-select').closest('.field').within(() => {
+      cy.root().click();
+      cy.root().contains('.active-result', 'Taxonomy template').click();
+    });
+
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').click();
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').clear();
+    cy.get('#properties [data-property-term="dcterms:title"] .inputs textarea').type('Item with nothing');
+
+    cy.get('#page-actions button[type="submit"]').click();
+
+    // Item advanced search nothing
+    cy.get('#menu .items').click();
+    cy.get('.browse-controls .advanced-search').click();
+    cy.get('#page-actions [type="submit"]').click();
+
+    cy.get('.tablesaw-cell-content .resource-link').should('have.length', 4);
+
+    // Item advanced search "Tag"
+    cy.get('#menu .items').click();
+    cy.get('.browse-controls .advanced-search').click();
+    cy.get('input[id="taxonomy_linked_to_term-ts-control"]').click();
+    cy.get('input[id="taxonomy_linked_to_term-ts-control"]').clear();
+    cy.get('input[id="taxonomy_linked_to_term-ts-control"]').type('Tag');
+    cy.get('div#taxonomy_linked_to_term-opt-1').click();
+    cy.get('#page-actions [type="submit"]').click();
+
+    cy.get('.tablesaw-cell-content .resource-link').eq(0).contains('Item with taxonomy and term');
+    cy.get('.tablesaw-cell-content .resource-link').should('have.length', 1);
+
+    // Item advanced search "Tag2"
+    cy.get('#menu .items').click();
+    cy.get('.browse-controls .advanced-search').click();
+    cy.get('input#taxonomy_linked_to_term-ts-control').click();
+    cy.get('input#taxonomy_linked_to_term-ts-control').clear();
+    cy.get('input#taxonomy_linked_to_term-ts-control').type('Tag2');
+    cy.get('div#taxonomy_linked_to_term-opt-1').click();
+    cy.get('#page-actions [type="submit"]').click();
+
+    cy.get('.tablesaw-cell-content .resource-link').eq(0).contains('Item with term');
+    cy.get('.tablesaw-cell-content .resource-link').should('have.length', 1);
+
+
+    // Item advanced search "Tag" descendants
+    cy.get('#menu .items').click();
+    cy.get('.browse-controls .advanced-search').click();
+    cy.get('input#taxonomy_linked_to_term_or_descendants-ts-control').click();
+    cy.get('input#taxonomy_linked_to_term_or_descendants-ts-control').clear();
+    cy.get('input#taxonomy_linked_to_term_or_descendants-ts-control').type('Tag');
+    cy.get('div#taxonomy_linked_to_term_or_descendants-opt-1').click();
+    cy.get('#page-actions [type="submit"]').click();
+
+    cy.get('.tablesaw-cell-content .resource-link').contains('Item with taxonomy and term');
+    cy.get('.tablesaw-cell-content .resource-link').contains('Item with term');
+    cy.get('.tablesaw-cell-content .resource-link').should('have.length', 2);
+
+    // Item advanced search "Tag2"descendants
+    cy.get('#menu .items').click();
+    cy.get('.browse-controls .advanced-search').click();
+    cy.get('input#taxonomy_linked_to_term_or_descendants-ts-control').click();
+    cy.get('input#taxonomy_linked_to_term_or_descendants-ts-control').clear();
+    cy.get('input#taxonomy_linked_to_term_or_descendants-ts-control').type('Tag2');
+    cy.get('div#taxonomy_linked_to_term_or_descendants-opt-1').click();
+    cy.get('#page-actions [type="submit"]').click();
+
+    cy.get('.tablesaw-cell-content .resource-link').eq(0).contains('Item with term');
+    cy.get('.tablesaw-cell-content .resource-link').should('have.length', 1);
+    
+    
   });
 });
