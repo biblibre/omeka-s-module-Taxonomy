@@ -124,6 +124,7 @@ describe('Solr', () =>
     registerAndLogin();
 
     cy.get('#menu .modules').click();
+    cy.get('#modules [action="/admin/module/install?id=Taxonomy"]').click();
     cy.get('#modules [action="/admin/module/deactivate?id=Taxonomy"]').should('exist');
 
     cy.get('#menu [href="/admin/taxonomy"]').click();
