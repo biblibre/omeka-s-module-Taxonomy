@@ -1,5 +1,3 @@
-const { root } = require("postcss");
-
 function createItem(title, date, authors, hidden = false)
 {
     cy.get('#menu .items').click();

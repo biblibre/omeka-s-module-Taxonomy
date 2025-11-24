@@ -88,7 +88,7 @@ trigger:
 type: docker
 ---
 kind: pipeline
-name: omeka:4.1.1 php:8.2 mariadb:10.5 cypress solr:9.6.1
+name: omeka:4.1.1 php:8.2 mariadb:10.5 cypress
 services:
 - environment:
     MYSQL_DATABASE: omeka_test
