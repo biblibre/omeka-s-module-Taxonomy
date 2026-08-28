@@ -18,9 +18,11 @@ class TaxonomyTermRepresentation extends AbstractResourceEntityRepresentation
     public function getResourceJsonLd()
     {
         $taxonomy = $this->taxonomy();
+        $parent = $this->parent();
 
         return [
             'o:code' => $this->code(),
+            'o:parent' => $parent ? $parent->getReference() : null,
             'o:taxonomy' => $taxonomy->getReference(),
             'taxonomy_code' => $taxonomy->code(),
             'taxonomy_title' => $taxonomy->title(),
