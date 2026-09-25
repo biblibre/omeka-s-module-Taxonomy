@@ -406,6 +406,7 @@ class Module extends AbstractModule
 
     public function onApiSearchQuery(Event $event)
     {
+        $adapter = $event->getTarget();
         $qb = $event->getParam('queryBuilder');
         $request = $event->getParam('request');
 
@@ -413,7 +414,12 @@ class Module extends AbstractModule
         if (!empty($query['taxonomy_linked_to_term'])) {
             $alias = 'taxonomy_linked_to_term_values';
             $qb->innerJoin('omeka_root.values', $alias);
-            $qb->andWhere($qb->expr()->eq("$alias.valueResource", $query['taxonomy_linked_to_term']));
+            $qb->andWhere(
+                $qb->expr()->eq(
+                    "$alias.valueResource",
+                    \Omeka\Module::createNamedParameter($query['taxonomy_linked_to_term'], $qb, $adapter)
+                )
+            );
         }
 
         if (!empty($query['taxonomy_linked_to_term_or_descendants'])) {
