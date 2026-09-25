@@ -417,7 +417,7 @@ class Module extends AbstractModule
             $qb->andWhere(
                 $qb->expr()->eq(
                     "$alias.valueResource",
-                    \Omeka\Module::createNamedParameter($query['taxonomy_linked_to_term'], $qb, $adapter)
+                    $adapter->createNamedParameter($qb, $query['taxonomy_linked_to_term'])
                 )
             );
         }
